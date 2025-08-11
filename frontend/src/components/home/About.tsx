@@ -19,7 +19,7 @@ const About = () => {
               <img
                 src="/images/about-img-01.png"
                 alt="About Royal Cars"
-                className="w-full max-w-md lg:max-w-lg xl:max-w-xl rounded-lg shadow-lg"
+                className="w-full max-w-md lg:max-w-lg xl:max-w-xl rounded-lg "
               />
             </div>
           </div>

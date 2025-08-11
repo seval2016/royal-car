@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import SearchForm from "../SearchForm";
+import { SearchForm } from "../common";
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -67,7 +67,27 @@ const HeroSection = () => {
         </div>
 
         {/* Search Form Component */}
-        <SearchForm />
+        <SearchForm
+          fields={[
+            {
+              label: "Car Brand",
+              placeholder: "Select car brand",
+              options: ["Audi", "BMW", "Mercedes", "Volkswagen", "Toyota", "Honda"]
+            },
+            {
+              label: "Car Type",
+              placeholder: "Select car type",
+              options: ["Sedan", "SUV", "Hatchback", "Van", "Sports", "Luxury"]
+            },
+            {
+              label: "Car Price",
+              placeholder: "Select price range",
+              options: ["$50 - $100", "$100 - $150", "$150 - $200", "$200 - $300", "$300+"]
+            }
+          ]}
+          buttonText="Search Car Now"
+          variant="overlay"
+        />
 
         {/* Navigation Controls */}
         <button 
