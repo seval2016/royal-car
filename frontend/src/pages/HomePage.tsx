@@ -1,15 +1,23 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Shield, Clock, MapPin, Star } from 'lucide-react';
-import HeroSection from '@/components/HeroSection';
+import HeroSection from '@/components/home/HeroSection';
 import FeaturedCars from '@/components/FeaturedCars';
 import ServicesSection from '@/components/ServicesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import Advantages from '@/components/home/Advantages';
+import About from '@/components/home/About';
 
 const HomePage = () => {
   return (
     <div>
       {/* Hero Section */}
       <HeroSection />
+
+      {/* Advantages Section */}
+      <Advantages />
+
+      {/* About Section */}
+      <About />
 
       {/* Featured Cars */}
       <FeaturedCars />

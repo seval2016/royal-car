@@ -30,7 +30,6 @@ npm run dev
 ## 📋 Gereksinimler
 
 - Java 17+
-- Node.js 18+
 - PostgreSQL 14+
 - Maven 3.6+
 
