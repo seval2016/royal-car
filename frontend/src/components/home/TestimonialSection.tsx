@@ -69,10 +69,7 @@ const TestimonialSection = () => {
                 }`}
               >
                 <div className="text-center">
-                  <p
-                    className="text-md md:text-xl lg:text-2xl font-medium max-w-5xl mx-auto"
-                    style={{ color: COLORS.GRAY_DARK }}
-                  >
+                  <p className="text-md md:text-xl lg:text-2xl font-medium max-w-5xl mx-auto text-gray-600">
                     "{testimonial.text}"
                   </p>
                 </div>
@@ -116,18 +113,17 @@ const TestimonialSection = () => {
                     />
                   </div>
 
-                  {/* Name and Profession */}
-                  <div className={`text-center transition-all duration-500`}>
-                    <h4 className="font-medium text-sm md:text-md">
-                      {testimonial.name}
-                    </h4>
-                    <p
-                      className="text-xs mt-1"
-                      style={{ color: COLORS.GRAY_LIGHT }}
-                    >
-                      {testimonial.profession}
-                    </p>
-                  </div>
+                                     {/* Name and Profession */}
+                   <div className={`text-center transition-all duration-500 ${
+                     position === 0 ? "opacity-100" : "opacity-0"
+                   }`}>
+                     <h4 className="font-medium text-sm text-gray-600">
+                       {testimonial.name}
+                     </h4>
+                     <p className="text-xs mt-1 text-gray-400">
+                       {testimonial.profession}
+                     </p>
+                   </div>
                 </div>
               );
             })}

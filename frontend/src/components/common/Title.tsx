@@ -38,7 +38,7 @@ const Title: React.FC<TitleProps> = ({
   return (
     <div className={`${getAlignClass()} ${className}`}>
       {subtitle && (
-        <span className={`block text-sm md:text-base font-light text-brand-gray-medium mb-2 md:mb-4 uppercase tracking-wide ${subtitleClassName}`}>
+        <span className={`block text-xs md:text-sm mb-2 md:mb-4 uppercase tracking-wide ${subtitleClassName}`}>
           {subtitle}
         </span>
       )}
