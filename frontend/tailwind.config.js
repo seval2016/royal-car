@@ -30,7 +30,28 @@ export default {
           700: '#334155',
           800: '#1e293b',
           900: '#0f172a',
+        },
+        // Proje özel renkleri
+        brand: {
+          yellow: '#ffcd00',
+          dark: '#333333',
+          gray: {
+            light: '#777777',
+            medium: '#999999',
+            dark: '#444444',
+          }
         }
+      },
+      fontSize: {
+        // Proje özel font boyutları
+        'xs-custom': '0.625rem',    // 10px
+        'sm-custom': '0.6875rem',   // 11px
+        'base-custom': '0.8125rem', // 13px
+      },
+      spacing: {
+        // Proje özel spacing değerleri
+        '18': '4.5rem',    // 72px
+        '88': '22rem',     // 352px
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],

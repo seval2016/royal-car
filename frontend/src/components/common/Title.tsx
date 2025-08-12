@@ -1,4 +1,5 @@
 import React from 'react';
+import { COLORS } from '../../constants/design';
 
 interface TitleProps {
   subtitle?: string;
@@ -21,7 +22,7 @@ const Title: React.FC<TitleProps> = ({
   titleClassName = '',
   align = 'center',
   showBorder = false,
-  borderColor = '#ffcd00'
+  borderColor = COLORS.BRAND_YELLOW
 }) => {
   const getAlignClass = () => {
     switch (align) {
@@ -37,11 +38,11 @@ const Title: React.FC<TitleProps> = ({
   return (
     <div className={`${getAlignClass()} ${className}`}>
       {subtitle && (
-        <span className={`block text-sm md:text-base font-light text-[#999] mb-2 md:mb-4 uppercase tracking-wide ${subtitleClassName}`}>
+        <span className={`block text-sm md:text-base font-light text-brand-gray-medium mb-2 md:mb-4 uppercase tracking-wide ${subtitleClassName}`}>
           {subtitle}
         </span>
       )}
-      <h2 className={`text-2xl md:text-3xl lg:text-4xl font-bold text-[#333] leading-tight ${titleClassName}`}>
+      <h2 className={`text-2xl md:text-3xl lg:text-4xl font-bold text-brand-dark leading-tight ${titleClassName}`}>
         {titleHighlight ? (
           <>
             <span className="font-normal">{titleHighlight}</span> {title}
@@ -50,12 +51,12 @@ const Title: React.FC<TitleProps> = ({
           title
         )}
       </h2>
-                           {showBorder && (
-          <div 
-            className="mt-4 w-12 h-0.5 rounded-full"
-            style={{ backgroundColor: borderColor }}
-          ></div>
-        )}
+      {showBorder && (
+        <div 
+          className="mt-4 w-12 h-0.5 rounded-full"
+          style={{ backgroundColor: borderColor }}
+        ></div>
+      )}
     </div>
   );
 };

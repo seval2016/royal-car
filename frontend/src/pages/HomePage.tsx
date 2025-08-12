@@ -4,6 +4,7 @@ import HeroSection from '@/components/home/HeroSection';
 import Advantages from '@/components/home/Advantages';
 import About from '@/components/home/About';
 import Discount from '@/components/home/Discount';
+import TestimonialSection from '@/components/home/TestimonialSection';
 
 const HomePage = () => {
   return (
@@ -19,6 +20,9 @@ const HomePage = () => {
 
       {/* Discount Section */}
       <Discount />
+
+      {/* Testimonial Section */}
+      <TestimonialSection />
 
     </div>
   );
