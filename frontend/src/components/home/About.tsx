@@ -34,6 +34,8 @@ const About = () => {
                  subtitle="KNOW MORE ABOUT US"
                  align="left"
                  className="mb-6"
+                 showBorder={true}
+                 borderColor="#ffcd00"
                />
              </div>
 

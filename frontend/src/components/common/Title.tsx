@@ -8,6 +8,8 @@ interface TitleProps {
   subtitleClassName?: string;
   titleClassName?: string;
   align?: 'left' | 'center' | 'right';
+  showBorder?: boolean;
+  borderColor?: string;
 }
 
 const Title: React.FC<TitleProps> = ({
@@ -17,7 +19,9 @@ const Title: React.FC<TitleProps> = ({
   className = '',
   subtitleClassName = '',
   titleClassName = '',
-  align = 'center'
+  align = 'center',
+  showBorder = false,
+  borderColor = '#ffcd00'
 }) => {
   const getAlignClass = () => {
     switch (align) {
@@ -46,6 +50,12 @@ const Title: React.FC<TitleProps> = ({
           title
         )}
       </h2>
+                           {showBorder && (
+          <div 
+            className="mt-4 w-12 h-0.5 rounded-full"
+            style={{ backgroundColor: borderColor }}
+          ></div>
+        )}
     </div>
   );
 };

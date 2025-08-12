@@ -3,6 +3,7 @@ import { ArrowRight, Shield, Clock, MapPin, Star } from 'lucide-react';
 import HeroSection from '@/components/home/HeroSection';
 import Advantages from '@/components/home/Advantages';
 import About from '@/components/home/About';
+import Discount from '@/components/home/Discount';
 
 const HomePage = () => {
   return (
@@ -16,6 +17,8 @@ const HomePage = () => {
       {/* About Section */}
       <About />
 
+      {/* Discount Section */}
+      <Discount />
 
     </div>
   );
