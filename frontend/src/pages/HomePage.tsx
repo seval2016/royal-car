@@ -5,6 +5,7 @@ import Advantages from '@/components/home/Advantages';
 import About from '@/components/home/About';
 import Discount from '@/components/home/Discount';
 import TestimonialSection from '@/components/home/TestimonialSection';
+import GallerySection from '@/components/home/GallerySection';
 
 const HomePage = () => {
   return (
@@ -23,6 +24,9 @@ const HomePage = () => {
 
       {/* Testimonial Section */}
       <TestimonialSection />
+
+      {/* Gallery Section */}
+      <GallerySection />
 
     </div>
   );
