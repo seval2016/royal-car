@@ -198,7 +198,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-500 text-sm">
               © 2019 Created by{" "}
-              <span className="text-blue-600">jThemes Studio</span>
+              <span>| Seval Şentürk</span>
             </div>
             <div className="flex items-center space-x-6">
               <div className="flex space-x-4 text-gray-400">
