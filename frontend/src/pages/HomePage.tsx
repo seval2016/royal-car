@@ -6,7 +6,7 @@ import About from '@/components/home/About';
 import Discount from '@/components/home/Discount';
 import TestimonialSection from '@/components/home/TestimonialSection';
 import GallerySection from '@/components/home/Gallery';
-import Blog from '@/components/home/BlogSection';
+import Blog from '@/components/home/Blog';
 
 const HomePage = () => {
   return (

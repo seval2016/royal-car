@@ -4,4 +4,4 @@ export { default as About } from './About';
 export { default as Discount } from './Discount';
 export { default as TestimonialSection } from './TestimonialSection';
 export { default as Gallery } from './Gallery';
-export { default as Blog } from './BlogSection';
+export { default as Blog } from './Blog';
