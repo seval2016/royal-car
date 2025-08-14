@@ -6,6 +6,7 @@ import About from '@/components/home/About';
 import Discount from '@/components/home/Discount';
 import TestimonialSection from '@/components/home/TestimonialSection';
 import GallerySection from '@/components/home/GallerySection';
+import Blog from '@/components/home/BlogSection';
 
 const HomePage = () => {
   return (
@@ -24,6 +25,9 @@ const HomePage = () => {
 
       {/* Testimonial Section */}
       <TestimonialSection />
+
+                   {/* Blog Section */}
+             <Blog />
 
       {/* Gallery Section */}
       <GallerySection />

@@ -74,17 +74,7 @@ const GallerySection = () => {
       {/* Gallery Section */}
       <section className="bg-gray-50">
         <div className="w-full">
-          {/* Section Header */}
-          <div className="text-center py-16 px-4">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-              Our Car Gallery
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore our premium collection of vehicles available for rent.
-              Each car is carefully maintained and ready for your journey.
-            </p>
-          </div>
-
+        
           {/* Gallery Grid */}
           <div className="flex">
             {galleryImages.map((image, index) => (
