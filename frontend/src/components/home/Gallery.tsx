@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Search, ChevronLeft, ChevronRight, X } from "lucide-react";
 
-const GallerySection = () => {
+const Gallery = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -76,18 +76,18 @@ const GallerySection = () => {
         <div className="w-full">
         
           {/* Gallery Grid */}
-          <div className="flex">
+          <div className="flex flex-wrap">
             {galleryImages.map((image, index) => (
                              <div
                  key={image.id}
-                 className="group relative overflow-hidden cursor-pointer flex-shrink-0"
+                 className="group relative overflow-hidden cursor-pointer flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
                  onClick={() => openModal(index)}
                >
                  {/* Image */}
                  <img
                    src={image.src}
                    alt={image.alt}
-                   className="w-[250px] h-[230px] object-cover"
+                   className="w-full h-auto object-cover"
                  />
 
                                  {/* Hover Overlay */}
@@ -168,4 +168,4 @@ const GallerySection = () => {
   );
 };
 
-export default GallerySection;
+export default Gallery;
