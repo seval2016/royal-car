@@ -60,7 +60,7 @@ const TestimonialSection = () => {
         {/* Testimonial Slider */}
         <div className="relative max-w-4xl mx-auto">
           {/* Testimonial Content */}
-          <div className="relative h-64 md:h-48 mb-12">
+          <div className="relative h-48 md:h-32 lg:h-40 mb-12">
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
@@ -69,7 +69,7 @@ const TestimonialSection = () => {
                 }`}
               >
                 <div className="text-center">
-                  <p className="text-md md:text-xl lg:text-2xl font-medium max-w-5xl mx-auto text-gray-600">
+                  <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-medium max-w-4xl mx-auto text-gray-600">
                     "{testimonial.text}"
                   </p>
                 </div>
@@ -104,11 +104,11 @@ const TestimonialSection = () => {
                       alt={testimonial.name}
                       className={`rounded-full object-cover transition-all duration-500 ${
                         position === 0
-                          ? "w-16 h-16 md:w-20 md:h-20"
+                          ? "w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20"
                           : position === 1 ||
                             position === testimonials.length - 1
-                          ? "w-12 h-12 md:w-16 md:h-16"
-                          : "w-8 h-8 md:w-12 md:h-12"
+                          ? "w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16"
+                          : "w-6 h-6 md:w-8 md:h-8 lg:w-12 lg:h-12"
                       }`}
                     />
                   </div>
@@ -117,7 +117,7 @@ const TestimonialSection = () => {
                    <div className={`text-center transition-all duration-500 ${
                      position === 0 ? "opacity-100" : "opacity-0"
                    }`}>
-                     <h4 className="font-medium text-sm text-gray-600">
+                     <h4 className="font-medium text-xs md:text-sm">
                        {testimonial.name}
                      </h4>
                      <p className="text-xs mt-1 text-gray-400">
