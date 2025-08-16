@@ -65,7 +65,7 @@ const Blog = () => {
                  <img
                    src={post.image}
                    alt={post.title}
-                   className="w-full h-40 sm:h-48 lg:h-52 object-cover hover:scale-105 transition-transform duration-300"
+                   className="w-full h-40 sm:h-48 lg:h-52 object-cover"
                  />
                  <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
                    <span className="bg-brand-yellow text-white px-2 sm:px-3 py-1 text-xs font-semibold rounded-full">
