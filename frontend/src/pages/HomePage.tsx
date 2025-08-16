@@ -8,6 +8,7 @@ import TestimonialSection from '@/components/home/TestimonialSection';
 import GallerySection from '@/components/home/Gallery';
 import Blog from '@/components/home/Blog';
 import Statistics from '@/components/home/Statistics';
+import FAQ from '@/components/home/FAQ';
 
 const HomePage = () => {
   return (
@@ -26,6 +27,9 @@ const HomePage = () => {
 
       {/* Testimonial Section */}
       <TestimonialSection />
+
+      {/* FAQ Section */}
+      <FAQ />
 
       {/* Statistics Section */}
       <Statistics />
