@@ -5,3 +5,4 @@ export { default as Discount } from './Discount';
 export { default as TestimonialSection } from './TestimonialSection';
 export { default as Gallery } from './Gallery';
 export { default as Blog } from './Blog';
+export { default as Statistics } from './Statistics';

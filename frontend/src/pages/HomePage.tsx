@@ -7,6 +7,7 @@ import Discount from '@/components/home/Discount';
 import TestimonialSection from '@/components/home/TestimonialSection';
 import GallerySection from '@/components/home/Gallery';
 import Blog from '@/components/home/Blog';
+import Statistics from '@/components/home/Statistics';
 
 const HomePage = () => {
   return (
@@ -26,8 +27,11 @@ const HomePage = () => {
       {/* Testimonial Section */}
       <TestimonialSection />
 
-                   {/* Blog Section */}
-             <Blog />
+      {/* Statistics Section */}
+      <Statistics />
+
+      {/* Blog Section */}
+      <Blog />
 
       {/* Gallery Section */}
       <GallerySection />
