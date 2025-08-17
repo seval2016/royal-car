@@ -35,6 +35,7 @@ export default {
         brand: {
           yellow: '#ffcd00',
           dark: '#333333',
+          cream: '#f8f4da',
           gray: {
             light: '#777777',
             medium: '#999999',
@@ -55,6 +56,20 @@ export default {
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
       container: {
         center: true,

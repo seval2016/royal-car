@@ -1,82 +1,78 @@
 import { useState } from "react";
-import { ChevronDown, ChevronUp, HelpCircle, User, Car } from "lucide-react";
+import { HelpCircle, User, Car } from "lucide-react";
 import Title from "../common/Title";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../ui/accordion";
 
 const FAQ = () => {
   const [activeCategory, setActiveCategory] = useState("account");
-  const [openQuestions, setOpenQuestions] = useState<number[]>([1]);
 
   const categories = [
     {
       id: "account",
       name: "ABOUT ACCOUNT",
-      icon: <User className="w-4 h-4" />,
-      active: true,
+      icon: <User className="w-6 h-6" />,
     },
     {
       id: "technical",
       name: "TECHNICAL SUPPORT",
-      icon: <HelpCircle className="w-4 h-4" />,
-      active: false,
+      icon: <HelpCircle className="w-6 h-6" />,
     },
     {
       id: "cars",
       name: "CARS FEATURES",
-      icon: <Car className="w-4 h-4" />,
-      active: false,
+      icon: <Car className="w-6 h-6" />,
     },
   ];
 
   const questions = [
     {
-      id: 1,
+      id: "1",
       question: "How to reserved a car here?",
       answer:
         "You can reserve a car by selecting your preferred vehicle from our fleet, choosing your rental dates, and completing the booking process through our secure online platform.",
       category: "account",
     },
     {
-      id: 2,
+      id: "2",
       question: "How can i drop the rental car?",
       answer:
         "You can return your rental car at any of our designated drop-off locations. Simply follow the return instructions provided at the time of pickup.",
       category: "account",
     },
     {
-      id: 3,
+      id: "3",
       question: "What happen if i crash the car?",
       answer:
         "In case of an accident, immediately contact our emergency hotline and local authorities. We provide comprehensive insurance coverage for such situations.",
       category: "account",
     },
     {
-      id: 4,
+      id: "4",
       question: "How can i select a car rent?",
       answer:
         "Browse our extensive fleet online, filter by your preferences (size, features, price), and select the vehicle that best suits your needs.",
       category: "technical",
     },
     {
-      id: 5,
+      id: "5",
       question: "Do you have VIP access to airport?",
       answer:
         "Yes, we offer VIP airport pickup and drop-off services for premium customers. Contact our concierge team for arrangements.",
       category: "cars",
     },
     {
-      id: 6,
+      id: "6",
       question: "What happen if i crash the car?",
       answer:
         "In case of an accident, immediately contact our emergency hotline and local authorities. We provide comprehensive insurance coverage for such situations.",
       category: "cars",
     },
   ];
-
-  const toggleQuestion = (id: number) => {
-    setOpenQuestions((prev) =>
-      prev.includes(id) ? prev.filter((qId) => qId !== id) : [...prev, id]
-    );
-  };
 
   const filteredQuestions = questions.filter(
     (q) => q.category === activeCategory
@@ -131,52 +127,43 @@ const FAQ = () => {
 
         {/* Questions Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-2">
-          {filteredQuestions.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
-            >
-              <button
-                onClick={() => toggleQuestion(item.id)}
-                className="w-full flex items-center justify-between text-left p-4 hover:bg-gray-50 transition-colors duration-200"
+          <Accordion type="single" collapsible className="w-full -space-y-px">
+            {filteredQuestions.slice(0, Math.ceil(filteredQuestions.length / 2)).map((item) => (
+              <AccordionItem
+                value={item.id}
+                key={item.id}
+                className="border border-[#f4f4f4] bg-white shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div className="flex items-center gap-4">
-                  <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-                      openQuestions.includes(item.id)
-                        ? "bg-brand-yellow text-white shadow-lg"
-                        : "bg-gray-100 text-gray-500"
-                    }`}
-                  >
-                    {openQuestions.includes(item.id) ? (
-                      <ChevronUp className="w-4 h-4 transition-transform duration-300" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4 transition-transform duration-300" />
-                    )}
-                  </div>
-                  <span className="font-semibold text-gray-900 text-left">
-                    {item.question}
-                  </span>
-                </div>
-              </button>
-
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openQuestions.includes(item.id)
-                    ? "max-h-96 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                <div className="px-4 pb-4 ml-12 text-gray-600 text-sm leading-relaxed">
+                <AccordionTrigger className="justify-start gap-3 py-4 px-4 text-[15px] leading-6 hover:no-underline [&>svg]:-order-1 font-semibold text-brand-dark">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="pb-4 px-4 text-gray-600 text-sm leading-relaxed">
                   {item.answer}
-                </div>
-              </div>
-            </div>
-          ))}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+
+          <Accordion type="single" collapsible className="w-full -space-y-px">
+            {filteredQuestions.slice(Math.ceil(filteredQuestions.length / 2)).map((item) => (
+              <AccordionItem
+                value={item.id}
+                key={item.id}
+                className="border border-[#f4f4f4] bg-white shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <AccordionTrigger className="justify-start gap-3 py-4 px-4 text-[15px] leading-6 hover:no-underline [&>svg]:-order-1 font-semibold text-brand-gray-dark">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="pb-4 px-4 text-gray-600 text-sm leading-relaxed">
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
 
         {/* Call to Action Button */}
-        <div className="text-center mt-8 sm:mt-12">
+        <div className="text-center mt-10 sm:mt-20">
           <button className="bg-brand-yellow text-white px-6 py-3 font-medium flex items-center gap-2 mx-auto hover:bg-yellow-500 transition-colors">
             <HelpCircle className="w-5 h-5" />
             <span>MAKE A QUESTIONS</span>
