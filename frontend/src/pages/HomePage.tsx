@@ -13,7 +13,7 @@ import VehicleFilterModule from '@/components/home/VehicleFilterModule';
 
 const HomePage = () => {
   return (
-    <div>
+    <>
       {/* Hero Section */}
       <HeroSection />
 
@@ -44,7 +44,7 @@ const HomePage = () => {
       {/* Gallery Section */}
       <GallerySection />
 
-    </div>
+    </>
   );
 };
 

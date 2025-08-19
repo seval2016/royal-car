@@ -36,6 +36,7 @@ export default {
           yellow: '#ffcd00',
           dark: '#333333',
           cream: '#f8f4da',
+          lightGray: '#aaaaaa',
           gray: {
             light: '#777777',
             medium: '#999999',
@@ -43,12 +44,13 @@ export default {
           }
         }
       },
-      fontSize: {
-        // Proje özel font boyutları
-        'xs-custom': '0.625rem',    // 10px
-        'sm-custom': '0.6875rem',   // 11px
-        'base-custom': '0.8125rem', // 13px
-      },
+             fontSize: {
+         // Proje özel font boyutları
+         'xs-custom': '0.625rem',    // 10px
+         'sm-custom': '0.6875rem',   // 11px
+         'base-custom': '0.8125rem', // 13px
+         'md-custom': '0.875rem',    // 14px
+       },
       spacing: {
         // Proje özel spacing değerleri
         '18': '4.5rem',    // 72px
