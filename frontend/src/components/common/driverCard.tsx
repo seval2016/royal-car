@@ -18,7 +18,7 @@ interface DriverCardProps {
   driver: Driver;
 }
 
-const driverCard = ({ driver }: DriverCardProps) => {
+const DriverCard = ({ driver }: DriverCardProps) => {
   return (
     <div className="bg-white shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
       <div className="flex relative overflow-hidden">
@@ -64,4 +64,4 @@ const driverCard = ({ driver }: DriverCardProps) => {
   );
 };
 
-export default driverCard;
+export default DriverCard;

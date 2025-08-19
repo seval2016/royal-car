@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "text": "This was our first time renting from Royal Cars and we were very pleased with the whole experience. Your price was lower than other companies. Our rental experience was good from start to finish, so we'll be back in the future lorem ipsum diamet.",
+    "name": "Robertho Garcia",
+    "profession": "Graphic Designer",
+    "image": "/images/users/user-02.jpg"
+  },
+  {
+    "id": 2,
+    "text": "Excellent service and very professional team. The car was in perfect condition and the rental process was smooth. Highly recommended for anyone looking for quality car rental services.",
+    "name": "Sarah Johnson",
+    "profession": "Marketing Manager",
+    "image": "/images/users/user-01.png"
+  },
+  {
+    "id": 3,
+    "text": "I've been using Royal Cars for my business trips for over a year now. Their fleet is always well-maintained and their customer service is outstanding. They truly understand customer needs.",
+    "name": "Michael Chen",
+    "profession": "Business Analyst",
+    "image": "/images/users/user-03.jpg"
+  }
+]
