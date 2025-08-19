@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Car } from "lucide-react";
+import { Car, Filter } from "lucide-react";
 import Title from "../common/Title";
 import CarCard from "../common/CarCard";
 import carsData from "../../data/cars.json";
@@ -7,6 +7,7 @@ import carsData from "../../data/cars.json";
 const VehicleFilterModule = () => {
   const [selectedManufacturer, setSelectedManufacturer] =
     useState("All Manufacturer");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const manufacturers = [
     "All Manufacturer",
@@ -26,60 +27,83 @@ const VehicleFilterModule = () => {
       : cars.filter((car) => car.manufacturer === selectedManufacturer);
 
   return (
-    <section className="bg-brand-cream py-16">
-      <div className="container mx-auto">
+    <section className="bg-brand-cream py-8 sm:py-12 lg:py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Title */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <Title
             subtitle="OUR VEHICLES BRANDS & TYPE"
             title="Best Vehicles."
             titleHighlight="Find Your"
             align="center"
-            className="mb-6"
+            className="mb-4 sm:mb-6"
             subtitleClassName="text-brand-dark"
-            titleClassName="text-[28px] sm:text-[32px] lg:text-[40px]"
+            titleClassName="text-[24px] sm:text-[28px] lg:text-[40px]"
           />
         </div>
 
-        <div className="flex">
+        {/* Mobile Filter Button */}
+        <div className="lg:hidden mb-6">
+          <button
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="w-full flex items-center justify-center gap-2 bg-brand-yellow text-white px-4 py-3 rounded-lg font-medium hover:bg-yellow-500 transition-colors"
+          >
+            <Filter className="w-5 h-5" />
+            Filter by Manufacturer
+          </button>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Sidebar */}
-          <div className="w-64 min-h-screen">
-            <div className="py-6">
-              <ul>
-                {manufacturers.map((manufacturer) => (
-                  <li key={manufacturer}>
-                    <button
-                      onClick={() => setSelectedManufacturer(manufacturer)}
-                      className={`w-full flex items-center px-4 py-3 transition-all duration-200 font-medium relative text-13 ${
-                        selectedManufacturer === manufacturer
-                          ? "bg-white text-gray-800 shadow-sm"
-                          : "bg-brand-yellow text-white hover:bg-yellow-500"
-                      }`}
-                    >
-                      {selectedManufacturer === manufacturer && (
-                        <div className="absolute -left-1 top-0 bottom-0 w-1 bg-brand-yellow rounded-r-sm"></div>
-                      )}
-                      {manufacturer}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+          <div className={`lg:w-64 lg:min-h-screen ${
+            isSidebarOpen 
+              ? "block" 
+              : "hidden lg:block"
+          }`}>
+            <div className="bg-white rounded-lg shadow-sm lg:shadow-none lg:bg-transparent">
+              <div className="p-4 lg:py-6">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4 lg:hidden">
+                  Manufacturers
+                </h3>
+                <ul className="space-y-0">
+                  {manufacturers.map((manufacturer) => (
+                    <li key={manufacturer} className="mb-0">
+                      <button
+                        onClick={() => {
+                          setSelectedManufacturer(manufacturer);
+                          setIsSidebarOpen(false); // Close sidebar on mobile after selection
+                        }}
+                        className={`w-full flex items-center px-3 sm:px-4 py-2 sm:py-3 transition-all duration-200 font-medium relative text-sm sm:text-13 rounded-none ${
+                          selectedManufacturer === manufacturer
+                            ? "bg-white text-gray-800 shadow-sm"
+                            : "bg-gray-50 lg:bg-brand-yellow text-gray-800 lg:text-white hover:bg-yellow-500"
+                        }`}
+                      >
+                        {selectedManufacturer === manufacturer && (
+                          <div className="absolute -left-1 top-0 bottom-0 w-1 bg-brand-yellow rounded-r-sm hidden lg:block"></div>
+                        )}
+                        {manufacturer}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
           {/* Main Content */}
-          <div className="flex-1 p-8 overflow-y-auto">
+          <div className="flex-1 lg:p-6">
             {/* Cars Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
               {filteredCars.map((car) => (
                 <CarCard key={car.id} car={car} />
               ))}
             </div>
 
             {filteredCars.length === 0 && (
-              <div className="text-center py-12">
-                <Car className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-500 text-lg">
+              <div className="text-center py-8 sm:py-12">
+                <Car className="w-12 h-12 sm:w-16 sm:h-16 text-gray-400 mx-auto mb-3 sm:mb-4" />
+                <p className="text-gray-500 text-base sm:text-lg">
                   No vehicles found for {selectedManufacturer}
                 </p>
               </div>
