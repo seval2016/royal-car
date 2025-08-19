@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { HelpCircle, User, Car } from "lucide-react";
 import Title from "../common/Title";
+import Button from "../common/Button";
 import {
   Accordion,
   AccordionContent,
@@ -164,10 +165,15 @@ const FAQ = () => {
 
         {/* Call to Action Button */}
         <div className="text-center mt-10 sm:mt-20">
-          <button className="bg-brand-yellow text-white px-6 py-3 font-medium flex items-center gap-2 mx-auto hover:bg-yellow-500 transition-colors">
+          <Button 
+            variant="primary" 
+            size="md" 
+            className="flex items-center gap-2 mx-auto"
+            onClick={() => console.log('Make a question clicked')}
+          >
             <HelpCircle className="w-5 h-5" />
-            <span>MAKE A QUESTIONS</span>
-          </button>
+            MAKE A QUESTIONS
+          </Button>
         </div>
       </div>
     </section>
