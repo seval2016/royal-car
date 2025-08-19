@@ -53,63 +53,63 @@ const VehicleFilterModule = () => {
           </button>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
-          {/* Sidebar */}
-          <div className={`lg:w-64 lg:min-h-screen ${
-            isSidebarOpen 
-              ? "block" 
-              : "hidden lg:block"
-          }`}>
-            <div className="bg-white rounded-lg shadow-sm lg:shadow-none lg:bg-transparent">
-              <div className="p-4 lg:py-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4 lg:hidden">
-                  Manufacturers
-                </h3>
-                <ul className="space-y-0">
-                  {manufacturers.map((manufacturer) => (
-                    <li key={manufacturer} className="mb-0">
-                      <button
-                        onClick={() => {
-                          setSelectedManufacturer(manufacturer);
-                          setIsSidebarOpen(false); // Close sidebar on mobile after selection
-                        }}
-                        className={`w-full flex items-center px-3 sm:px-4 py-2 sm:py-3 transition-all duration-200 font-medium relative text-sm sm:text-13 rounded-none ${
-                          selectedManufacturer === manufacturer
-                            ? "bg-white text-gray-800 shadow-sm"
-                            : "bg-gray-50 lg:bg-brand-yellow text-gray-800 lg:text-white hover:bg-yellow-500"
-                        }`}
-                      >
-                        {selectedManufacturer === manufacturer && (
-                          <div className="absolute -left-1 top-0 bottom-0 w-1 bg-brand-yellow rounded-r-sm hidden lg:block"></div>
-                        )}
-                        {manufacturer}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
+                 <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
+           {/* Sidebar */}
+           <div className={`lg:w-48 ${
+             isSidebarOpen 
+               ? "block" 
+               : "hidden lg:block"
+           }`}>
+             <div className="bg-white rounded-lg shadow-sm lg:shadow-none lg:bg-transparent">
+               <div className="p-3 lg:py-4">
+                 <h3 className="text-base font-semibold text-gray-800 mb-3 lg:hidden">
+                   Manufacturers
+                 </h3>
+                 <ul className="space-y-0">
+                   {manufacturers.map((manufacturer) => (
+                     <li key={manufacturer} className="mb-0">
+                       <button
+                         onClick={() => {
+                           setSelectedManufacturer(manufacturer);
+                           setIsSidebarOpen(false);
+                         }}
+                         className={`w-full flex items-center px-2 sm:px-3 py-1.5 sm:py-2 transition-all duration-200 font-medium relative text-xs sm:text-sm rounded-none ${
+                           selectedManufacturer === manufacturer
+                             ? "bg-white text-gray-800 shadow-sm"
+                             : "bg-gray-50 lg:bg-brand-yellow text-gray-800 lg:text-white hover:bg-yellow-500"
+                         }`}
+                       >
+                         {selectedManufacturer === manufacturer && (
+                           <div className="absolute -left-1 top-0 bottom-0 w-1 bg-brand-yellow rounded-r-sm hidden lg:block"></div>
+                         )}
+                         {manufacturer}
+                       </button>
+                     </li>
+                   ))}
+                 </ul>
+               </div>
+             </div>
+           </div>
 
-          {/* Main Content */}
-          <div className="flex-1 lg:p-6">
-            {/* Cars Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-              {filteredCars.map((car) => (
-                <CarCard key={car.id} car={car} />
-              ))}
-            </div>
+           {/* Main Content */}
+           <div className="flex-1 lg:p-4">
+             {/* Cars Grid */}
+             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
+               {filteredCars.map((car) => (
+                 <CarCard key={car.id} car={car} />
+               ))}
+             </div>
 
-            {filteredCars.length === 0 && (
-              <div className="text-center py-8 sm:py-12">
-                <Car className="w-12 h-12 sm:w-16 sm:h-16 text-gray-400 mx-auto mb-3 sm:mb-4" />
-                <p className="text-gray-500 text-base sm:text-lg">
-                  No vehicles found for {selectedManufacturer}
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
+             {filteredCars.length === 0 && (
+               <div className="text-center py-6 sm:py-8">
+                 <Car className="w-10 h-10 sm:w-12 sm:h-12 text-gray-400 mx-auto mb-2 sm:mb-3" />
+                 <p className="text-gray-500 text-sm sm:text-base">
+                   No vehicles found for {selectedManufacturer}
+                 </p>
+               </div>
+             )}
+           </div>
+         </div>
       </div>
     </section>
   );

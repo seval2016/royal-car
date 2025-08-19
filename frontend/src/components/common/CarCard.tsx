@@ -21,64 +21,69 @@ interface CarCardProps {
 
 const CarCard = ({ car }: CarCardProps) => {
   return (
-    <div className="bg-white shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden w-64 p-2">
+    <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
       {/* Car Image */}
-      <div className="h-32 bg-gray-200 relative">
+      <div className="h-32 sm:h-40 bg-gray-200 relative overflow-hidden">
         <img
           src={car.image}
           alt={`${car.manufacturer} ${car.model}`}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
 
       {/* Car Info */}
-      <div className="p-4">
+      <div className="p-3 sm:p-4">
         {/* Registered Year */}
         <div className="mb-2">
           <a
             href="#"
-            className="text-[16px] text-brand-gray hover:text-brand-yellow transition-colors"
+            className="text-sm sm:text-base text-brand-gray hover:text-brand-yellow transition-colors"
           >
             Registered {car.year}
           </a>
         </div>
 
         {/* Manufacturer and Model */}
-        <div className="mb-3 text-[18px] flex items-center gap-2">
-          <p className="font-bold text-brand-dark">{car.model}</p>
-          <span className="text-brand-yellow font-base">{car.modelCode}</span>
+        <div className="mb-3">
+          <p className="font-bold text-brand-dark text-base sm:text-lg flex items-center gap-2">
+            {car.model}
+            <span className="text-brand-yellow font-normal text-sm">{car.modelCode}</span>
+          </p>
         </div>
 
         {/* Price and Engine */}
-        <div className="flex justify-between items-center mb-4">
-          <div className="bg-brand-yellow text-white px-3 py-1 font-semibold text-md-custom">
+        <div className="flex justify-between items-center mb-3 sm:mb-4">
+          <div className="bg-brand-yellow text-white px-2 sm:px-3 py-1 font-semibold text-sm sm:text-base rounded">
             ${car.price}/Day
           </div>
-          <div className="text-md-custom text-[#bbb] font-medium flex items-center">
+          <div className="text-sm sm:text-base text-[#bbb] font-medium flex items-center">
             <img
               src="/images/cars/meter-icon.png"
               alt="meter"
-              className="mr-2"
+              className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2"
             />
             {car.engine}
           </div>
         </div>
 
         {/* Car Details */}
-        <div className="flex justify-between items-center text-base-custom text-brand-lightGray pt-3 border-t border-gray-200">
+        <div className="flex justify-between items-center text-xs sm:text-sm text-brand-lightGray pt-3 border-t border-gray-200">
           <div className="flex items-center">
-            <Settings className="w-3 h-3 mr-1" />
-            <span>{car.transmission}</span>
+            <Settings className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+            <span className="hidden sm:inline">{car.transmission}</span>
+            <span className="sm:hidden">Auto</span>
           </div>
 
           <div className="flex items-center">
-            <Fuel className="w-3 h-3 mr-1" />
-            <span>{car.fuelType}</span>
+            <Fuel className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+            <span className="hidden sm:inline">{car.fuelType}</span>
+            <span className="sm:hidden">Petrol</span>
           </div>
 
           <div className="flex items-center">
-            <Gauge className="w-3 h-3 mr-1" />
-            <span>{car.mileage}</span>
+            <Gauge className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+            <span className="hidden sm:inline">{car.mileage}</span>
+            <span className="sm:hidden">50K</span>
           </div>
         </div>
       </div>
