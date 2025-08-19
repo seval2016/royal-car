@@ -21,9 +21,9 @@ interface CarCardProps {
 
 const CarCard = ({ car }: CarCardProps) => {
   return (
-    <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+    <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group p-2">
       {/* Car Image */}
-      <div className="h-32 sm:h-40 bg-gray-200 relative overflow-hidden">
+      <div className="h-28 sm:h-32 bg-gray-200 relative overflow-hidden">
         <img
           src={car.image}
           alt={`${car.manufacturer} ${car.model}`}
@@ -47,27 +47,27 @@ const CarCard = ({ car }: CarCardProps) => {
         <div className="mb-3">
           <p className="font-bold text-brand-dark text-base sm:text-lg flex items-center gap-2">
             {car.model}
-            <span className="text-brand-yellow font-normal text-sm">{car.modelCode}</span>
+            <span className="text-brand-yellow font-normal">{car.modelCode}</span>
           </p>
         </div>
 
         {/* Price and Engine */}
         <div className="flex justify-between items-center mb-3 sm:mb-4">
-          <div className="bg-brand-yellow text-white px-2 sm:px-3 py-1 font-semibold text-sm sm:text-base rounded">
-            ${car.price}/Day
+          <div className="bg-brand-yellow text-md-custom text-white px-2 sm:px-3 py-1 font-semibold">
+            ${car.price} / Day
           </div>
-          <div className="text-sm sm:text-base text-[#bbb] font-medium flex items-center">
+          <div className="text-base-custom  text-[#bbb] flex items-center">
             <img
               src="/images/cars/meter-icon.png"
               alt="meter"
-              className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2"
+              className=" mr-1 sm:mr-2"
             />
             {car.engine}
           </div>
         </div>
 
         {/* Car Details */}
-        <div className="flex justify-between items-center text-xs sm:text-sm text-brand-lightGray pt-3 border-t border-gray-200">
+        <div className="flex justify-between items-center text-base-custom text-brand-lightGray pt-3 border-t border-gray-200">
           <div className="flex items-center">
             <Settings className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
             <span className="hidden sm:inline">{car.transmission}</span>

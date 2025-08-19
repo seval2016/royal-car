@@ -53,10 +53,10 @@ const VehicleFilterModule = () => {
           </button>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
+        <div className="flex flex-col lg:flex-row">
           {/* Sidebar */}
           <div
-            className={`lg:w-48 ${isSidebarOpen ? "block" : "hidden lg:block"}`}
+            className={`lg:w-72 ${isSidebarOpen ? "block" : "hidden lg:block"} mb-4 lg:mb-0`}
           >
             <div className="bg-white rounded-lg shadow-sm lg:shadow-none lg:bg-transparent">
               <div className="p-3 lg:py-4">
@@ -75,7 +75,7 @@ const VehicleFilterModule = () => {
                           selectedManufacturer === manufacturer
                             ? "bg-white text-gray-800 shadow-sm"
                             : "bg-gray-50 lg:bg-brand-yellow text-gray-800 lg:text-white hover:bg-yellow-500"
-                        }`}
+                        } h-12`}
                       >
                         {selectedManufacturer === manufacturer && (
                           <div className="absolute -left-1 top-0 bottom-0 w-1 bg-brand-yellow rounded-r-sm hidden lg:block"></div>

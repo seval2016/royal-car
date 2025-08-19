@@ -16,7 +16,7 @@ const Drivers = () => {
   return (
     <>
       <section
-        className="bg-cover bg-center bg-no-repeat pt-32 pb-8 sm:pt-40 sm:pb-12 lg:pt-48 lg:pb-32 relative"
+        className="bg-cover bg-center bg-no-repeat pt-72 pb-8 sm:pt-40 sm:pb-12 lg:pt-48 lg:pb-32 relative"
         style={{ backgroundImage: "url(/images/drivers/driver-bg-dark.jpg)" }}
       > 
         {/* Top Drivers Banner - Absolute positioned within section */}
