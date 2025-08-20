@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "image": "/images/blog/latest-news-01.jpg",
+    "title": "The Ultimate Guide to Luxury Car Rentals",
+    "excerpt": "What To Do if Your Rental Car Has Met With An Accident.",
+    "author": "John Smith",
+    "date": "March 15, 2024",
+    "category": "Luxury Cars"
+  },
+  {
+    "id": 2,
+    "image": "/images/blog/latest-news-02.jpg",
+    "title": "Top 10 Road Trip Destinations for 2024",
+    "excerpt": "What To Do if Your Rental Car Has Met With An Accident.",
+    "author": "Sarah Johnson",
+    "date": "March 12, 2024",
+    "category": "Travel"
+  },
+  {
+    "id": 3,
+    "image": "/images/blog/latest-news-03.jpg",
+    "title": "Business Travel: Choosing the Right Vehicle",
+    "excerpt": "What To Do if Your Rental Car Has Met With An Accident.",
+    "date": "March 10, 2024",
+    "category": "Business"
+  }
+]
