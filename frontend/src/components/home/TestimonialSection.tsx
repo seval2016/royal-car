@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { COLORS, SPACING, TRANSITIONS } from "../../constants/design";
 import Title from "../common/Title";
 import testimonialData from "../../data/testimonial.json";
 

@@ -24,5 +24,68 @@
     "excerpt": "What To Do if Your Rental Car Has Met With An Accident.",
     "date": "March 10, 2024",
     "category": "Business"
+  },
+  {
+    "id": 4,
+    "image": "/images/blog/latest-news-01.jpg",
+    "title": "Electric Cars: The Future of Transportation",
+    "excerpt": "What To Do if Your Rental Car Has Met With An Accident.",
+    "author": "Michael Chen",
+    "date": "March 8, 2024",
+    "category": "Technology"
+  },
+  {
+    "id": 5,
+    "image": "/images/blog/latest-news-02.jpg",
+    "title": "Family Road Trips: Safety Tips and Planning",
+    "excerpt": "What To Do if Your Rental Car Has Met With An Accident.",
+    "author": "Emily Davis",
+    "date": "March 5, 2024",
+    "category": "Family"
+  },
+  {
+    "id": 6,
+    "image": "/images/blog/latest-news-03.jpg",
+    "title": "Luxury Car Maintenance: Essential Tips",
+    "excerpt": "What To Do if Your Rental Car Has Met With An Accident.",
+    "author": "David Wilson",
+    "date": "March 3, 2024",
+    "category": "Maintenance"
+  },
+  {
+    "id": 7,
+    "image": "/images/blog/latest-news-01.jpg",
+    "title": "Weekend Getaways: Best Car Rental Options",
+    "excerpt": "What To Do if Your Rental Car Has Met With An Accident.",
+    "author": "Lisa Brown",
+    "date": "March 1, 2024",
+    "category": "Travel"
+  },
+  {
+    "id": 8,
+    "image": "/images/blog/latest-news-02.jpg",
+    "title": "Sports Cars: Performance vs Comfort",
+    "excerpt": "What To Do if Your Rental Car Has Met With An Accident.",
+    "author": "Robert Taylor",
+    "date": "February 28, 2024",
+    "category": "Sports"
+  },
+  {
+    "id": 9,
+    "image": "/images/blog/latest-news-03.jpg",
+    "title": "Corporate Car Rental: Benefits and Solutions",
+    "excerpt": "What To Do if Your Rental Car Has Met With An Accident.",
+    "author": "Jennifer Lee",
+    "date": "February 25, 2024",
+    "category": "Business"
+  },
+  {
+    "id": 10,
+    "image": "/images/blog/latest-news-01.jpg",
+    "title": "Adventure Travel: Off-Road Vehicle Guide",
+    "excerpt": "What To Do if Your Rental Car Has Met With An Accident.",
+    "author": "Alex Rodriguez",
+    "date": "February 22, 2024",
+    "category": "Adventure"
   }
 ]

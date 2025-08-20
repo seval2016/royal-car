@@ -1,54 +1,34 @@
-import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, Clock, MapPin, Star } from 'lucide-react';
-import HeroSection from '@/components/home/HeroSection';
-import Advantages from '@/components/home/Advantages';
-import About from '@/components/home/About';
-import Discount from '@/components/home/Discount';
-import TestimonialSection from '@/components/home/TestimonialSection';
-import GallerySection from '@/components/home/Gallery';
-import Blog from '@/components/home/Blog';
-import Statistics from '@/components/home/Statistics';
-import FAQ from '@/components/home/FAQ';
-import VehicleFilterModule from '@/components/home/VehicleFilterModule';
-import Drivers from '@/components/home/Drivers';
+import React from 'react';
+import Layout from '../components/layout/Layout';
+import {
+  HeroSection,
+  About,
+  Advantages,
+  VehicleFilterModule,
+  Discount,
+  Statistics,
+  TestimonialSection,
+  Blog,
+  FAQ,
+  Drivers,
+  Gallery
+} from '../components/home';
 
 const HomePage = () => {
   return (
-    <>
-      {/* Hero Section */}
+    <Layout>
       <HeroSection />
-
-      {/* Advantages Section */}
       <Advantages />
-
-      {/* About Section */}
       <About />
-
-      {/* Discount Section */}
       <Discount />
-
-      {/* Testimonial Section */}
       <TestimonialSection />
-
-      {/* Drivers Section */}
       <Drivers />
-
-  {/* Vehicle Filter Section */}
-  <VehicleFilterModule />
-  
-      {/* FAQ Section */}
+      <VehicleFilterModule />
       <FAQ />
-
-      {/* Statistics Section */}
       <Statistics />
-
-      {/* Blog Section */}
-      <Blog />
-
-      {/* Gallery Section */}
-      <GallerySection />
-
-    </>
+      <Blog />  
+      <Gallery />
+    </Layout>
   );
 };
 

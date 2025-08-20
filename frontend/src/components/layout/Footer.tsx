@@ -43,14 +43,13 @@ const Footer = () => {
                 className="w-40 lg:w-60 object-contain"
               />
             </div>
-            <p
-              className="text-gray-600 leading-relaxed"
-              style={{ fontSize: "13px" }}
-            >
-              We know the difference is in the details and that's why our car
-              rental services, in the tourism and business industry, stand out
-              for their quality.
-            </p>
+                         <p
+               className="text-gray-600 leading-relaxed text-base-custom"
+             >
+               We know the difference is in the details and that's why our car
+               rental services, in the tourism and business industry, stand out
+               for their quality.
+             </p>
             <div className="space-y-3">
               <div className="flex">
                 <input
@@ -93,10 +92,12 @@ const Footer = () => {
                   <li key={index}>
                     <a
                       href="#"
-                      className="flex items-center space-x-2 text-gray-600 hover:text-brand-yellow transition-colors"
+                      className="text- flex items-center space-x-2 text-gray-600 hover:text-brand-yellow transition-colors"
                     >
                       <ChevronRight className="w-4 h-4 text-brand-yellow" />
-                      <span style={{ fontSize: "13px" }}>{link}</span>
+                      <span className="text-base-custom">
+                        {link}
+                      </span>
                     </a>
                   </li>
                 ))}
@@ -135,7 +136,9 @@ const Footer = () => {
                       className="flex items-center space-x-2 text-gray-600 hover:text-brand-yellow transition-colors"
                     >
                       <ChevronRight className="w-4 h-4 text-brand-yellow" />
-                      <span style={{ fontSize: "13px" }}>{link}</span>
+                      <span className="text-base-custom">
+                        {link}
+                      </span>
                     </a>
                   </li>
                 ))}
@@ -169,7 +172,9 @@ const Footer = () => {
                       className="flex items-center space-x-2 text-gray-600 hover:text-brand-yellow transition-colors"
                     >
                       <ChevronRight className="w-4 h-4 text-brand-yellow" />
-                      <span style={{ fontSize: "13px" }}>{link}</span>
+                      <span className="text-base-custom">
+                        {link}
+                      </span>
                     </a>
                   </li>
                 ))}

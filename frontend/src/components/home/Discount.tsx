@@ -1,15 +1,6 @@
 import React from "react";
 import { Star, Settings, Fuel, Gauge } from "lucide-react";
 import { Title } from "../common";
-import { 
-  COLORS, 
-  SPACING, 
-  IMAGE_SIZES, 
-  TYPOGRAPHY, 
-  LAYOUT, 
-  TRANSITIONS, 
-  HOVER_EFFECTS 
-} from "../../constants/design";
 
 const Discount = () => {
   const discountCars = [
@@ -56,21 +47,10 @@ const Discount = () => {
 
   return (
     <section
-      className={`${SPACING.SECTION_PADDING.MOBILE} ${SPACING.SECTION_PADDING.SMALL} ${SPACING.SECTION_PADDING.MEDIUM} ${SPACING.SECTION_PADDING.LARGE} relative`}
-      style={{
-        backgroundImage: "url(/images/discount-bg.jpg)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="py-12 sm:py-16 md:py-20 lg:py-24 relative"
+      style={{ backgroundImage: "url(/images/discount-bg.jpg)" }}
     >
-      {/* Dark Overlay */}
-      <div
-        className="absolute inset-0"
-        style={{ backgroundColor: `rgba(51, 51, 51, 0.8)` }}
-      ></div>
-
-      <div className={`container mx-auto ${SPACING.CONTAINER_PADDING.MOBILE} ${SPACING.CONTAINER_PADDING.SMALL} ${SPACING.CONTAINER_PADDING.LARGE} relative z-10`}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-2xl">
           <Title
@@ -81,31 +61,31 @@ const Discount = () => {
             subtitleClassName="text-white mb-4"
             titleClassName="text-brand-yellow font-normal"
             showBorder={true}
-            borderColor={COLORS.BRAND_YELLOW}
+            borderColor="#ffcd00"
           />
         </div>
 
         {/* Discount Cars Grid */}
-        <div className={`grid ${LAYOUT.GRID_COLUMNS.MOBILE} ${LAYOUT.GRID_COLUMNS.SMALL} ${LAYOUT.GRID_COLUMNS.LARGE} ${SPACING.GRID_GAP.MOBILE} ${SPACING.GRID_GAP.SMALL} ${SPACING.GRID_GAP.MEDIUM} ${SPACING.GRID_GAP.LARGE} justify-items-center`}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 justify-items-center">
           {discountCars.map((car) => (
             <div
               key={car.id}
-              className={`rounded-lg ${SPACING.CARD_PADDING.MOBILE} ${SPACING.CARD_PADDING.SMALL} ${SPACING.CARD_PADDING.MEDIUM} ${SPACING.CARD_PADDING.LARGE} ${TRANSITIONS.ALL}`}
+              className="rounded-lg p-3 sm:p-4 md:p-5 lg:p-6 transition-all duration-300"
             >
-              <div className={`flex ${LAYOUT.FLEX_DIRECTION.ROW} gap-3 sm:gap-4`}>
+              <div className="flex flex-row gap-3 sm:gap-4">
                 {/* Car Image */}
                 <div className="flex-shrink-0">
                   <img
                     src={car.image}
                     alt={car.name}
-                    className={`${IMAGE_SIZES.CAR_IMAGE.MOBILE} ${IMAGE_SIZES.CAR_IMAGE.SMALL} ${IMAGE_SIZES.CAR_IMAGE.MEDIUM} object-cover`}
+                    className="w-[100px] h-[100px] sm:w-[110px] sm:h-[110px] md:w-[120px] md:h-[120px] object-cover"
                   />
                 </div>
 
                 {/* Car Details */}
                 <div className="flex-1 flex flex-col justify-between">
                   {/* Rating */}
-                  <div className={`flex items-center mb-1 ${HOVER_EFFECTS.YELLOW_TEXT} ${TRANSITIONS.COLORS}`}>
+                  <div className="flex items-center mb-1 hover:text-yellow-400 transition-colors duration-200">
                     {[...Array(car.rating)].map((_, index) => (
                       <Star
                         key={index}
@@ -115,18 +95,18 @@ const Discount = () => {
                   </div>
 
                   {/* Car Name */}
-                  <h4 className={`${TYPOGRAPHY.CAR_NAME.MOBILE} ${TYPOGRAPHY.CAR_NAME.SMALL} font-semibold text-white ${HOVER_EFFECTS.YELLOW_TEXT} ${TRANSITIONS.COLORS} cursor-pointer`}>
+                  <h4 className="text-lg sm:text-xl font-semibold text-white hover:text-yellow-400 transition-colors duration-200 cursor-pointer">
                     {car.name}
                   </h4>
 
                   {/* Pricing */}
-                  <div className={`mb-2 ${HOVER_EFFECTS.YELLOW_TEXT} ${TRANSITIONS.COLORS}`}>
+                  <div className="mb-2 hover:text-yellow-400 transition-colors duration-200">
                     <div className="r-price-discount">
                       <span
                         className="r-cut-price text-base-custom"
                         style={{
                           textDecoration: "line-through",
-                          color: COLORS.GRAY_LIGHT,
+                          color: "#777777",
                         }}
                       >
                         ${car.oldPrice.toFixed(2)}
@@ -145,12 +125,10 @@ const Discount = () => {
                       return (
                         <div
                           key={index}
-                          className={`inline-flex items-center gap-1 bg-brand-gray-dark text-brand-gray-medium px-1 py-0.5 ${HOVER_EFFECTS.YELLOW_BG} ${TRANSITIONS.COLORS} cursor-pointer`}
+                          className="inline-flex items-center gap-1 bg-brand-gray-dark text-brand-gray-medium px-1 py-0.5 hover:bg-yellow-400 hover:text-white transition-colors duration-200 cursor-pointer"
                         >
                           <IconComponent className="w-2.5 h-2.5" />
-                          <span style={{ fontSize: '0.625rem' }}>
-                            {spec.text}
-                          </span>
+                          <span className="text-xs-custom">{spec.text}</span>
                         </div>
                       );
                     })}

@@ -21,7 +21,7 @@ const Advantages = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24" style={{ backgroundColor: '#f8f4da' }}>
+    <section className="py-16 md:py-24 bg-brand-cream">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="mb-12 md:mb-16">
@@ -30,7 +30,7 @@ const Advantages = () => {
             title="Advantages."
             titleHighlight="Royal Cars"
             align="center"
-            subtitleClassName="text-[#333] mb-4"
+            subtitleClassName="text-brand-dark mb-4"
           />
         </div>
 
@@ -48,12 +48,12 @@ const Advantages = () => {
               </div>
               
               {/* Title */}
-              <div className="text-lg md:text-xl font-medium text-[#333] mb-2 md:mb-3">
+              <div className="text-lg md:text-xl font-medium text-brand-dark mb-2 md:mb-3">
                 {advantage.title}
               </div>
               
               {/* Subtitle */}
-              <div className="text-xs md:text-base text-[#999] leading-relaxed">
+              <div className="text-xs md:text-base text-brand-text-gray leading-relaxed">
                 {advantage.subtitle}
               </div>
             </div>

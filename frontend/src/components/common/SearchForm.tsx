@@ -68,8 +68,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
             <div className="flex items-end">
               <button
                 type="submit"
-                className="w-full py-3 md:py-4 transition-colors font-normal text-base md:text-lg shadow-lg hover:shadow-xl uppercase"
-                style={{ backgroundColor: '#ffcd00', color: '#000' }}
+                className="w-full py-3 md:py-4 transition-colors font-normal text-base md:text-lg shadow-lg hover:shadow-xl uppercase bg-brand-yellow text-brand-dark"
               >
                 {buttonText}
               </button>

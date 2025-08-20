@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { HelpCircle } from "lucide-react";
 import Title from "../common/Title";
-import driversData from "../../data/drivers.json";
 import Button from "../common/Button";
 import DriverCard from "../common/DriverCard";
+import driversData from "../../data/drivers.json";
 
 const Drivers = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
@@ -16,9 +17,9 @@ const Drivers = () => {
   return (
     <>
       <section
-        className="bg-cover bg-center bg-no-repeat pt-72 pb-8 sm:pt-40 sm:pb-12 lg:pt-48 lg:pb-32 relative"
-        style={{ backgroundImage: "url(/images/drivers/driver-bg-dark.jpg)" }}
-      > 
+        className="py-16 md:py-24 relative"
+        style={{ backgroundImage: "url(/images/drivers/driver-bg-dark.jpg)" }} /* Static görsel */
+      >
         {/* Top Drivers Banner - Absolute positioned within section */}
         <div className="absolute -top-24 left-0 right-0 z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,7 +75,7 @@ const Drivers = () => {
           </div>
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-18 sm:pt-20 lg:pt-24">
           {/* Section Header */}
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-6 sm:mb-8">

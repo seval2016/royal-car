@@ -30,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({
       case 'ghost':
         return 'bg-transparent text-gray-700 hover:bg-gray-100';
       default:
-        return 'bg-[#ffcd00] text-white hover:bg-[#e6b800]';
+        return 'bg-brand-yellow text-white hover:bg-brand-yellowDark'; /* #ffcd00 -> CSS variable */
     }
   };
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Check } from 'lucide-react';
 import { Title } from '../common';
-import { COLORS, SPACING } from '../../constants/design';
 
 const About = () => {
   const features = [
@@ -11,8 +10,8 @@ const About = () => {
   ];
 
   return (
-    <section className={`${SPACING.SECTION_PADDING.MOBILE} ${SPACING.SECTION_PADDING.SMALL} ${SPACING.SECTION_PADDING.MEDIUM} ${SPACING.SECTION_PADDING.LARGE} bg-white`}>
-      <div className={`container mx-auto ${SPACING.CONTAINER_PADDING.MOBILE}`}>
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+      <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Side - Image */}
           <div className="flex justify-center lg:justify-start">
@@ -36,7 +35,7 @@ const About = () => {
                 align="left"
                 className="mb-6"
                 showBorder={true}
-                borderColor={COLORS.BRAND_YELLOW}
+                borderColor="#ffcd00"
               />
             </div>
 

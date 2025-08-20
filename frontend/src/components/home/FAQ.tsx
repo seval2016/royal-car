@@ -80,7 +80,7 @@ const FAQ = () => {
   );
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-white">
+    <section className="py-18 sm:py-24 lg:py-28 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-8 sm:mb-12">
@@ -133,7 +133,7 @@ const FAQ = () => {
               <AccordionItem
                 value={item.id}
                 key={item.id}
-                className="border border-[#f4f4f4] bg-white shadow-sm hover:shadow-md transition-all duration-300"
+                className="border border-brand-border bg-white shadow-sm hover:shadow-md transition-all duration-300"
               >
                 <AccordionTrigger className="justify-start gap-3 py-4 px-4 text-[15px] leading-6 hover:no-underline [&>svg]:-order-1 font-semibold text-brand-dark">
                   {item.question}
@@ -150,7 +150,7 @@ const FAQ = () => {
               <AccordionItem
                 value={item.id}
                 key={item.id}
-                className="border border-[#f4f4f4] bg-white shadow-sm hover:shadow-md transition-all duration-300"
+                className="border border-brand-border bg-white shadow-sm hover:shadow-md transition-all duration-300"
               >
                 <AccordionTrigger className="justify-start gap-3 py-4 px-4 text-[15px] leading-6 hover:no-underline [&>svg]:-order-1 font-semibold text-brand-gray-dark">
                   {item.question}
@@ -164,7 +164,7 @@ const FAQ = () => {
         </div>
 
         {/* Call to Action Button */}
-        <div className="text-center mt-10 sm:mt-20">
+        <div className="text-center mt-16 sm:mt-18 lg:mt-20">
           <Button 
             variant="primary" 
             size="md" 

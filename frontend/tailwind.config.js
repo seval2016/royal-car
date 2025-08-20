@@ -60,17 +60,24 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Proje özel renkleri
+        // Proje özel renkleri - CSS Variables ile
         brand: {
-          yellow: '#ffcd00',
-          dark: '#333333',
-          cream: '#f8f4da',
-          lightGray: '#aaaaaa',
+          yellow: "hsl(var(--brand-yellow))",           /* #ffcd00 - Ana marka rengi */
+          yellowDark: "hsl(var(--brand-yellow-dark))",  /* #e6b800 - Hover durumu */
+          dark: "hsl(var(--brand-dark))",               /* #333333 - Koyu metin rengi */
+          cream: "hsl(var(--brand-cream))",             /* #f8f4da - Krem arka plan */
+          lightGray: "hsl(var(--brand-light-gray))",    /* #aaaaaa - Açık gri */
           gray: {
-            light: '#777777',
-            medium: '#999999',
-            dark: '#444444',
-          }
+            light: "hsl(var(--brand-gray-light))",      /* #777777 - Orta açık gri */
+            medium: "hsl(var(--brand-gray-medium))",    /* #999999 - Orta gri */
+            dark: "hsl(var(--brand-gray-dark))",        /* #444444 - Koyu gri */
+          },
+          text: {
+            light: "hsl(var(--brand-text-light))",      /* #666666 - Açık metin rengi */
+            gray: "hsl(var(--brand-text-gray))",        /* #999999 - Gri metin rengi */
+          },
+          border: "hsl(var(--brand-border))",           /* #f4f4f4 - Kenarlık rengi */
+          bgOverlay: "hsl(var(--brand-bg-overlay))",    /* rgba(51, 51, 51, 0.8) - Overlay */
         }
       },
              fontSize: {
@@ -79,6 +86,7 @@ export default {
          'sm-custom': '0.6875rem',   // 11px
          'base-custom': '0.8125rem', // 13px
          'md-custom': '0.875rem',    // 14px
+         'lg-custom': '0.9375rem',   // 15px
        },
       spacing: {
         // Proje özel spacing değerleri

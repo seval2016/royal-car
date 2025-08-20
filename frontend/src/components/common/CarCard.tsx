@@ -56,7 +56,7 @@ const CarCard = ({ car }: CarCardProps) => {
           <div className="bg-brand-yellow text-md-custom text-white px-2 sm:px-3 py-1 font-semibold">
             ${car.price} / Day
           </div>
-          <div className="text-base-custom  text-[#bbb] flex items-center">
+          <div className="text-base-custom text-brand-lightGray flex items-center">
             <img
               src="/images/cars/meter-icon.png"
               alt="meter"

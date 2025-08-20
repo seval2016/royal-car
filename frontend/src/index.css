@@ -29,6 +29,7 @@
 
 @layer base {
   :root {
+    /* Shadcn UI Variables */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -49,9 +50,24 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
+
+    /* Royal Car Brand Colors - CSS Variables */
+    --brand-yellow: 48 100% 50%;        /* #ffcd00 - Ana marka rengi */
+    --brand-yellow-dark: 48 100% 45%;   /* #e6b800 - Hover durumu için */
+    --brand-dark: 0 0% 20%;             /* #333333 - Koyu metin rengi */
+    --brand-cream: 48 100% 95%;         /* #f8f4da - Krem arka plan */
+    --brand-light-gray: 0 0% 67%;       /* #aaaaaa - Açık gri */
+    --brand-gray-light: 0 0% 47%;       /* #777777 - Orta açık gri */
+    --brand-gray-medium: 0 0% 60%;      /* #999999 - Orta gri */
+    --brand-gray-dark: 0 0% 27%;        /* #444444 - Koyu gri */
+    --brand-text-light: 0 0% 40%;       /* #666666 - Açık metin rengi */
+    --brand-text-gray: 0 0% 60%;        /* #999999 - Gri metin rengi */
+    --brand-border: 0 0% 96%;           /* #f4f4f4 - Kenarlık rengi */
+    --brand-bg-overlay: 0 0% 20% 80%;   /* rgba(51, 51, 51, 0.8) - Overlay arka plan */
   }
 
   .dark {
+    /* Shadcn UI Dark Theme Variables */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
@@ -71,6 +87,20 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    /* Royal Car Brand Colors - Dark Theme */
+    --brand-yellow: 48 100% 60%;        /* #ffaa00 - Dark tema için daha parlak */
+    --brand-yellow-dark: 48 100% 55%;   /* #e69900 - Dark tema hover */
+    --brand-dark: 0 0% 90%;             /* #e6e6e6 - Dark tema için açık */
+    --brand-cream: 48 100% 10%;         /* #1a1a0a - Dark tema krem */
+    --brand-light-gray: 0 0% 80%;       /* #cccccc - Dark tema açık gri */
+    --brand-gray-light: 0 0% 70%;       /* #b3b3b3 - Dark tema orta açık gri */
+    --brand-gray-medium: 0 0% 60%;      /* #999999 - Dark tema orta gri */
+    --brand-gray-dark: 0 0% 40%;        /* #666666 - Dark tema koyu gri */
+    --brand-text-light: 0 0% 80%;       /* #cccccc - Dark tema açık metin */
+    --brand-text-gray: 0 0% 70%;        /* #b3b3b3 - Dark tema gri metin */
+    --brand-border: 0 0% 20%;           /* #333333 - Dark tema kenarlık */
+    --brand-bg-overlay: 0 0% 10% 80%;   /* rgba(26, 26, 26, 0.8) - Dark tema overlay */
   }
 
   * {
@@ -178,5 +208,15 @@
   .embla__slide {
     flex: 0 0 100%;
     min-width: 0;
+  }
+
+  /* Hide scrollbar for carousel */
+  .embla::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .embla {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

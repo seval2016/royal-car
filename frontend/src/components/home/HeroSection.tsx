@@ -2,6 +2,15 @@ import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { SearchForm } from "../common";
 
+interface HeroSectionProps {
+  slides?: Array<{
+    id: number;
+    title: string;
+    subtitle: string;
+    image: string; /* Admin panelden gelecek */
+  }>;
+}
+
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -41,7 +50,7 @@ const HeroSection = () => {
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
-          style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+          style={{ backgroundImage: `url(${slides[currentSlide].image})` }} /* Dinamik background image */
         >
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/40"></div>
@@ -56,9 +65,9 @@ const HeroSection = () => {
                   {slides[currentSlide].title} 
                 </h1>
                 <h4 className="text-white font-light text-[16px] md:text-[20px] lg:text-[23px] tracking-[0.27em] uppercase mb-[20px] md:mb-[30px] animate-fade-in-delay text-center md:text-right">
-                  FOR RENT <strong className="text-[#ffcd00] font-semibold">${slides[currentSlide].subtitle.split('$')[1].split(' ')[0]}</strong> PER DAY
+                  FOR RENT <strong className="text-brand-yellow font-semibold">${slides[currentSlide].subtitle.split('$')[1].split(' ')[0]}</strong> PER DAY
                 </h4>
-                <a href="#" className="inline-block px-[30px] md:px-[40px] lg:px-[50px] py-[15px] md:py-[18px] lg:py-[20px] bg-transparent text-white text-base md:text-lg font-semibold text-center uppercase border border-white rounded-none transition-all duration-200 ease-linear hover:bg-[#ffcd00] hover:text-white hover:border-[#ffcd00] animate-fade-in-delay-2">
+                <a href="#" className="inline-block px-[30px] md:px-[40px] lg:px-[50px] py-[15px] md:py-[18px] lg:py-[20px] bg-transparent text-white text-base md:text-lg font-semibold text-center uppercase border border-white rounded-none transition-all duration-200 ease-linear hover:bg-brand-yellow hover:text-white hover:border-brand-yellow animate-fade-in-delay-2">
                   Reserve Now
                 </a>
               </div>
@@ -116,8 +125,7 @@ const HeroSection = () => {
               {String(index + 1).padStart(2, "0")}
               {index === currentSlide && (
                 <div
-                  className="absolute bottom-0 left-1/4 right-1/4 h-0.5"
-                  style={{ backgroundColor: "#ffcd00" }}
+                  className="absolute bottom-0 left-1/4 right-1/4 h-0.5 bg-brand-yellow" /* #ffcd00 -> CSS variable */
                 ></div>
               )}
             </button>
