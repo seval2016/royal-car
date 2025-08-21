@@ -18,16 +18,21 @@ const PageHero: React.FC<PageHeroProps> = ({
   titleHighlight,
   subtitle,
   breadcrumbItems,
-  className = ""
+  className = "",
 }) => {
   return (
-    <section className={`relative py-24 sm:py-32 lg:py-40 bg-black/80 ${className}`}>
+    <section
+      className={`relative py-32 sm:py-40 lg:py-48 ${className}`}
+    >
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url(/images/inner-header.jpg)" }}
       />
-      
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/60"></div>
+
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
@@ -36,19 +41,13 @@ const PageHero: React.FC<PageHeroProps> = ({
              title={title}
              titleHighlight={titleHighlight}
              align="center"
-             subtitleClassName="text-brand-yellow mb-4"
-             titleClassName="text-brand-yellow font-normal"
-             titleHighlightClassName="font-bold"
-             showBorder={true}
-             borderColor="#ffcd00"
+             titleClassName="text-brand-yellow "
+             titleHighlightClassName=""
            />
-          
+
           {/* Breadcrumb */}
           <div className="flex justify-center mt-6">
-            <Breadcrumb 
-              items={breadcrumbItems} 
-              className=""
-            />
+            <Breadcrumb items={breadcrumbItems} className="font-medium" />
           </div>
         </div>
       </div>

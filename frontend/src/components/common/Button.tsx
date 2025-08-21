@@ -24,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({
   const getVariantClasses = () => {
     switch (variant) {
       case 'secondary':
-        return 'bg-gray-600 text-white hover:bg-gray-700';
+        return ' text-white bg-brand-dark  hover:bg-brand-yellow';
       case 'outline':
         return 'bg-transparent text-white border border-white hover:bg-white hover:text-gray-900 hover:border-white';
       case 'ghost':

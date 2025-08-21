@@ -13,7 +13,7 @@ const AboutContent = () => {
               titleHighlight="Royal Cars"
               align="left"
               subtitleClassName="text-brand-yellow mb-4"
-              titleClassName="text-brand-dark font-normal"
+              titleClassName="text-brand-dark"
               showBorder={true}
               borderColor="#ffcd00"
             />    

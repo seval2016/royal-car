@@ -1,0 +1,34 @@
+{
+  "whyChooseUs": [
+    {
+      "id": 1,
+      "icon": "/images/about/choose1.png",
+      "title": "Premium Fleet",
+      "description": "En yeni ve bakımlı araçlardan oluşan premium filomuzla seyahat edin."
+    },
+    {
+      "id": 2,
+      "icon": "/images/about/choose2.png",
+      "title": "Competitive Pricing",
+      "description": "Rekabetçi fiyatlarla kaliteli hizmet sunuyoruz, bütçenize uygun seçenekler."
+    },
+    {
+      "id": 3,
+      "icon": "/images/about/choose3.png",
+      "title": "Full Insurance",
+      "description": "Tüm araçlarımız tam sigortalı, güvenli ve rahat bir seyahat deneyimi."
+    },
+    {
+      "id": 4,
+      "icon": "/images/about/choose4.png",
+      "title": "24/7 Support",
+      "description": "7/24 müşteri desteği ile her zaman yanınızdayız."
+    },
+    {
+      "id": 5,
+      "icon": "/images/about/choose5.png",
+      "title": "Quick Booking",
+      "description": "Hızlı ve kolay rezervasyon sistemi ile dakikalar içinde araç kiralayın."
+    }
+  ]
+}

@@ -46,11 +46,11 @@ const Title: React.FC<TitleProps> = ({
         </span>
       )}
       <h2
-        className={`text-2xl md:text-3xl lg:text-4xl leading-tight ${titleClassName}`}
+        className={`text-2xl md:text-3xl lg:text-4xl leading-tight font-bold ${titleClassName}`}
       >
                  {titleHighlight ? (
            <>
-             <span className={`font-semibold ${titleHighlightClassName}`}>{titleHighlight}</span> {title}
+             <span className={`font-normal ${titleHighlightClassName}`}>{titleHighlight}</span> {title}
            </>
          ) : (
            title

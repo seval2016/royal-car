@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
-import { AboutHero, AboutContent } from "../components/about";
+import { AboutHero, AboutContent, WhyChooseUs } from "../components/about";
 import { ContactForm, Statistics } from "../components/common";
 
 const AboutPage = () => {
@@ -8,6 +8,7 @@ const AboutPage = () => {
     <Layout>
       <AboutHero />
       <AboutContent />
+      <WhyChooseUs />
       <Statistics variant="about" />
       
       {/* Contact Form Section */}
