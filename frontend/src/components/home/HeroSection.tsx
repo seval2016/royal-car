@@ -57,10 +57,10 @@ const HeroSection = () => {
         </div>
 
         {/* Slider Content */}
-        <div className="relative z-10 h-full flex items-center">
+        <div className="relative z-10 h-full flex items-center pb-32 md:pb-48">
           <div className="container mx-auto px-4">
-            <div className="flex justify-end">
-              <div className="r-slider-top-content text-right flex flex-col items-center md:items-end">
+            <div className="flex justify-center md:justify-end">
+              <div className="r-slider-top-content text-center md:text-right flex flex-col items-center md:items-end">
                 <h1 className="text-[60px] md:text-[80px] lg:text-[120px] text-white font-semibold animate-fade-in leading-tight">
                   {slides[currentSlide].title} 
                 </h1>
@@ -76,27 +76,63 @@ const HeroSection = () => {
         </div>
 
         {/* Search Form Component */}
-        <SearchForm
-          fields={[
-            {
-              label: "Car Brand",
-              placeholder: "Select car brand",
-              options: ["Audi", "BMW", "Mercedes", "Volkswagen", "Toyota", "Honda"]
-            },
-            {
-              label: "Car Type",
-              placeholder: "Select car type",
-              options: ["Sedan", "SUV", "Hatchback", "Van", "Sports", "Luxury"]
-            },
-            {
-              label: "Car Price",
-              placeholder: "Select price range",
-              options: ["$50 - $100", "$100 - $150", "$150 - $200", "$200 - $300", "$300+"]
-            }
-          ]}
-          buttonText="Search Car Now"
-          variant="overlay"
-        />
+        <div className="absolute bottom-0 left-0 right-0 z-20 bg-black/10 backdrop-blur-sm">
+          <div className="container mx-auto px-4 py-6 md:py-12">
+            <form>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <div>
+                  <label className="block font-normal mb-2 md:mb-3 text-xs md:text-sm uppercase text-white">
+                    Car Brand
+                  </label>
+                  <select className="w-full px-3 md:px-4 py-3 md:py-4 border border-gray-300 focus:ring-2 focus:ring-primary-600 focus:border-transparent text-sm shadow-sm bg-white/90 backdrop-blur-sm">
+                    <option value="">Select car brand</option>
+                    <option value="Audi">Audi</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Mercedes">Mercedes</option>
+                    <option value="Volkswagen">Volkswagen</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Honda">Honda</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block font-normal mb-2 md:mb-3 text-xs md:text-sm uppercase text-white">
+                    Car Type
+                  </label>
+                  <select className="w-full px-3 md:px-4 py-3 md:py-4 border border-gray-300 focus:ring-2 focus:ring-primary-600 focus:border-transparent text-sm shadow-sm bg-white/90 backdrop-blur-sm">
+                    <option value="">Select car type</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Hatchback">Hatchback</option>
+                    <option value="Van">Van</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Luxury">Luxury</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block font-normal mb-2 md:mb-3 text-xs md:text-sm uppercase text-white">
+                    Car Price
+                  </label>
+                  <select className="w-full px-3 md:px-4 py-3 md:py-4 border border-gray-300 focus:ring-2 focus:ring-primary-600 focus:border-transparent text-sm shadow-sm bg-white/90 backdrop-blur-sm">
+                    <option value="">Select price range</option>
+                    <option value="$50 - $100">$50 - $100</option>
+                    <option value="$100 - $150">$100 - $150</option>
+                    <option value="$150 - $200">$150 - $200</option>
+                    <option value="$200 - $300">$200 - $300</option>
+                    <option value="$300+">$300+</option>
+                  </select>
+                </div>
+                <div className="flex items-end">
+                  <button
+                    type="submit"
+                    className="w-full py-3 md:py-4 transition-colors font-normal text-base md:text-lg shadow-lg hover:shadow-xl uppercase bg-brand-yellow text-brand-dark"
+                  >
+                    Search Car Now
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
 
         {/* Navigation Controls */}
         <button 

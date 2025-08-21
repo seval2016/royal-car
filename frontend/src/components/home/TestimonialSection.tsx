@@ -36,7 +36,7 @@ const TestimonialSection = () => {
         {/* Testimonial Slider */}
         <div className="relative max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-18">
           {/* Testimonial Content */}
-          <div className="relative h-32 sm:h-40 md:h-48 lg:h-56 mb-8 sm:mb-12">
+          <div className="relative h-28 mb-8 sm:mb-12">
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
@@ -54,7 +54,7 @@ const TestimonialSection = () => {
           </div>
 
           {/* Profile Images */}
-          <div className="flex justify-center items-center relative px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center items-center relative px-4 sm:px-6 lg:px-8 pb-14">
             {testimonials.map((testimonial, index) => {
               // Calculate position relative to current index
               const position =

@@ -8,72 +8,25 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
+import faqData from "../../data/faq.json";
 
 const FAQ = () => {
   const [activeCategory, setActiveCategory] = useState("account");
 
-  const categories = [
-    {
-      id: "account",
-      name: "ABOUT ACCOUNT",
-      icon: <User className="w-6 h-6" />,
-    },
-    {
-      id: "technical",
-      name: "TECHNICAL SUPPORT",
-      icon: <HelpCircle className="w-6 h-6" />,
-    },
-    {
-      id: "cars",
-      name: "CARS FEATURES",
-      icon: <Car className="w-6 h-6" />,
-    },
-  ];
+  // Icon mapping
+  const iconMap = {
+    User: <User className="w-6 h-6" />,
+    HelpCircle: <HelpCircle className="w-6 h-6" />,
+    Car: <Car className="w-6 h-6" />,
+  };
 
-  const questions = [
-    {
-      id: "1",
-      question: "How to reserved a car here?",
-      answer:
-        "You can reserve a car by selecting your preferred vehicle from our fleet, choosing your rental dates, and completing the booking process through our secure online platform.",
-      category: "account",
-    },
-    {
-      id: "2",
-      question: "How can i drop the rental car?",
-      answer:
-        "You can return your rental car at any of our designated drop-off locations. Simply follow the return instructions provided at the time of pickup.",
-      category: "account",
-    },
-    {
-      id: "3",
-      question: "What happen if i crash the car?",
-      answer:
-        "In case of an accident, immediately contact our emergency hotline and local authorities. We provide comprehensive insurance coverage for such situations.",
-      category: "account",
-    },
-    {
-      id: "4",
-      question: "How can i select a car rent?",
-      answer:
-        "Browse our extensive fleet online, filter by your preferences (size, features, price), and select the vehicle that best suits your needs.",
-      category: "technical",
-    },
-    {
-      id: "5",
-      question: "Do you have VIP access to airport?",
-      answer:
-        "Yes, we offer VIP airport pickup and drop-off services for premium customers. Contact our concierge team for arrangements.",
-      category: "cars",
-    },
-    {
-      id: "6",
-      question: "What happen if i crash the car?",
-      answer:
-        "In case of an accident, immediately contact our emergency hotline and local authorities. We provide comprehensive insurance coverage for such situations.",
-      category: "cars",
-    },
-  ];
+  // Add icons to categories
+  const categories = faqData.categories.map(category => ({
+    ...category,
+    icon: iconMap[category.icon as keyof typeof iconMap],
+  }));
+
+  const questions = faqData.questions;
 
   const filteredQuestions = questions.filter(
     (q) => q.category === activeCategory

@@ -64,6 +64,7 @@
     --brand-text-gray: 0 0% 60%;        /* #999999 - Gri metin rengi */
     --brand-border: 0 0% 96%;           /* #f4f4f4 - Kenarlık rengi */
     --brand-bg-overlay: 0 0% 20% 80%;   /* rgba(51, 51, 51, 0.8) - Overlay arka plan */
+    --brand-form-bg: 51 51 51 0.9;      /* #333333e6 - Form arka plan */
   }
 
   .dark {
@@ -101,6 +102,7 @@
     --brand-text-gray: 0 0% 70%;        /* #b3b3b3 - Dark tema gri metin */
     --brand-border: 0 0% 20%;           /* #333333 - Dark tema kenarlık */
     --brand-bg-overlay: 0 0% 10% 80%;   /* rgba(26, 26, 26, 0.8) - Dark tema overlay */
+          --brand-form-bg: 51 51 51 0.9;      /* #333333e6 - Dark tema form arka plan */
   }
 
   * {

@@ -3,3 +3,6 @@ export { default as Button } from './Button';
 export { default as Input } from './Input';
 export { default as Select } from './Select';
 export { default as SearchForm } from './SearchForm';
+export { default as Breadcrumb } from './Breadcrumb';
+export { default as PageHero } from './PageHero';
+export { default as ContactForm } from './ContactForm';

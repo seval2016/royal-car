@@ -1,0 +1,105 @@
+{
+  "categories": [
+    {
+      "id": "account",
+      "name": "ABOUT ACCOUNT",
+      "icon": "User"
+    },
+    {
+      "id": "technical",
+      "name": "TECHNICAL SUPPORT",
+      "icon": "HelpCircle"
+    },
+    {
+      "id": "cars",
+      "name": "CARS FEATURES",
+      "icon": "Car"
+    }
+  ],
+  "questions": [
+    {
+      "id": "1",
+      "question": "How to reserved a car here?",
+      "answer": "You can reserve a car by selecting your preferred vehicle from our fleet, choosing your rental dates, and completing the booking process through our secure online platform.",
+      "category": "account"
+    },
+    {
+      "id": "2",
+      "question": "How can i drop the rental car?",
+      "answer": "You can return your rental car at any of our designated drop-off locations. Simply follow the return instructions provided at the time of pickup.",
+      "category": "account"
+    },
+    {
+      "id": "3",
+      "question": "What happen if i crash the car?",
+      "answer": "In case of an accident, immediately contact our emergency hotline and local authorities. We provide comprehensive insurance coverage for such situations.",
+      "category": "account"
+    },
+    {
+      "id": "4",
+      "question": "How do I create an account?",
+      "answer": "Creating an account is simple. Click on the 'Sign Up' button, fill in your personal information, verify your email address, and you'll be ready to start booking cars.",
+      "category": "account"
+    },
+    {
+      "id": "5",
+      "question": "Can I modify my booking after confirmation?",
+      "answer": "Yes, you can modify your booking up to 24 hours before your scheduled pickup time. Log into your account and use the 'Modify Booking' option in your dashboard.",
+      "category": "account"
+    },
+    {
+      "id": "6",
+      "question": "What payment methods do you accept?",
+      "answer": "We accept all major credit cards (Visa, MasterCard, American Express), debit cards, and digital payment methods like PayPal and Apple Pay for your convenience.",
+      "category": "account"
+    },
+    {
+      "id": "7",
+      "question": "How can i select a car rent?",
+      "answer": "Browse our extensive fleet online, filter by your preferences (size, features, price), and select the vehicle that best suits your needs.",
+      "category": "technical"
+    },
+    {
+      "id": "8",
+      "question": "What if the website is not working properly?",
+      "answer": "If you experience technical issues, try clearing your browser cache, using a different browser, or contact our technical support team at support@royalcars.com for immediate assistance.",
+      "category": "technical"
+    },
+    {
+      "id": "9",
+      "question": "How do I reset my password?",
+      "answer": "Click on 'Forgot Password' on the login page, enter your email address, and follow the instructions sent to your email to reset your password securely.",
+      "category": "technical"
+    },
+    {
+      "id": "10",
+      "question": "Is my personal information secure?",
+      "answer": "Yes, we use industry-standard SSL encryption and follow strict data protection protocols to ensure your personal and payment information is completely secure.",
+      "category": "technical"
+    },
+    {
+      "id": "11",
+      "question": "Do you have a mobile app?",
+      "answer": "Yes, our mobile app is available for both iOS and Android devices. Download it from the App Store or Google Play Store for a better booking experience.",
+      "category": "technical"
+    },
+    {
+      "id": "12",
+      "question": "How do I contact customer support?",
+      "answer": "You can reach our customer support team through live chat on our website, email at support@royalcars.com, or call our 24/7 helpline at 1-800-ROYAL-CARS.",
+      "category": "technical"
+    },
+    {
+      "id": "13",
+      "question": "Do you have VIP access to airport?",
+      "answer": "Yes, we offer VIP airport pickup and drop-off services for premium customers. Contact our concierge team for arrangements.",
+      "category": "cars"
+    },
+    {
+      "id": "14",
+      "question": "What happen if i crash the car?",
+      "answer": "In case of an accident, immediately contact our emergency hotline and local authorities. We provide comprehensive insurance coverage for such situations.",
+      "category": "cars"
+    }
+  ]
+}

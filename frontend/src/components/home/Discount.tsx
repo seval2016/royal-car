@@ -66,7 +66,7 @@ const Discount = () => {
         </div>
 
         {/* Discount Cars Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 justify-items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 justify-items-center">
           {discountCars.map((car) => (
             <div
               key={car.id}

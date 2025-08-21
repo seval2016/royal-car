@@ -81,7 +81,7 @@ const Header = () => {
             {/* Mobile menu button */}
             <button
               type="button"
-              className="md:hidden p-2 rounded-md text-white hover:text-white hover:bg-white/20"
+              className="md:hidden p-3 rounded-lg text-white hover:text-white hover:bg-white/20 bg-brand-yellow/20 backdrop-blur-sm transition-all duration-300 shadow-sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -94,16 +94,16 @@ const Header = () => {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden py-4 border-t border-white/20">
-              <nav className="flex flex-col space-y-4">
+            <div className="md:hidden py-6 border-t border-white/20 bg-brand-yellow shadow-lg">
+              <nav className="flex flex-col space-y-2">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={`font-medium transition-colors duration-200 ${
+                    className={`font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 ${
                       isActive(item.href)
-                        ? 'text-white'
-                        : 'text-white/80 hover:text-white'
+                        ? 'text-brand-dark bg-white/20 shadow-sm'
+                        : 'text-brand-dark/80 hover:text-brand-dark hover:bg-white/10'
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >

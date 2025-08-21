@@ -78,6 +78,7 @@ export default {
           },
           border: "hsl(var(--brand-border))",           /* #f4f4f4 - Kenarlık rengi */
           bgOverlay: "hsl(var(--brand-bg-overlay))",    /* rgba(51, 51, 51, 0.8) - Overlay */
+          formBg: "hsl(var(--brand-form-bg))",          /* rgba(51, 51, 51, 0.9) - Form arka plan */
         }
       },
              fontSize: {

@@ -7,6 +7,7 @@ interface TitleProps {
   className?: string;
   subtitleClassName?: string;
   titleClassName?: string;
+  titleHighlightClassName?: string;
   align?: "left" | "center" | "right";
   showBorder?: boolean;
   borderColor?: string;
@@ -19,6 +20,7 @@ const Title: React.FC<TitleProps> = ({
   className = "",
   subtitleClassName = "",
   titleClassName = "",
+  titleHighlightClassName = "",
   align = "center",
   showBorder = false,
   borderColor = "#ffcd00",
@@ -44,15 +46,15 @@ const Title: React.FC<TitleProps> = ({
         </span>
       )}
       <h2
-        className={`text-2xl md:text-3xl lg:text-4xl font-bold text-brand-dark leading-tight ${titleClassName}`}
+        className={`text-2xl md:text-3xl lg:text-4xl leading-tight ${titleClassName}`}
       >
-        {titleHighlight ? (
-          <>
-            <span className="font-normal">{titleHighlight}</span> {title}
-          </>
-        ) : (
-          title
-        )}
+                 {titleHighlight ? (
+           <>
+             <span className={`font-semibold ${titleHighlightClassName}`}>{titleHighlight}</span> {title}
+           </>
+         ) : (
+           title
+         )}
       </h2>
       {showBorder && (
         <div className="mt-4 w-12 h-0.5 rounded-full bg-brand-yellow"></div>
