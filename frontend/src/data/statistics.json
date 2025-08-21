@@ -3,24 +3,28 @@
     {
       "id": 1,
       "icon": "/images/statistic/icon-happy-customer-white.png",
+      "iconYellow": "/images/statistic/icon-happy-customer.png",
       "number": "172700",
       "label": "HAPPY CUSTOMERS"
     },
     {
       "id": 2,
       "icon": "/images/statistic/icon-cars-count-white.png",
+      "iconYellow": "/images/statistic/icon-cars-count.png",
       "number": "2450",
       "label": "CARS IN GARAGE"
     },
     {
       "id": 3,
       "icon": "/images/statistic/icon-total-km-white.png",
+      "iconYellow": "/images/statistic/icon-total-km.png",
       "number": "1211100",
       "label": "TOTAL KILOMETER/MIL"
     },
     {
       "id": 4,
       "icon": "/images/statistic/icon-car-center-white.png",
+      "iconYellow": "/images/statistic/icon-car-center.png",
       "number": "47250",
       "label": "CAR CENTER SOLUTIONS"
     }

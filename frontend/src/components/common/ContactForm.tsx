@@ -92,11 +92,11 @@ interface FormData {
   const getVariantClasses = () => {
     switch (variant) {
       case 'compact':
-        return 'max-w-lg mx-auto';
+        return 'w-full max-w-lg mx-auto px-4 sm:px-6 lg:px-8';
       case 'full':
-        return 'w-full';
+        return 'w-full px-4 sm:px-6 lg:px-8';
       default:
-        return 'max-w-4xl mx-auto';
+        return 'w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8';
     }
   };
 
@@ -109,14 +109,13 @@ interface FormData {
             title={title}
             subtitleClassName="text-white"
             titleClassName="text-brand-yellow font-bold"
-            titleHighlightClassName="text-brand-yellow font-normal"
             align="center"
           />
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6 bg-brand-formBg p-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-3 bg-brand-formBg p-6 sm:p-8 lg:p-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3">
           <Input
             placeholder="User name"
             type="text"
@@ -150,7 +149,7 @@ interface FormData {
 
         {/* Conditional fields based on variant */}
         {variant === 'full' && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
             <Select
               label="Car Type"
               value={formData.carType}
@@ -186,8 +185,8 @@ interface FormData {
           <textarea
             value={formData.message}
             onChange={(e) => handleInputChange('message', e.target.value)}
-            rows={8}
-            className={`w-full px-3 md:px-4 py-3 md:py-4 bg-[#333]/60 text-white placeholder-gray-400 focus:outline-none focus:text-white text-sm shadow-sm backdrop-blur-sm transition-all duration-200 ${
+                        rows={8}
+            className={`w-full px-3 md:px-4 py-3 md:py-4 bg-[#333]/60 text-white placeholder-gray-400 focus:outline-none focus:text-white text-sm shadow-sm backdrop-blur-sm transition-all duration-200 resize-none ${
               errors.message ? 'border-red-500' : 'border-0'
             }`}
             placeholder="Message"
@@ -202,7 +201,7 @@ interface FormData {
             type="submit"
             variant="primary"
             size="lg"
-            className="w-full md:w-auto tracking-widest text-xs bg-brand-yellow text-white hover:bg-brand-yellowDark"
+            className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 tracking-widest text-xs sm:text-sm bg-brand-yellow text-white hover:bg-brand-yellowDark"
           >
             SEND MESSAGE NOW
           </Button>

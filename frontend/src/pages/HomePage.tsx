@@ -6,13 +6,13 @@ import {
   Advantages,
   VehicleFilterModule,
   Discount,
-  Statistics,
   TestimonialSection,
   Blog,
   FAQ,
   Drivers,
   Gallery
 } from '../components/home';
+import { Statistics } from '../components/common';
 
 const HomePage = () => {
   return (

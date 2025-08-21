@@ -16,10 +16,7 @@ const AboutContent = () => {
               titleClassName="text-brand-dark font-normal"
               showBorder={true}
               borderColor="#ffcd00"
-            />
-            
-
-            
+            />    
             {/* Key Features */}
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="flex items-start space-x-3">

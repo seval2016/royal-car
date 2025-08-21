@@ -77,6 +77,7 @@ export default {
             gray: "hsl(var(--brand-text-gray))",        /* #999999 - Gri metin rengi */
           },
           border: "hsl(var(--brand-border))",           /* #f4f4f4 - Kenarlık rengi */
+          borderLight: "#eeeeee",                       /* #eeeeee - Açık kenarlık rengi */
           bgOverlay: "hsl(var(--brand-bg-overlay))",    /* rgba(51, 51, 51, 0.8) - Overlay */
           formBg: "hsl(var(--brand-form-bg))",          /* rgba(51, 51, 51, 0.9) - Form arka plan */
         }

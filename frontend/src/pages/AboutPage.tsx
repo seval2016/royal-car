@@ -1,8 +1,7 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
 import { AboutHero, AboutContent } from "../components/about";
-import Statistics from "../components/home/Statistics";
-import { ContactForm } from "../components/common";
+import { ContactForm, Statistics } from "../components/common";
 
 const AboutPage = () => {
   return (
@@ -20,7 +19,7 @@ const AboutPage = () => {
         />
         
         {/* Overlay */}
-        <div className="absolute inset-0 bg-brand-formBg"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
         
         {/* Content */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
