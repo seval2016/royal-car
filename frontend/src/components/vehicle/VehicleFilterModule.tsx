@@ -45,20 +45,47 @@ const VehicleFilterModule: React.FC<VehicleFilterModuleProps> = ({
   return (
     <section className={`bg-white py-8 sm:py-12 lg:py-16 ${className}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Title */}
-        {showTitle && (
-          <div className="mb-6 sm:mb-8">
-            <Title
-              subtitle={subtitle}
-              title={title}
-              titleHighlight={titleHighlight}
-              align={align}
-              className="mb-4 sm:mb-6"
-              subtitleClassName="text-brand-dark"
-              titleClassName="text-[24px] sm:text-[28px] lg:text-[40px]"
-            />
+        {/* Header Section */}
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-6 p-4 bg-white rounded-lg">
+          {/* Left - Title */}
+          <div className="mb-4 sm:mb-0">
+            <h2 className="text-xl font-bold text-brand-dark">Car Categories</h2>
           </div>
-        )}
+
+          {/* Middle - Search Results Count */}
+          <div className="mb-4 sm:mb-0">
+            <p className="text-gray-600 text-sm sm:text-base">
+              <span className="font-semibold text-brand-dark">20</span> of <span className="font-semibold text-brand-dark">50</span> Search Results
+            </p>
+          </div>
+
+          {/* Right - Display Options */}
+          <div className="flex items-center gap-4">
+            {/* Show Cars Dropdown */}
+            <div className="flex items-center gap-2">
+              <span className="text-gray-600 text-sm">Show Cars:</span>
+              <select className="border border-gray-300 rounded px-2 py-1 text-sm bg-white">
+                <option value="6">6 Cars</option>
+                <option value="12">12 Cars</option>
+                <option value="24">24 Cars</option>
+              </select>
+            </div>
+
+            {/* View Toggle Buttons */}
+            <div className="flex items-center gap-2">
+              <button className="p-2 bg-brand-yellow rounded hover:bg-yellow-500 transition-colors">
+                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M3 3h7v7H3V3zm0 11h7v7H3v-7zm11-11h7v7h-7V3zm0 11h7v7h-7v-7z"/>
+                </svg>
+              </button>
+              <button className="p-2 bg-gray-200 rounded hover:bg-gray-300 transition-colors">
+                <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M3 13h18v-2H3v2zm0 6h18v-2H3v2zM3 5v2h18V5H3z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
 
         {/* Mobile Filter Button */}
         <div className="lg:hidden mb-6">
