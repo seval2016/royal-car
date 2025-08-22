@@ -87,7 +87,7 @@ const VehicleCard = ({ car }: VehicleCardProps) => {
 
       {/* Hover Button */}
       <div className="absolute -bottom-4 left-0 right-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
-        <button className="w-full bg-brand-yellow text-white font-bold py-6 px-4 uppercase tracking-wide hover:bg-yellow-500 transition-colors duration-200">
+        <button className="w-full bg-brand-yellow text-white font-bold py-6 px-4 uppercase tracking-wide hover:bg-yellow-500 transition-colors duration-200 flex items-center justify-center">
           Rent This Car
         </button>
       </div>

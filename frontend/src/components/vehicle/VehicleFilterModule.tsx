@@ -24,6 +24,7 @@ const VehicleFilterModule: React.FC<VehicleFilterModuleProps> = ({
   const [selectedManufacturer, setSelectedManufacturer] =
     useState("All Manufacturer");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [showCarsCount, setShowCarsCount] = useState(6);
 
   const manufacturers = [
     "All Manufacturer",
@@ -42,6 +43,8 @@ const VehicleFilterModule: React.FC<VehicleFilterModuleProps> = ({
       ? cars
       : cars.filter((car) => car.manufacturer === selectedManufacturer);
 
+  const displayedCars = filteredCars.slice(0, showCarsCount);
+
   return (
     <section className={`bg-white py-8 sm:py-12 lg:py-16 ${className}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,7 +58,7 @@ const VehicleFilterModule: React.FC<VehicleFilterModuleProps> = ({
           {/* Middle - Search Results Count */}
           <div className="mb-4 sm:mb-0">
             <p className="text-gray-600 text-sm sm:text-base">
-              <span className="font-semibold text-brand-dark">20</span> of <span className="font-semibold text-brand-dark">50</span> Search Results
+              <span className="font-semibold text-brand-dark">{displayedCars.length}</span> of <span className="font-semibold text-brand-dark">{filteredCars.length}</span> Search Results
             </p>
           </div>
 
@@ -64,10 +67,14 @@ const VehicleFilterModule: React.FC<VehicleFilterModuleProps> = ({
             {/* Show Cars Dropdown */}
             <div className="flex items-center gap-2">
               <span className="text-gray-600 text-sm">Show Cars:</span>
-              <select className="border border-gray-300 rounded px-2 py-1 text-sm bg-white">
-                <option value="6">6 Cars</option>
-                <option value="12">12 Cars</option>
-                <option value="24">24 Cars</option>
+              <select 
+                className="border border-gray-300 rounded px-2 py-1 text-sm bg-white"
+                value={showCarsCount}
+                onChange={(e) => setShowCarsCount(Number(e.target.value))}
+              >
+                <option value={6}>6 Cars</option>
+                <option value={12}>12 Cars</option>
+                <option value={24}>24 Cars</option>
               </select>
             </div>
 
@@ -113,19 +120,19 @@ const VehicleFilterModule: React.FC<VehicleFilterModuleProps> = ({
                 <div className="bg-gray-800">
                   <ul className="space-y-0">
                     <li className="border-b border-gray-600">
-                      <button className="w-full flex items-center px-3 py-3 text-white text-sm font-medium hover:bg-gray-700 transition-colors">
+                      <button className="w-full flex items-center px-3 py-4 text-white text-sm font-medium hover:bg-gray-700 transition-colors">
                         <span className="text-yellow-400 mr-2">★</span>
                         Popular Cars
                       </button>
                     </li>
                     <li className="border-b border-gray-600">
-                      <button className="w-full flex items-center px-3 py-3 text-white text-sm font-medium hover:bg-gray-700 transition-colors">
+                      <button className="w-full flex items-center px-3 py-4 text-white text-sm font-medium hover:bg-gray-700 transition-colors">
                         <span className="text-yellow-400 mr-2">★</span>
                         Special Offers
                       </button>
                     </li>
                     <li>
-                      <button className="w-full flex items-center px-3 py-3 text-white text-sm font-medium hover:bg-gray-700 transition-colors">
+                      <button className="w-full flex items-center px-3 py-4 text-white text-sm font-medium hover:bg-gray-700 transition-colors">
                         <span className="text-yellow-400 mr-2">★</span>
                         Limited Editions
                       </button>
@@ -143,11 +150,11 @@ const VehicleFilterModule: React.FC<VehicleFilterModuleProps> = ({
                             setSelectedManufacturer(manufacturer);
                             setIsSidebarOpen(false);
                           }}
-                          className={`w-full flex items-center px-3 py-3 transition-all duration-200 font-medium relative text-sm rounded-none ${
+                          className={`w-full flex items-center px-3 py-4 transition-all duration-200 font-medium relative text-sm rounded-none ${
                             selectedManufacturer === manufacturer
                               ? "bg-white text-gray-800 shadow-sm"
                               : "text-white hover:bg-yellow-500"
-                          } h-12`}
+                          } h-14`}
                         >
                           {selectedManufacturer === manufacturer && (
                             <div className="absolute -left-1 top-0 bottom-0 w-1 bg-brand-yellow rounded-r-sm hidden lg:block"></div>
@@ -166,7 +173,7 @@ const VehicleFilterModule: React.FC<VehicleFilterModuleProps> = ({
           <div className="flex-1 lg:p-4">
             {/* Cars Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-4xl mx-auto">
-              {filteredCars.map((car) => (
+              {displayedCars.map((car) => (
                 <VehicleCard key={car.id} car={car} />
               ))}
             </div>

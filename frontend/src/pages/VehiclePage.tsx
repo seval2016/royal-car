@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
-import { PageHero } from "../components/common";
+import { PageHero, ContactForm } from "../components/common";
 import SearchForm from "../components/common/SearchForm";
 import { VehicleFilterModule } from "../components/vehicle";
 import searchFormData from "../data/searchForm.json";
@@ -34,6 +34,22 @@ const VehiclePage = () => {
         subtitle="BROWSE OUR VEHICLE COLLECTION"
         showTitle={true}
       />
+      
+      {/* Contact Form Section */}
+      <section className="relative py-16 sm:py-20 lg:py-24">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/contact-form-bg.jpg')" }}
+        >
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+          <ContactForm />
+        </div>
+      </section>
     
     </Layout>
   );

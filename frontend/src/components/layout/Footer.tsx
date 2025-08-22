@@ -31,7 +31,7 @@ const Footer = () => {
         />
       </div>
       {/* Main Footer */}
-      <div className="container mx-auto px-4 py-8 lg:py-12 relative z-10">
+      <div className="container mx-auto px-4 py-18 lg:py-24 relative z-10">
         {/* Four Column Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {/* Column 1: Logo and Company Description */}
@@ -44,7 +44,7 @@ const Footer = () => {
               />
             </div>
                          <p
-               className="text-gray-600 leading-relaxed text-base-custom"
+               className="text-gray-600 leading-relaxed text-[15px]"
              >
                We know the difference is in the details and that's why our car
                rental services, in the tourism and business industry, stand out
@@ -90,15 +90,15 @@ const Footer = () => {
                   "Press Release",
                 ].map((link, index) => (
                   <li key={index}>
-                    <a
-                      href="#"
-                      className="text- flex items-center space-x-2 text-gray-600 hover:text-brand-yellow transition-colors"
-                    >
-                      <ChevronRight className="w-4 h-4 text-brand-yellow" />
-                      <span className="text-base-custom">
-                        {link}
-                      </span>
-                    </a>
+                                         <a
+                       href="#"
+                       className="text- flex items-center space-x-2 text-gray-600 hover:text-brand-yellow transition-colors"
+                     >
+                       <ChevronRight className="w-4 h-4 text-brand-yellow" />
+                       <span className="text-[15px]">
+                         {link}
+                       </span>
+                     </a>
                   </li>
                 ))}
               </ul>
@@ -136,7 +136,7 @@ const Footer = () => {
                       className="flex items-center space-x-2 text-gray-600 hover:text-brand-yellow transition-colors"
                     >
                       <ChevronRight className="w-4 h-4 text-brand-yellow" />
-                      <span className="text-base-custom">
+                      <span className="text-[15px]">
                         {link}
                       </span>
                     </a>
@@ -172,7 +172,7 @@ const Footer = () => {
                       className="flex items-center space-x-2 text-gray-600 hover:text-brand-yellow transition-colors"
                     >
                       <ChevronRight className="w-4 h-4 text-brand-yellow" />
-                      <span className="text-base-custom">
+                      <span className="text-[15px]">
                         {link}
                       </span>
                     </a>
