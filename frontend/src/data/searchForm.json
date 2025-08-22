@@ -1,0 +1,36 @@
+{
+  "defaultFields": [
+    {
+      "label": "Car Brand",
+      "options": ["Audi", "BMW", "Mercedes", "Volkswagen", "Toyota", "Honda"],
+      "placeholder": "Select car brand"
+    },
+    {
+      "label": "Car Type", 
+      "options": ["Sedan", "SUV", "Hatchback", "Van", "Sports", "Luxury"],
+      "placeholder": "Select car type"
+    },
+    {
+      "label": "Car Price",
+      "options": ["$50 - $100", "$100 - $150", "$150 - $200", "$200 - $300", "$300+"],
+      "placeholder": "Select price range"
+    }
+  ],
+  "vehicleFields": [
+    {
+      "label": "Car Brand",
+      "options": ["Audi", "BMW", "Mercedes", "Volkswagen", "Toyota", "Honda", "Ford", "Chevrolet"],
+      "placeholder": "Select car brand"
+    },
+    {
+      "label": "Car Type",
+      "options": ["Sedan", "SUV", "Hatchback", "Van", "Sports", "Luxury", "Electric", "Hybrid"],
+      "placeholder": "Select car type"
+    },
+    {
+      "label": "Car Price",
+      "options": ["$50 - $100", "$100 - $150", "$150 - $200", "$200 - $300", "$300+", "$500+"],
+      "placeholder": "Select price range"
+    }
+  ]
+}

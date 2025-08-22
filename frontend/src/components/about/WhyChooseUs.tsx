@@ -71,14 +71,14 @@ const WhyChooseUs: React.FC = () => {
             <Button
               variant="primary"
               size="lg"
-              className="w-full sm:w-auto hover:bg-brand-dark transition-colors duration-300 transform hover:scale-105"
+              className="w-full sm:w-64 hover:bg-brand-dark transition-colors duration-300 transform hover:scale-105"
             >
               View All Vehicles
             </Button>
             <Button 
               variant="secondary" 
               size="lg"
-              className="w-full sm:w-auto hover:bg-brand-yellow transition-colors duration-300 transform hover:scale-105"
+              className="w-full sm:w-64 hover:bg-brand-yellow transition-colors duration-300 transform hover:scale-105"
             >
               Reserved Car
             </Button>

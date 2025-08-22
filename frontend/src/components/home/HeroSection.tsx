@@ -76,63 +76,12 @@ const HeroSection = () => {
         </div>
 
         {/* Search Form Component */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 bg-black/10 backdrop-blur-sm">
-          <div className="container mx-auto px-4 py-6 md:py-12">
-            <form>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                <div>
-                  <label className="block font-normal mb-2 md:mb-3 text-xs md:text-sm uppercase text-white">
-                    Car Brand
-                  </label>
-                  <select className="w-full px-3 md:px-4 py-3 md:py-4 border border-gray-300 focus:ring-2 focus:ring-primary-600 focus:border-transparent text-sm shadow-sm bg-white/90 backdrop-blur-sm">
-                    <option value="">Select car brand</option>
-                    <option value="Audi">Audi</option>
-                    <option value="BMW">BMW</option>
-                    <option value="Mercedes">Mercedes</option>
-                    <option value="Volkswagen">Volkswagen</option>
-                    <option value="Toyota">Toyota</option>
-                    <option value="Honda">Honda</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block font-normal mb-2 md:mb-3 text-xs md:text-sm uppercase text-white">
-                    Car Type
-                  </label>
-                  <select className="w-full px-3 md:px-4 py-3 md:py-4 border border-gray-300 focus:ring-2 focus:ring-primary-600 focus:border-transparent text-sm shadow-sm bg-white/90 backdrop-blur-sm">
-                    <option value="">Select car type</option>
-                    <option value="Sedan">Sedan</option>
-                    <option value="SUV">SUV</option>
-                    <option value="Hatchback">Hatchback</option>
-                    <option value="Van">Van</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Luxury">Luxury</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block font-normal mb-2 md:mb-3 text-xs md:text-sm uppercase text-white">
-                    Car Price
-                  </label>
-                  <select className="w-full px-3 md:px-4 py-3 md:py-4 border border-gray-300 focus:ring-2 focus:ring-primary-600 focus:border-transparent text-sm shadow-sm bg-white/90 backdrop-blur-sm">
-                    <option value="">Select price range</option>
-                    <option value="$50 - $100">$50 - $100</option>
-                    <option value="$100 - $150">$100 - $150</option>
-                    <option value="$150 - $200">$150 - $200</option>
-                    <option value="$200 - $300">$200 - $300</option>
-                    <option value="$300+">$300+</option>
-                  </select>
-                </div>
-                <div className="flex items-end">
-                  <button
-                    type="submit"
-                    className="w-full py-3 md:py-4 transition-colors font-normal text-base md:text-lg shadow-lg hover:shadow-xl uppercase bg-brand-yellow text-brand-dark"
-                  >
-                    Search Car Now
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+        <SearchForm 
+          variant="hero"
+          buttonText="Search Car Now"
+          buttonClassName="bg-brand-yellow text-white text-xs"
+          onSubmit={(values) => console.log('Search values:', values)}
+        />
 
         {/* Navigation Controls */}
         <button 

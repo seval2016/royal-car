@@ -66,6 +66,8 @@ const CarCard = ({ car }: CarCardProps) => {
           </div>
         </div>
 
+
+
         {/* Car Details */}
         <div className="flex justify-between items-center text-base-custom text-brand-lightGray pt-3 border-t border-gray-200">
           <div className="flex items-center">
