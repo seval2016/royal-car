@@ -75,7 +75,11 @@ const WhyChooseUs: React.FC = () => {
             >
               View All Vehicles
             </Button>
-            <Button variant="secondary" size="lg">
+            <Button 
+              variant="secondary" 
+              size="lg"
+              className="w-full sm:w-auto hover:bg-brand-yellow transition-colors duration-300 transform hover:scale-105"
+            >
               Reserved Car
             </Button>
           </div>

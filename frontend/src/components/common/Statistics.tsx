@@ -78,15 +78,15 @@ const Statistics: React.FC<StatisticsProps> = ({
                 <div className="flex flex-col">
                   <div
                     className={`text-2xl sm:text-3xl lg:text-[38px] font-[700] leading-tight sm:leading-tight lg:leading-[42px] ${
-                      variant === "about" ? "text-brand-dark" : "text-white"
+                      variant === "about" ? "text-brand-gray-dark" : "text-white"
                     }`}
                   >
                     {stat.number}
                   </div>
                   <div
-                    className={`text-[10px] sm:text-xs lg:text-sm font-medium ${
+                    className={`text-sm-custom sm:text-xs font-medium ${
                       variant === "about"
-                        ? "text-brand-gray-medium"
+                        ? "text-brand-lightGray"
                         : "text-white"
                     }`}
                   >
