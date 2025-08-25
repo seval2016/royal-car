@@ -9,10 +9,9 @@ import {
   TestimonialSection,
   Blog,
   FAQ,
-  Drivers,
-  Gallery
+  Drivers
 } from '../components/home';
-import { Statistics } from '../components/common';
+import { Statistics, Gallery } from '../components/common';
 
 const HomePage = () => {
   return (
@@ -27,7 +26,7 @@ const HomePage = () => {
       <FAQ />
       <Statistics />
       <Blog />  
-      <Gallery />
+      <Gallery gridType="flex" maxItems={5} showHeader={false} />
     </Layout>
   );
 };

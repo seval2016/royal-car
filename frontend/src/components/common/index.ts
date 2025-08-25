@@ -6,4 +6,5 @@ export { default as SearchForm } from './SearchForm';
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as PageHero } from './PageHero';
 export { default as ContactForm } from './ContactForm';
+export { default as Gallery } from './Gallery';
 export { default as Statistics } from './Statistics';

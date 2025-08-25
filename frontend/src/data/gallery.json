@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "src": "/images/gallery/gallery-img01.jpg",
+    "alt": "Luxury Car 1",
+    "title": "Premium Sedan",
+    "category": "Sedan",
+    "manufacturer": "Mercedes-Benz",
+    "model": "S-Class"
+  },
+  {
+    "id": 2,
+    "src": "/images/gallery/gallery-img02.jpg",
+    "alt": "Luxury Car 2",
+    "title": "Sports Car",
+    "category": "Sports",
+    "manufacturer": "Ferrari",
+    "model": "488 GTB"
+  },
+  {
+    "id": 3,
+    "src": "/images/gallery/gallery-img03.jpg",
+    "alt": "Luxury Car 3",
+    "title": "SUV Vehicle",
+    "category": "SUV",
+    "manufacturer": "BMW",
+    "model": "X7"
+  },
+  {
+    "id": 4,
+    "src": "/images/gallery/gallery-img04.jpg",
+    "alt": "Luxury Car 4",
+    "title": "Compact Car",
+    "category": "Compact",
+    "manufacturer": "Audi",
+    "model": "A3"
+  },
+  {
+    "id": 5,
+    "src": "/images/gallery/gallery-img05.jpg",
+    "alt": "Luxury Car 5",
+    "title": "Family Car",
+    "category": "Family",
+    "manufacturer": "Volkswagen",
+    "model": "Passat"
+  },
+  {
+    "id": 6,
+    "src": "/images/gallery/gallery-img06.jpg",
+    "alt": "Luxury Car 6",
+    "title": "Executive Car",
+    "category": "Executive",
+    "manufacturer": "Porsche",
+    "model": "Panamera"
+  },
+  {
+    "id": 7,
+    "src": "/images/gallery/gallery-img07.jpg",
+    "alt": "Luxury Car 7",
+    "title": "Luxury SUV",
+    "category": "SUV",
+    "manufacturer": "Range Rover",
+    "model": "Sport"
+  },
+  {
+    "id": 8,
+    "src": "/images/gallery/gallery-img08.jpg",
+    "alt": "Luxury Car 8",
+    "title": "Sports Coupe",
+    "category": "Sports",
+    "manufacturer": "Lamborghini",
+    "model": "Huracán"
+  },
+  {
+    "id": 9,
+    "src": "/images/gallery/gallery-img09.jpg",
+    "alt": "Luxury Car 9",
+    "title": "Premium Hatchback",
+    "category": "Compact",
+    "manufacturer": "Mini",
+    "model": "Cooper"
+  }
+]
