@@ -34,6 +34,114 @@
     "instagram": "https://instagram.com/michaelbrown",
     "linkedin": "https://linkedin.com/in/michaelbrown",
     "experience": "12 years"
+  },
+  {
+    "id": "4",
+    "name": "Carlos",
+    "surname": "Silva",
+    "image": "/images/drivers/driver-blog-img-1.jpg",
+    "email": "carlos.silva@royalcar.com",
+    "facebook": "https://facebook.com/carlossilva",
+    "twitter": "https://twitter.com/carlossilva",
+    "instagram": "https://instagram.com/carlossilva",
+    "linkedin": "https://linkedin.com/in/carlossilva",
+    "experience": "6 years"
+  },
+  {
+    "id": "5",
+    "name": "Miguel",
+    "surname": "Rodriguez",
+    "image": "/images/drivers/driver-blog-img-2.jpg",
+    "email": "miguel.rodriguez@royalcar.com",
+    "facebook": "https://facebook.com/miguelrodriguez",
+    "twitter": "https://twitter.com/miguelrodriguez",
+    "instagram": "https://instagram.com/miguelrodriguez",
+    "linkedin": "https://linkedin.com/in/miguelrodriguez",
+    "experience": "10 years"
+  },
+  {
+    "id": "6",
+    "name": "Antonio",
+    "surname": "Martinez",
+    "image": "/images/drivers/driver-blog-img-3.jpg",
+    "email": "antonio.martinez@royalcar.com",
+    "facebook": "https://facebook.com/antoniomartinez",
+    "twitter": "https://twitter.com/antoniomartinez",
+    "instagram": "https://instagram.com/antoniomartinez",
+    "linkedin": "https://linkedin.com/in/antoniomartinez",
+    "experience": "7 years"
+  },
+  {
+    "id": "7",
+    "name": "Fernando",
+    "surname": "Lopez",
+    "image": "/images/drivers/driver-blog-img-1.jpg",
+    "email": "fernando.lopez@royalcar.com",
+    "facebook": "https://facebook.com/fernandolopez",
+    "twitter": "https://twitter.com/fernandolopez",
+    "instagram": "https://instagram.com/fernandolopez",
+    "linkedin": "https://linkedin.com/in/fernandolopez",
+    "experience": "9 years"
+  },
+  {
+    "id": "8",
+    "name": "Rafael",
+    "surname": "Gonzalez",
+    "image": "/images/drivers/driver-blog-img-2.jpg",
+    "email": "rafael.gonzalez@royalcar.com",
+    "facebook": "https://facebook.com/rafaelgonzalez",
+    "twitter": "https://twitter.com/rafaelgonzalez",
+    "instagram": "https://instagram.com/rafaelgonzalez",
+    "linkedin": "https://linkedin.com/in/rafaelgonzalez",
+    "experience": "11 years"
+  },
+  {
+    "id": "9",
+    "name": "Diego",
+    "surname": "Perez",
+    "image": "/images/drivers/driver-blog-img-3.jpg",
+    "email": "diego.perez@royalcar.com",
+    "facebook": "https://facebook.com/diegoperez",
+    "twitter": "https://twitter.com/diegoperez",
+    "instagram": "https://instagram.com/diegoperez",
+    "linkedin": "https://linkedin.com/in/diegoperez",
+    "experience": "4 years"
+  },
+  {
+    "id": "10",
+    "name": "Javier",
+    "surname": "Sanchez",
+    "image": "/images/drivers/driver-blog-img-1.jpg",
+    "email": "javier.sanchez@royalcar.com",
+    "facebook": "https://facebook.com/javiersanchez",
+    "twitter": "https://twitter.com/javiersanchez",
+    "instagram": "https://instagram.com/javiersanchez",
+    "linkedin": "https://linkedin.com/in/javiersanchez",
+    "experience": "13 years"
+  },
+  {
+    "id": "11",
+    "name": "Alberto",
+    "surname": "Ramirez",
+    "image": "/images/drivers/driver-blog-img-2.jpg",
+    "email": "alberto.ramirez@royalcar.com",
+    "facebook": "https://facebook.com/albertoramirez",
+    "twitter": "https://twitter.com/albertoramirez",
+    "instagram": "https://instagram.com/albertoramirez",
+    "linkedin": "https://linkedin.com/in/albertoramirez",
+    "experience": "8 years"
+  },
+  {
+    "id": "12",
+    "name": "Manuel",
+    "surname": "Torres",
+    "image": "/images/drivers/driver-blog-img-3.jpg",
+    "email": "manuel.torres@royalcar.com",
+    "facebook": "https://facebook.com/manueltorres",
+    "twitter": "https://twitter.com/manueltorres",
+    "instagram": "https://instagram.com/manueltorres",
+    "linkedin": "https://linkedin.com/in/manueltorres",
+    "experience": "15 years"
   }
 ]
   

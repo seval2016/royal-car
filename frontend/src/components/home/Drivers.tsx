@@ -4,16 +4,21 @@ import Title from "../common/Title";
 import Button from "../common/Button";
 import DriverCard from "../common/DriverCard";
 import driversData from "../../data/drivers.json";
+import { useNavigate } from "react-router-dom";
 
 const Drivers = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const navigate = useNavigate();
 
   const drivers: any[] = driversData;
 
+  // Ana sayfada sadece ilk 3 driver'ı göster
+  const homePageDrivers = drivers.slice(0, 3);
+
   const filteredDrivers =
     selectedCategory === "All Categories"
-      ? drivers
-      : drivers.filter((driver) => driver.category === selectedCategory);
+      ? homePageDrivers
+      : homePageDrivers.filter((driver) => driver.category === selectedCategory);
   return (
     <>
       <section
@@ -106,7 +111,7 @@ const Drivers = () => {
             <Button
               variant="primary"
               className="flex items-center justify-center gap-2 mx-auto w-full sm:w-80 lg:w-96"
-              onClick={() => console.log("View all drivers clicked")}
+              onClick={() => navigate("/drivers")}
             >
               VIEW ALL DRIVERS
             </Button>

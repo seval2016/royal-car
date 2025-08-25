@@ -8,3 +8,5 @@ export { default as PageHero } from './PageHero';
 export { default as ContactForm } from './ContactForm';
 export { default as Gallery } from './Gallery';
 export { default as Statistics } from './Statistics';
+export { default as DriverCard } from './DriverCard';
+export { default as DriverSlider } from './DriverSlider';

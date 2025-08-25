@@ -88,28 +88,13 @@ const Gallery = ({
                   />
 
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
-                    {/* Hover Content */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <h3 className="text-xl font-semibold mb-2">
-                        {image.title}
-                      </h3>
-                      <p className="text-sm text-gray-300 mb-4">
-                        {image.category}
-                      </p>
-
-                      {/* Hover Buttons */}
-                      <div className="flex items-center space-x-3">
-                        <div className="bg-white/20 backdrop-blur-sm p-2 hover:bg-white/30 transition-colors">
-                          <Search className="w-5 h-5" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Top Right Badge */}
-                    <div className="absolute top-4 right-4 bg-brand-yellow text-white px-3 py-1 text-sm font-medium transform -translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      {image.category}
-                    </div>
+                  <div className="absolute inset-0 hover:bg-brand-yellow bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out m-4">
+                                         {/* Search Icon - Ortada */}
+                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                       <div className="bg-white rounded-full p-2">
+                         <Search className="w-6 h-6 text-brand-yellow" />
+                       </div>
+                     </div>
                   </div>
                 </div>
               ))}
