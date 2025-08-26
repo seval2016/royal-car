@@ -1,0 +1,66 @@
+{
+  "offices": [
+    {
+      "id": 1,
+      "title": "Main Office",
+      "image": "/images/contact/contact-img01.jpg",
+      "address": "300 Pennsylvania EV, USA",
+      "phone": "+100-1212-2000",
+      "email": "info@royalcars.com",
+      "workingHours": "Mon - Fri: 8:00 AM - 8:00 PM",
+      "description": "Our main office located in the heart of the city"
+    },
+    {
+      "id": 2,
+      "title": "Other Office",
+      "image": "/images/contact/contact-img02.jpg",
+      "address": "300 Pennsylvania EV, USA",
+      "phone": "+100-1212-2000",
+      "email": "info@royalcars.com",
+      "workingHours": "Sat - Sun: 9:00 AM - 6:00 PM",
+      "description": "Our secondary office for weekend services"
+    }
+  ],
+  "contactInfo": {
+    "general": {
+      "phone": "+90 (212) 555 0123",
+      "email": "info@royalcars.com",
+      "address": "123 Royal Street, Istanbul, Turkey",
+      "workingHours": {
+        "weekdays": "Mon - Fri: 8:00 AM - 8:00 PM",
+        "weekends": "Sat - Sun: 9:00 AM - 6:00 PM"
+      }
+    },
+    "departments": [
+      {
+        "name": "Customer Support",
+        "phone": "+90 (212) 555 0124",
+        "email": "support@royalcars.com"
+      },
+      {
+        "name": "Sales",
+        "phone": "+90 (212) 555 0125",
+        "email": "sales@royalcars.com"
+      },
+      {
+        "name": "Reservations",
+        "phone": "+90 (212) 555 0126",
+        "email": "reservations@royalcars.com"
+      }
+    ]
+  },
+  "socialMedia": {
+    "facebook": "https://facebook.com/royalcars",
+    "twitter": "https://twitter.com/royalcars",
+    "instagram": "https://instagram.com/royalcars",
+    "linkedin": "https://linkedin.com/company/royalcars"
+  },
+  "formSubjects": [
+    "General Inquiry",
+    "Car Booking",
+    "Customer Support",
+    "Partnership",
+    "Feedback",
+    "Other"
+  ]
+}

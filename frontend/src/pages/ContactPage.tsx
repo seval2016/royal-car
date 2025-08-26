@@ -1,11 +1,12 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
-import { PageHero } from "../components/common";
+import { PageHero, Title } from "../components/common";
+import { ContactHero } from "../components/contact";
 
 const ContactPage = () => {
   const breadcrumbItems = [
     { name: "HOME", path: "/" },
-    { name: "CONTACT US", path: "/contact", isActive: true }
+    { name: "CONTACT", path: "/contact", isActive: true },
   ];
 
   return (
@@ -16,10 +17,19 @@ const ContactPage = () => {
         titleHighlight="Us"
         breadcrumbItems={breadcrumbItems}
       />
-      <div className="container mx-auto px-4 py-16">
-        <h1 className="text-3xl font-bold mb-6">İletişim</h1>
-        <p className="text-gray-600">İletişim sayfası burada görüntülenecek.</p>
+
+      <div className="container mx-auto pt-32">
+        <Title
+          subtitle="OUR OFFICE"
+          title="Royal Cars"
+          titleHighlight="Contact"
+          className="mb-8"
+          align="left"
+        />
+        <p className="text-lg text-gray-600 max-w-2xl">for More Information</p>
       </div>
+
+      <ContactHero />
     </Layout>
   );
 };
