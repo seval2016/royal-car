@@ -2,10 +2,17 @@
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
     
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', function() {
             mobileMenu.classList.toggle('hidden');
+            // Toggle icon
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fas fa-bars w-6 h-6';
+            } else {
+                menuIcon.className = 'fas fa-times w-6 h-6';
+            }
         });
     }
     
@@ -13,8 +20,103 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function(event) {
         if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
             mobileMenu.classList.add('hidden');
+            menuIcon.className = 'fas fa-bars w-6 h-6';
         }
     });
+});
+
+// Header scroll effect
+window.addEventListener('scroll', function() {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) {
+        header.classList.add('bg-brand-gray-dark');
+    } else {
+        header.classList.remove('bg-brand-gray-dark');
+    }
+});
+
+// Hero Slider
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = [
+        {
+            image: "../frontend/public/images/main-slider-01.jpg",
+            title: "Kia Rio",
+            subtitle: "FOR RENT $50 PER DAY",
+            description: "Luxury Sedan with Premium Features",
+        },
+        {
+            image: "../frontend/public/images/main-slider-02.jpg",
+            title: "BMW 3",
+            subtitle: "FOR RENT $150 PER DAY",
+            description: "Premium SUV for Adventure",
+        },
+        {
+            image: "../frontend/public/images/main-slider-03.jpg",
+            title: "Audi A4",
+            subtitle: "FOR RENT $120 PER DAY",
+            description: "Elegant Luxury Experience",
+        },
+    ];
+
+    let currentSlide = 0;
+    const heroBackground = document.getElementById('hero-background');
+    const heroTitle = document.getElementById('hero-title');
+    const heroSubtitle = document.getElementById('hero-subtitle');
+    const prevBtn = document.getElementById('prev-slide');
+    const nextBtn = document.getElementById('next-slide');
+    const paginationButtons = document.querySelectorAll('#slider-pagination button');
+
+    function updateSlide() {
+        const slide = slides[currentSlide];
+        
+        // Update background
+        heroBackground.style.backgroundImage = `url(${slide.image})`;
+        
+        // Update content
+        heroTitle.textContent = slide.title;
+        heroSubtitle.innerHTML = `FOR RENT <strong class="text-brand-yellow font-semibold">$${slide.subtitle.split('$')[1].split(' ')[0]}</strong> PER DAY`;
+        
+        // Update pagination
+        paginationButtons.forEach((btn, index) => {
+            if (index === currentSlide) {
+                btn.classList.add('font-bold');
+                btn.innerHTML = `${String(index + 1).padStart(2, "0")}<div class="absolute bottom-0 left-1/4 right-1/4 h-0.5 bg-brand-yellow"></div>`;
+            } else {
+                btn.classList.remove('font-bold');
+                btn.innerHTML = String(index + 1).padStart(2, "0");
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateSlide();
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        updateSlide();
+    }
+
+    // Event listeners
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextSlide);
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevSlide);
+    }
+
+    // Pagination click events
+    paginationButtons.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            currentSlide = index;
+            updateSlide();
+        });
+    });
+
+    // Auto slide every 5 seconds
+    setInterval(nextSlide, 5000);
 });
 
 // Smooth scrolling for anchor links
@@ -29,16 +131,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
-});
-
-// Header scroll effect
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('header');
-    if (window.scrollY > 100) {
-        header.classList.add('shadow-lg');
-    } else {
-        header.classList.remove('shadow-lg');
-    }
 });
 
 // Form validation
