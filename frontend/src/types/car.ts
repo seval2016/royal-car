@@ -12,6 +12,12 @@ export interface Car {
   isAvailable: boolean;
   createdAt: string;
   updatedAt: string;
+  
+  // UI için gerekli alanlar
+  manufacturer?: string;  // brand ile aynı, geriye uyumluluk için
+  modelCode?: string;     // model varyantı
+  engine?: string;        // motor bilgisi
+  image?: string;         // araç resmi
 }
 
 export interface CarFilters {

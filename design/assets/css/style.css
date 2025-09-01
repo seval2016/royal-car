@@ -1,0 +1,249 @@
+/* Custom Styles for Royal Car */
+
+/* Smooth transitions */
+* {
+    transition: all 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FFD700;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FFC700;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animation classes */
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+}
+
+/* Custom button styles */
+.btn-primary {
+    @apply bg-brand-yellow text-brand-dark px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors;
+}
+
+.btn-secondary {
+    @apply border-2 border-brand-yellow text-brand-yellow px-6 py-3 rounded-lg font-semibold hover:bg-brand-yellow hover:text-brand-dark transition-colors;
+}
+
+.btn-outline {
+    @apply border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-brand-dark transition-colors;
+}
+
+/* Card hover effects */
+.card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
+}
+
+/* Image hover effects */
+.img-hover {
+    @apply transition-transform duration-300 hover:scale-105;
+}
+
+/* Custom form styles */
+.form-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-transparent;
+}
+
+.form-textarea {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-transparent resize-none;
+}
+
+/* Custom car card styles */
+.car-card {
+    @apply bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+}
+
+.car-card img {
+    @apply w-full h-48 object-cover transition-transform duration-300;
+}
+
+.car-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Custom header styles */
+.header-scrolled {
+    @apply bg-white/95 backdrop-blur-sm shadow-lg;
+}
+
+/* Custom hero section */
+.hero-gradient {
+    background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+}
+
+/* Custom feature icons */
+.feature-icon {
+    @apply bg-brand-yellow w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-300;
+}
+
+.feature-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Custom price display */
+.price-display {
+    @apply text-2xl font-bold text-brand-yellow;
+}
+
+/* Custom loading spinner */
+.loading-spinner {
+    @apply animate-spin rounded-full h-8 w-8 border-b-2 border-brand-yellow;
+}
+
+/* Custom success/error messages */
+.message-success {
+    @apply bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4;
+}
+
+.message-error {
+    @apply bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4;
+}
+
+.message-warning {
+    @apply bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded mb-4;
+}
+
+/* Custom navigation styles */
+.nav-link {
+    @apply text-brand-dark hover:text-brand-yellow transition-colors relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #FFD700;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Custom footer styles */
+.footer-link {
+    @apply text-gray-400 hover:text-brand-yellow transition-colors;
+}
+
+/* Custom responsive utilities */
+@media (max-width: 768px) {
+    .mobile-hidden {
+        display: none;
+    }
+    
+    .mobile-full {
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) {
+    .desktop-hidden {
+        display: none;
+    }
+}
+
+/* Custom focus styles for accessibility */
+.focus-visible:focus {
+    @apply outline-none ring-2 ring-brand-yellow ring-offset-2;
+}
+
+/* Custom selection styles */
+::selection {
+    background-color: #FFD700;
+    color: #1a1a1a;
+}
+
+/* Custom print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .print-only {
+        display: block !important;
+    }
+}
+
+/* Custom dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+    .dark-mode-auto {
+        @apply bg-gray-900 text-white;
+    }
+}
+
+/* Custom utility classes */
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.box-shadow-custom {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #FFD700, #FFC700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

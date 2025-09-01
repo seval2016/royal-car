@@ -16,14 +16,13 @@ const ContactHero: React.FC = () => {
   const offices: OfficeInfo[] = contactData.offices;
 
   return (
-    <section className="bg-white py-16 sm:py-24 lg:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+    <section className="bg-white">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {offices.map((office, index) => (
             <div key={index} className="bg-white overflow-hidden duration-300">
               {/* Office Title */}
-              <div className="p-4 sm:p-6 pb-2 sm:pb-4">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">
+              <div className="pb-2 sm:pb-4">
+                <h3 className="text-xl sm:text-2xl text-brand-gray-dark mb-2 sm:mb-4">
                   {office.title}
                 </h3>
               </div>
@@ -74,7 +73,6 @@ const ContactHero: React.FC = () => {
             </div>
           ))}
         </div>
-      </div>
     </section>
   );
 };

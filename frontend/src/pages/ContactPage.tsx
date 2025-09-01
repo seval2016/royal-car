@@ -18,18 +18,17 @@ const ContactPage = () => {
         breadcrumbItems={breadcrumbItems}
       />
 
-      <div className="container mx-auto pt-32">
-        <Title
-          subtitle="OUR OFFICE"
-          title="Royal Cars"
-          titleHighlight="Contact"
-          className="mb-8"
-          align="left"
-        />
-        <p className="text-lg text-gray-600 max-w-2xl">for More Information</p>
-      </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-32">  
+          <Title
+            subtitle="OUR OFFICE"
+            title="Royal Cars"
+            titleHighlight="Contact"
+            className="text-brand-gray-dark"
+            align="left"
+          />
 
-      <ContactHero />
+        <ContactHero />
+      </div>
     </Layout>
   );
 };
