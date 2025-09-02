@@ -1,53 +1,15 @@
 import React from "react";
 import { Star, Settings, Fuel, Gauge } from "lucide-react";
 import { Title } from "../common";
+import discountData from "../../data/discount.json";
+
 
 const Discount = () => {
-  const discountCars = [
-    {
-      id: 1,
-      image: "/images/discount-car-01.jpg",
-      name: "Audi Cabriolet R8",
-      rating: 5,
-      oldPrice: 50.0,
-      newPrice: 25.0,
-      specifications: [
-        { icon: Settings, text: "MANUAL" },
-        { icon: Fuel, text: "PETROL" },
-        { icon: Gauge, text: "2.3k CC" },
-      ],
-    },
-    {
-      id: 2,
-      image: "/images/discount-car-02.jpg",
-      name: "Mercedes Benz I7",
-      rating: 5,
-      oldPrice: 50.0,
-      newPrice: 25.0,
-      specifications: [
-        { icon: Settings, text: "MANUAL" },
-        { icon: Fuel, text: "PETROL" },
-        { icon: Gauge, text: "2.3k CC" },
-      ],
-    },
-    {
-      id: 3,
-      image: "/images/discount-car-03.jpg",
-      name: "Audi Cabriolet R8",
-      rating: 5,
-      oldPrice: 50.0,
-      newPrice: 25.0,
-      specifications: [
-        { icon: Settings, text: "MANUAL" },
-        { icon: Fuel, text: "PETROL" },
-        { icon: Gauge, text: "2.3k CC" },
-      ],
-    },
-  ];
+  const discountCars = discountData;
 
   return (
     <section
-      className="py-12 sm:py-16 md:py-20 lg:py-24 relative"
+      className="py-12 sm:py-16 md:py-20 lg:py-24 relative bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url(/images/discount-bg.jpg)" }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -58,7 +20,7 @@ const Discount = () => {
             title="for Audi & Mercedes Only."
             titleHighlight="Reserved Now & Get 50% Off"
             align="left"
-            subtitleClassName="text-white mb-4"
+            subtitleClassName="text-white"
             titleClassName="text-brand-yellow font-normal"
             showBorder={true}
             borderColor="#ffcd00"
@@ -103,11 +65,7 @@ const Discount = () => {
                   <div className="mb-2 hover:text-yellow-400 transition-colors duration-200">
                     <div className="r-price-discount">
                       <span
-                        className="r-cut-price text-base-custom"
-                        style={{
-                          textDecoration: "line-through",
-                          color: "#777777",
-                        }}
+                        className="r-cut-price text-base-custom line-through text-gray-500"
                       >
                         ${car.oldPrice.toFixed(2)}
                       </span>{" "}
@@ -121,7 +79,12 @@ const Discount = () => {
                   {/* Car Specifications */}
                   <div className="flex gap-1">
                     {car.specifications.map((spec, index) => {
-                      const IconComponent = spec.icon;
+                      const iconMap: { [key: string]: React.ComponentType<{ className?: string }> } = {
+                        Settings,
+                        Fuel,
+                        Gauge
+                      };
+                      const IconComponent = iconMap[spec.icon];
                       return (
                         <div
                           key={index}

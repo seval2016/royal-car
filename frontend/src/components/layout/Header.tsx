@@ -37,7 +37,7 @@ const Header = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center">
               <img src="/images/logo.png" alt="Royal Cars Logo" className="h-12" />
-            </Link>
+            </Link> 
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">

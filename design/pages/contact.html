@@ -22,79 +22,15 @@
     <script src="../assets/js/tailwind-config.js"></script>
 </head>
 <body class="bg-background text-foreground font-sans">
-    <!-- Header -->
-    <div class="fixed top-0 left-0 right-0 z-50">
-        <div class="transition-all duration-300 bg-transparent" id="header">
-            <div class="container mx-auto px-4">
-                <div class="flex items-center justify-between h-20">
-                    <!-- Logo -->
-                    <a href="../index.html" class="flex items-center">
-                        <img src="../../frontend/public/images/logo.png" alt="Royal Cars Logo" class="h-12" />
-                    </a>
-
-                    <!-- Desktop Navigation -->
-                    <nav class="hidden md:flex items-center space-x-8">
-                        <a href="../index.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">HOME</a>
-                        <a href="about.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">ABOUT US</a>
-                        <a href="vehicles.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">VEHICLES</a>
-                        <a href="gallery.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">GALLERY</a>
-                        <a href="drivers.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">DRIVERS</a>
-                        <a href="contact.html" class="font-medium transition-colors duration-200 text-white border-b-2 border-white">CONTACT US</a>
-                    </nav>
-
-                    <!-- Utility Icons -->
-                    <div class="hidden md:flex items-center space-x-8">
-                        <div class="flex items-center space-x-2 group cursor-pointer">
-                            <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                                <i class="fas fa-user w-5 h-5 text-white group-hover:text-white"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-sm font-medium text-white">LOGIN</span>
-                                <span class="text-xs text-white/70">Account</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-2 group cursor-pointer">
-                            <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                                <i class="fas fa-search w-5 h-5 text-white group-hover:text-white"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-sm font-medium text-white">SEARCH</span>
-                                <span class="text-xs text-white/70">Find Cars</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mobile menu button -->
-                    <button
-                        type="button"
-                        class="md:hidden p-3 rounded-lg text-white hover:text-white hover:bg-white/20 bg-brand-yellow/20 backdrop-blur-sm transition-all duration-300 shadow-sm"
-                        id="mobile-menu-btn"
-                    >
-                        <i class="fas fa-bars w-6 h-6" id="menu-icon"></i>
-                    </button>
-                </div>
-
-                <!-- Mobile Navigation -->
-                <div class="md:hidden py-6 border-t border-white/20 bg-brand-yellow shadow-lg hidden" id="mobile-menu">
-                    <nav class="flex flex-col space-y-2">
-                        <a href="../index.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">HOME</a>
-                        <a href="about.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">ABOUT US</a>
-                        <a href="vehicles.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">VEHICLES</a>
-                        <a href="gallery.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">GALLERY</a>
-                        <a href="drivers.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">DRIVERS</a>
-                        <a href="contact.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark bg-white/20 shadow-sm">CONTACT US</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Header Container -->
+    <div id="header-container"></div>
 
     <!-- Page Hero -->
     <section class="relative py-32 sm:py-40 lg:py-48">
         <!-- Background Image -->
         <div
             class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style="background-image: url('../../frontend/public/images/inner-header.jpg')"
+            style="background-image: url('../assets/images/inner-header.jpg')"
         ></div>
 
         <!-- Overlay -->
@@ -202,67 +138,16 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-brand-gray-dark text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Company Info -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Royal Car</h3>
-                    <p class="text-gray-400 mb-4">Premium araç kiralama hizmeti ile lüks ve konforu bir arada sunuyoruz.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Hızlı Linkler</h3>
-                    <ul class="space-y-2">
-                        <li><a href="../index.html" class="text-gray-400 hover:text-brand-yellow transition-colors">Ana Sayfa</a></li>
-                        <li><a href="vehicles.html" class="text-gray-400 hover:text-brand-yellow transition-colors">Araçlar</a></li>
-                        <li><a href="about.html" class="text-gray-400 hover:text-brand-yellow transition-colors">Hakkımızda</a></li>
-                        <li><a href="contact.html" class="text-brand-yellow">İletişim</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Services -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Hizmetler</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">Günlük Kiralama</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">Haftalık Kiralama</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">Aylık Kiralama</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">Şoförlü Hizmet</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">İletişim</h3>
-                    <div class="space-y-2 text-gray-400">
-                        <p><i class="fas fa-phone mr-2"></i> +90 555 123 4567</p>
-                        <p><i class="fas fa-envelope mr-2"></i> info@royalcar.com</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i> İstanbul, Türkiye</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Royal Car. Tüm hakları saklıdır.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
 
     <!-- JavaScript -->
     <script src="../assets/js/main.js"></script>
+    <script>
+        function submitContactForm(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+        }
+    </script>
 </body>
 </html>

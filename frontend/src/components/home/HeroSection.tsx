@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { SearchForm } from "../common";
+import sliderData from "../../data/slider.json";
 
 interface HeroSectionProps {
   slides?: Array<{
@@ -14,26 +15,7 @@ interface HeroSectionProps {
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const slides = [
-    {
-      image: "/images/main-slider-01.jpg",
-      title: "Kia Rio",
-      subtitle: "FOR RENT $50 PER DAY",
-      description: "Luxury Sedan with Premium Features",
-    },
-    {
-      image: "/images/main-slider-02.jpg",
-      title: "BMW 3",
-      subtitle: "FOR RENT $150 PER DAY",
-      description: "Premium SUV for Adventure",
-    },
-    {
-      image: "/images/main-slider-03.jpg",
-      title: "Audi A4",
-      subtitle: "FOR RENT $120 PER DAY",
-      description: "Elegant Luxury Experience",
-    },
-  ];
+  const slides = sliderData;
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);

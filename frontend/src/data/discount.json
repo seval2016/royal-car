@@ -1,0 +1,42 @@
+[
+    {
+      "id": 1,
+      "image": "/images/discount-car-01.jpg",
+      "name": "Audi Cabriolet R8",
+      "rating": 5,
+      "oldPrice": 50.0,
+      "newPrice": 25.0,
+      "specifications": [
+        { "icon": "Settings", "text": "MANUAL" },
+        { "icon": "Fuel", "text": "PETROL" },
+        { "icon": "Gauge", "text": "2.3k CC" }
+      ]
+    },
+    {
+      "id": 2,
+      "image": "/images/discount-car-02.jpg",
+      "name": "Mercedes Benz I7",
+      "rating": 5,
+      "oldPrice": 50.0,
+      "newPrice": 25.0,
+      "specifications": [
+        { "icon": "Settings", "text": "MANUAL" },
+        { "icon": "Fuel", "text": "PETROL" },
+        { "icon": "Gauge", "text": "2.3k CC" }
+      ]
+    },
+    {
+      "id": 3,
+      "image": "/images/discount-car-03.jpg",
+      "name": "Audi Cabriolet R8",
+      "rating": 5,
+      "oldPrice": 50.0,
+      "newPrice": 25.0,
+      "specifications": [
+        { "icon": "Settings", "text": "MANUAL" },
+        { "icon": "Fuel", "text": "PETROL" },
+        { "icon": "Gauge", "text": "2.3k CC" }
+      ]
+    }
+  ]
+  

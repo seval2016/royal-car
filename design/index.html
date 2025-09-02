@@ -1,104 +1,41 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Royal Car - Premium Car Rental</title>
-    <meta name="description" content="Premium araç kiralama hizmeti. Lüks ve konforlu araçlar için Royal Car'ı tercih edin.">
-    
+    <meta name="description"
+        content="Premium araç kiralama hizmeti. Lüks ve konforlu araçlar için Royal Car'ı tercih edin.">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind Config -->
     <script src="assets/js/tailwind-config.js"></script>
 </head>
+
 <body class="bg-background text-foreground font-sans">
-    <!-- Header -->
-    <div class="fixed top-0 left-0 right-0 z-50">
-        <div class="transition-all duration-300 bg-transparent" id="header">
-            <div class="container mx-auto px-4">
-                <div class="flex items-center justify-between h-20">
-                    <!-- Logo -->
-                    <a href="index.html" class="flex items-center">
-                        <img src="../frontend/public/images/logo.png" alt="Royal Cars Logo" class="h-12" />
-                    </a>
-
-                    <!-- Desktop Navigation -->
-                    <nav class="hidden md:flex items-center space-x-8">
-                        <a href="index.html" class="font-medium transition-colors duration-200 text-white border-b-2 border-white">HOME</a>
-                        <a href="pages/about.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">ABOUT US</a>
-                        <a href="pages/vehicles.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">VEHICLES</a>
-                        <a href="pages/gallery.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">GALLERY</a>
-                        <a href="pages/drivers.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">DRIVERS</a>
-                        <a href="pages/contact.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">CONTACT US</a>
-                    </nav>
-
-                    <!-- Utility Icons -->
-                    <div class="hidden md:flex items-center space-x-8">
-                        <div class="flex items-center space-x-2 group cursor-pointer">
-                            <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                                <i class="fas fa-user w-5 h-5 text-white group-hover:text-white"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-sm font-medium text-white">LOGIN</span>
-                                <span class="text-xs text-white/70">Account</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-2 group cursor-pointer">
-                            <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                                <i class="fas fa-search w-5 h-5 text-white group-hover:text-white"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-sm font-medium text-white">SEARCH</span>
-                                <span class="text-xs text-white/70">Find Cars</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mobile menu button -->
-                    <button
-                        type="button"
-                        class="md:hidden p-3 rounded-lg text-white hover:text-white hover:bg-white/20 bg-brand-yellow/20 backdrop-blur-sm transition-all duration-300 shadow-sm"
-                        id="mobile-menu-btn"
-                    >
-                        <i class="fas fa-bars w-6 h-6" id="menu-icon"></i>
-                    </button>
-                </div>
-
-                <!-- Mobile Navigation -->
-                <div class="md:hidden py-6 border-t border-white/20 bg-brand-yellow shadow-lg hidden" id="mobile-menu">
-                    <nav class="flex flex-col space-y-2">
-                        <a href="index.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark bg-white/20 shadow-sm">HOME</a>
-                        <a href="pages/about.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">ABOUT US</a>
-                        <a href="pages/vehicles.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">VEHICLES</a>
-                        <a href="pages/gallery.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">GALLERY</a>
-                        <a href="pages/drivers.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">DRIVERS</a>
-                        <a href="pages/contact.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">CONTACT US</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Header Container -->
+    <div id="header-container"></div>
 
     <!-- Hero Section -->
     <section class="relative min-h-screen">
         <!-- Slider Section -->
         <div class="relative h-screen">
             <!-- Background Image -->
-            <div 
-                class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
-                id="hero-background"
-                style="background-image: url('../frontend/public/images/main-slider-01.jpg')"
-            >
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
+                id="hero-background" style="background-image: url('assets/images/main-slider-01.jpg')">
                 <!-- Overlay -->
                 <div class="absolute inset-0 bg-black/40"></div>
             </div>
@@ -107,14 +44,18 @@
             <div class="relative z-10 h-full flex items-center pb-32 md:pb-48">
                 <div class="container mx-auto px-4">
                     <div class="flex justify-center md:justify-end">
-                        <div class="r-slider-top-content text-center md:text-right flex flex-col items-center md:items-end">
-                            <h1 class="text-[60px] md:text-[80px] lg:text-[120px] text-white font-semibold animate-fade-in leading-tight" id="hero-title">
+                        <div
+                            class="r-slider-top-content text-center md:text-right flex flex-col items-center md:items-end">
+                            <h1 class="text-[60px] md:text-[80px] lg:text-[120px] text-white font-semibold animate-fade-in leading-tight"
+                                id="hero-title">
                                 Kia Rio
                             </h1>
-                            <h4 class="text-white font-light text-[16px] md:text-[20px] lg:text-[23px] tracking-[0.27em] uppercase mb-[20px] md:mb-[30px] animate-fade-in-delay text-center md:text-right" id="hero-subtitle">
+                            <h4 class="text-white font-light text-[16px] md:text-[20px] lg:text-[23px] tracking-[0.27em] uppercase mb-[20px] md:mb-[30px] animate-fade-in-delay text-center md:text-right"
+                                id="hero-subtitle">
                                 FOR RENT <strong class="text-brand-yellow font-semibold">$50</strong> PER DAY
                             </h4>
-                            <a href="#" class="inline-block px-[30px] md:px-[40px] lg:px-[50px] py-[15px] md:py-[18px] lg:py-[20px] bg-transparent text-white text-base md:text-lg font-semibold text-center uppercase border border-white rounded-none transition-all duration-200 ease-linear hover:bg-brand-yellow hover:text-white hover:border-brand-yellow animate-fade-in-delay-2">
+                            <a href="#"
+                                class="inline-block px-[30px] md:px-[40px] lg:px-[50px] py-[15px] md:py-[18px] lg:py-[20px] bg-transparent text-white text-base md:text-lg font-semibold text-center uppercase border border-white rounded-none transition-all duration-200 ease-linear hover:bg-brand-yellow hover:text-white hover:border-brand-yellow animate-fade-in-delay-2">
                                 Reserve Now
                             </a>
                         </div>
@@ -122,189 +63,449 @@
                 </div>
             </div>
 
-            <!-- Search Form Component -->
-            <div class="absolute bottom-0 left-0 right-0 z-20">
-                <div class="bg-brand-form-bg backdrop-blur-sm py-8">
-                    <div class="container mx-auto px-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Search Form -->
+            <div class="absolute bottom-0 left-0 right-0 z-20 bg-black/10 backdrop-blur-sm">
+                <div class="container mx-auto px-4 py-6 md:py-12">
+                    <form>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                             <div>
-                                <label class="block text-sm font-medium text-white mb-2">Pick Up Location</label>
-                                <select class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-brand-yellow focus:border-transparent">
-                                    <option value="">Select Location</option>
-                                    <option value="istanbul">Istanbul</option>
-                                    <option value="ankara">Ankara</option>
-                                    <option value="izmir">Izmir</option>
+                                <label
+                                    class="block font-normal mb-2 md:mb-3 text-xs md:text-sm uppercase text-white">CAR
+                                    BRAND</label>
+                                <select
+                                    class="w-full px-3 md:px-4 py-3 md:py-4 border border-gray-300 focus:outline-none text-sm shadow-sm bg-white/90 backdrop-blur-sm text-gray-500">
+                                    <option value="">Select car brand</option>
+                                    <option value="BMW">Audi</option>
+                                    <option value="BMW">BMW</option>
+                                    <option value="BMW">Mercedes</option>
+                                    <option value="BMW">Volkswagen</option>
+                                    <option value="Mercedes">Toyota</option>
+                                    <option value="Audi">Honda</option>
                                 </select>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-white mb-2">Drop Off Location</label>
-                                <select class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-brand-yellow focus:border-transparent">
-                                    <option value="">Select Location</option>
-                                    <option value="istanbul">Istanbul</option>
-                                    <option value="ankara">Ankara</option>
-                                    <option value="izmir">Izmir</option>
+                                <label class="block font-normal mb-2 md:mb-3 text-xs md:text-sm uppercase text-white">
+                                    Car Type
+                                </label>
+                                <select
+                                    class="w-full px-3 md:px-4 py-3 md:py-4 border border-gray-300 focus:outline-none text-sm shadow-sm bg-white/90 backdrop-blur-sm text-gray-500">
+                                    <option value="">Select Car Type</option>
+                                    <option value="Sedan">Sedan</option>
+                                    <option value="SUV">SUV</option>
+                                    <option value="Hatchback">Hatchback</option>
+                                    <option value="Van">Van</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Luxury">Luxury</option>
                                 </select>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-white mb-2">Pick Up Date</label>
-                                <input type="date" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-brand-yellow focus:border-transparent">
+                                <label class="block font-normal mb-2 md:mb-3 text-xs md:text-sm uppercase text-white">
+                                    Car Price
+                                </label>
+                                <select
+                                    class="w-full px-3 md:px-4 py-3 md:py-4 border border-gray-300 focus:outline-none text-sm shadow-sm bg-white/90 backdrop-blur-sm text-gray-500">
+                                    <option value="">Select Price range</option>
+                                    <option value="$50-$100">$50-$100</option>
+                                    <option value="$100-$150">$100-$150</option>
+                                    <option value="$150-$200">$150-$200</option>
+                                    <option value="$200-$300">$200-$300</option>
+                                    <option value="$300+">$300+</option>
+                                </select>
                             </div>
+
                             <div class="flex items-end">
-                                <button class="w-full bg-brand-yellow text-white text-xs font-semibold py-3 px-6 rounded-lg hover:bg-brand-yellowDark transition-colors">
-                                    Search Car Now
+                                <button type="submit"
+                                    class="w-full py-3 md:py-4 transition-colors font-normal text-base md:text-lg shadow-lg hover:shadow-xl uppercase bg-yellow-400 text-white">
+                                    SEARCH CAR NOW
                                 </button>
                             </div>
                         </div>
-                    </div>
                 </div>
+                </form>
             </div>
+        </div>
 
-            <!-- Navigation Controls -->
-            <button 
-                class="absolute left-2 md:left-8 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm rounded-full p-2 md:p-4 shadow-lg hover:bg-white/30 transition-all duration-300 group z-40"
-                id="prev-slide"
-            >
-                <i class="fas fa-chevron-left text-white text-xl md:text-3xl font-bold group-hover:scale-110 transition-transform"></i>
-            </button>
-            <button 
-                class="absolute right-2 md:right-8 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm rounded-full p-2 md:p-4 shadow-lg hover:bg-white/30 transition-all duration-300 group z-40"
-                id="next-slide"
-            >
-                <i class="fas fa-chevron-right text-white text-xl md:text-3xl font-bold group-hover:scale-110 transition-transform"></i>
-            </button>
+        <!-- Navigation Controls -->
+        <button
+            class="absolute left-2 md:left-8 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm rounded-full p-2 md:p-4 shadow-lg hover:bg-white/30 transition-all duration-300 group z-40"
+            id="prev-slide">
+            <i
+                class="fas fa-chevron-left text-white text-xl md:text-3xl font-bold group-hover:scale-110 transition-transform"></i>
+        </button>
+        <button
+            class="absolute right-2 md:right-8 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm rounded-full p-2 md:p-4 shadow-lg hover:bg-white/30 transition-all duration-300 group z-40"
+            id="next-slide">
+            <i
+                class="fas fa-chevron-right text-white text-xl md:text-3xl font-bold group-hover:scale-110 transition-transform"></i>
+        </button>
 
-            <!-- Slider Pagination -->
-            <div class="absolute bottom-20 md:bottom-40 right-4 md:right-8 flex space-x-2 md:space-x-4 z-30" id="slider-pagination">
-                <button class="text-white text-xs md:text-sm px-2 md:px-4 py-1 md:py-2 transition-all duration-300 relative font-bold">
-                    01
-                    <div class="absolute bottom-0 left-1/4 right-1/4 h-0.5 bg-brand-yellow"></div>
-                </button>
-                <button class="text-white text-xs md:text-sm px-2 md:px-4 py-1 md:py-2 transition-all duration-300 relative hover:text-gray-300">
-                    02
-                </button>
-                <button class="text-white text-xs md:text-sm px-2 md:px-4 py-1 md:py-2 transition-all duration-300 relative hover:text-gray-300">
-                    03
-                </button>
-            </div>
+        <!-- Slider Pagination -->
+        <div class="absolute bottom-20 md:bottom-40 right-4 md:right-8 flex space-x-2 md:space-x-4 z-30"
+            id="slider-pagination">
+            <button
+                class="text-white text-xs md:text-sm px-2 md:px-4 py-1 md:py-2 transition-all duration-300 relative font-bold active-slide">
+                01
+                <div class="absolute bottom-0 left-1/4 right-1/4 h-0.5 bg-brand-yellow"></div>
+            </button>
+            <button
+                class="text-white text-xs md:text-sm px-2 md:px-4 py-1 md:py-2 transition-all duration-300 relative hover:text-gray-300">
+                02
+            </button>
+            <button
+                class="text-white text-xs md:text-sm px-2 md:px-4 py-1 md:py-2 transition-all duration-300 relative hover:text-gray-300">
+                03
+            </button>
+        </div>
         </div>
     </section>
 
     <!-- Advantages Section -->
-    <section class="py-16 bg-brand-cream">
+    <section class="py-16 md:py-24 bg-[#f8f4da]">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Header -->
+            <div class="mb-12 md:mb-16 text-center">
+                <p class="text-brand-dark mb-4 text-xs md:text-sm font-medium">120+ CARS TYPE & BRANDS
+                </p>
+                <h2 class="text-3xl md:text-4xl ">
+                    Royal Cars <span class="font-bold">Advantages.</span>
+                </h2>
+            </div>
+
+            <!-- Advantages Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+
                 <!-- Advantage 1 -->
-                <div class="text-center">
-                    <div class="bg-brand-yellow w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-car text-2xl text-brand-dark"></i>
+                <div
+                    class="bg-white p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 min-h-[220px] md:min-h-[260px] flex flex-col justify-center">
+                    <div class="mb-4 md:mb-6">
+                        <img src="assets/images/advantage-icon-1.png" alt="24/7 Support"
+                            class="w-8 h-8 md:w-12 md:h-12 mx-auto">
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-brand-dark">Geniş Araç Filosu</h3>
-                    <p class="text-brand-text-gray">Lüks sedanlardan SUV'lara kadar geniş araç seçenekleri</p>
+                    <div class="text-lg md:text-xl font-medium text-brand-dark mb-2 md:mb-3">
+                        24/7 Customer Online Support
+                    </div>
+                    <div class="text-xs md:text-base text-brand-text-gray leading-relaxed">
+                        Call us Anywhere Anytime
+                    </div>
                 </div>
-                
+
                 <!-- Advantage 2 -->
-                <div class="text-center">
-                    <div class="bg-brand-yellow w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-shield-alt text-2xl text-brand-dark"></i>
+                <div
+                    class="bg-white p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 min-h-[220px] md:min-h-[260px] flex flex-col justify-center">
+                    <div class="mb-4 md:mb-6">
+                        <img src="assets/images/advantage-icon-2.png" alt="Reservation"
+                            class="w-8 h-8 md:w-12 md:h-12 mx-auto">
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-brand-dark">Güvenli Kiralama</h3>
-                    <p class="text-brand-text-gray">Tam sigortalı ve güvenli araç kiralama hizmeti</p>
+                    <div class="text-lg md:text-xl font-medium text-brand-dark mb-2 md:mb-3">
+                        Reservation Anytime You Wants
+                    </div>
+                    <div class="text-xs md:text-base text-brand-text-gray leading-relaxed">
+                        24/7 Online Reservation
+                    </div>
                 </div>
-                
+
                 <!-- Advantage 3 -->
-                <div class="text-center">
-                    <div class="bg-brand-yellow w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-clock text-2xl text-brand-dark"></i>
+                <div
+                    class="bg-white p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 min-h-[220px] md:min-h-[260px] flex flex-col justify-center">
+                    <div class="mb-4 md:mb-6">
+                        <img src="assets/images/advantage-icon-3.png" alt="Locations"
+                            class="w-8 h-8 md:w-12 md:h-12 mx-auto">
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-brand-dark">7/24 Hizmet</h3>
-                    <p class="text-brand-text-gray">Her zaman yanınızda, 7 gün 24 saat hizmet</p>
+                    <div class="text-lg md:text-xl font-medium text-brand-dark mb-2 md:mb-3">
+                        Lots of Picking Locations
+                    </div>
+                    <div class="text-xs md:text-base text-brand-text-gray leading-relaxed">
+                        250+ Locations
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="py-16">
+    <section class="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold mb-6 text-brand-dark">Hakkımızda</h2>
-                    <p class="text-brand-text-gray mb-6">
-                        Royal Car olarak, müşterilerimize en kaliteli araç kiralama hizmetini sunmaktayız. 
-                        Geniş araç filomuz ve deneyimli ekibimizle, seyahatlerinizi unutulmaz kılıyoruz.
-                    </p>
-                    <a href="pages/about.html" class="inline-block bg-brand-yellow text-brand-dark px-6 py-3 rounded-lg font-semibold hover:bg-brand-yellowDark transition-colors">
-                        Daha Fazla Bilgi
-                    </a>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Left Side - Image -->
+                <div class="flex justify-center lg:justify-start">
+                    <div class="relative">
+                        <img src="assets/images/about-img-01.png" alt="About Royal Cars"
+                            class="w-full max-w-md lg:max-w-lg xl:max-w-xl " />
+                    </div>
                 </div>
-                <div>
-                    <img src="../frontend/public/images/about-img-01.png" alt="About Us" class="w-full rounded-lg">
+
+                <!-- Right Side - Content -->
+                <div class="flex flex-col justify-center">
+                    <!-- Title -->
+                    <div class="mb-8">
+                        <h2 class="text-sm font-medium uppercase tracking-wider mb-4">KNOW MORE ABOUT US
+                        </h2>
+                        <h1 class="text-3xl md:text-4xl mb-4">
+                            Who <span class="font-bold">Royal Cars</span>
+                        </h1>
+                        <div class="w-16 h-0.5 bg-brand-yellow mb-6"></div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-8">
+                        <p class="text-brand-gray-light text-sm md:text-base leading-relaxed">
+                            We know the difference is in the details and that's why our car rental services,
+                            in the tourism and business industry, stand out for their quality and good taste.
+                        </p>
+                    </div>
+
+                    <!-- Features List -->
+                    <div class="mb-8 space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div
+                                class="flex-shrink-0 w-4 h-4 bg-brand-yellow rounded-full flex items-center justify-center mt-0.5">
+                                <i class="fas fa-check text-xs text-white"></i>
+                            </div>
+                            <p class="text-gray-700 font-semibold text-xs md:text-base leading-relaxed">
+                                We working since 1980 with 4.000 customers
+                            </p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div
+                                class="flex-shrink-0 w-4 h-4 bg-brand-yellow rounded-full flex items-center justify-center mt-0.5">
+                                <i class="fas fa-check text-xs text-white"></i>
+                            </div>
+                            <p class="text-gray-700 font-semibold text-xs md:text-base leading-relaxed">
+                                All brand & type cars in our garage
+                            </p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div
+                                class="flex-shrink-0 w-4 h-4 bg-brand-yellow rounded-full flex items-center justify-center mt-0.5">
+                                <i class="fas fa-check text-xs text-white"></i>
+                            </div>
+                            <p class="text-gray-700 font-semibold text-xs md:text-base leading-relaxed">
+                                1.000+ picking locations around the world
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Signature Section -->
+                    <div class="flex items-end space-x-4">
+                        <div class="flex-shrink-0">
+                            <img src="assets/images/about-sign.png" alt="Royal Cars Owner Signature"
+                                class="w-40 md:w-40 h-auto" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-brand-gray-dark text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Company Info -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Royal Car</h3>
-                    <p class="text-gray-400 mb-4">Premium araç kiralama hizmeti ile lüks ve konforu bir arada sunuyoruz.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Hızlı Linkler</h3>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-400 hover:text-brand-yellow transition-colors">Ana Sayfa</a></li>
-                        <li><a href="pages/vehicles.html" class="text-gray-400 hover:text-brand-yellow transition-colors">Araçlar</a></li>
-                        <li><a href="pages/about.html" class="text-gray-400 hover:text-brand-yellow transition-colors">Hakkımızda</a></li>
-                        <li><a href="pages/contact.html" class="text-gray-400 hover:text-brand-yellow transition-colors">İletişim</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Services -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Hizmetler</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">Günlük Kiralama</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">Haftalık Kiralama</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">Aylık Kiralama</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">Şoförlü Hizmet</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">İletişim</h3>
-                    <div class="space-y-2 text-gray-400">
-                        <p><i class="fas fa-phone mr-2"></i> +90 555 123 4567</p>
-                        <p><i class="fas fa-envelope mr-2"></i> info@royalcar.com</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i> İstanbul, Türkiye</p>
-                    </div>
-                </div>
+    <!-- Discount Section -->
+    <section class="py-12 sm:py-16 md:py-20 lg:py-24 relative bg-cover bg-center bg-no-repeat"
+        style="background-image: url('assets/images/discount-bg.jpg');">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Header -->
+            <div class="mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-2xl">
+                <span class="block text-xs md:text-sm mb-2 md:mb-4 uppercase tracking-wide text-white">NEW MEMBER
+                    DISCOUNT</span>
+                <h2 class="text-2xl md:text-3xl lg:text-4xl leading-tight text-brand-yellow font-normal">
+                    Reserved Now & Get 50% Off
+                    <span class="block mt-2">
+                        for Audi & Mercedes Only.
+                    </span>
+                </h2>
+                <div class="mt-4 w-12 h-0.5 rounded-full bg-brand-yellow"></div>
             </div>
-            
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Royal Car. Tüm hakları saklıdır.</p>
+
+            <!-- Discount Cars Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 justify-items-center">
+                <!-- Car Card 1 -->
+                <div class="rounded-lg p-3 sm:p-4 md:p-5 lg:p-6 transition-all duration-300 ">
+                    <div class="flex flex-row gap-3 sm:gap-4">
+                        <!-- Car Image -->
+                        <div class="flex-shrink-0">
+                            <img src="assets/images/cars/best-01.jpg" alt="Audi Cabriolet R8"
+                                class="w-[100px] h-[100px] sm:w-[110px] sm:h-[110px] md:w-[120px] md:h-[120px] object-cover" />
+                        </div>
+                        <!-- Car Details -->
+                        <div class="flex-1 flex flex-col justify-between">
+                            <!-- Rating -->
+                            <div class="flex items-center mb-1 text-yellow-400">
+                                ★★★★★
+                            </div>
+
+                            <!-- Car Name -->
+                            <h4
+                                class="text-lg sm:text-xl font-semibold text-white hover:text-yellow-400 transition-colors duration-200 cursor-pointer">
+                                Audi Cabriolet R8
+                            </h4>
+
+                            <!-- Pricing -->
+                            <div class="mb-2 hover:text-yellow-400 transition-colors duration-200">
+                                <div class="r-price-discount">
+                                    <span class="r-cut-price text-base-custom line-through text-gray-500">$50.00</span>
+                                    <b class="text-white">$25.00 USD</b>
+                                    <span class="text-white font-normal">per day</span>
+                                </div>
+                            </div>
+                            <!-- Car Specifications -->
+                            <div class="flex gap-1">
+                                <div
+                                    class="inline-flex items-center gap-1 bg-brand-gray-dark text-brand-gray-medium px-1 py-0.5 hover:bg-yellow-400 hover:text-white transition-colors duration-200 cursor-pointer">
+                                    <i class="fas fa-cog text-xs"></i> <span class="text-xs-custom">MANUAL</span>
+                                </div>
+                                <div
+                                    class="inline-flex items-center gap-1 bg-brand-gray-dark text-brand-gray-medium px-1 py-0.5 hover:bg-yellow-400 hover:text-white transition-colors duration-200 cursor-pointer">
+                                    <i class="fas fa-gas-pump text-xs"></i> <span class="text-xs-custom">PETROL</span>
+                                </div>
+                                <div
+                                    class="inline-flex items-center gap-1 bg-brand-gray-dark text-brand-gray-medium px-1 py-0.5 hover:bg-yellow-400 hover:text-white transition-colors duration-200 cursor-pointer">
+                                    <i class="fas fa-tachometer-alt text-xs"></i> <span class="text-xs-custom">2.3k
+                                        CC</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car Card 2 -->
+                <div class="rounded-lg p-3 sm:p-4 md:p-5 lg:p-6 transition-all duration-300">
+                    <div class="flex flex-row gap-3 sm:gap-4">
+                        <div class="flex-shrink-0">
+                            <img src="assets/images/discount-car-01.jpg" alt="Mercedes Benz I7"
+                                class="w-[100px] h-[100px] sm:w-[110px] sm:h-[110px] md:w-[120px] md:h-[120px] object-cover" />
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between">
+                            <div class="flex items-center mb-1 text-yellow-400">★★★★★</div>
+                            <h4
+                                class="text-lg sm:text-xl font-semibold text-white hover:text-yellow-400 transition-colors duration-200 cursor-pointer">
+                                Mercedes Benz I7
+                            </h4>
+
+                            <!-- Pricing -->
+                            <div class="mb-2 hover:text-yellow-400 transition-colors duration-200">
+                                <div class="r-price-discount">
+                                    <span class="r-cut-price text-base-custom line-through text-gray-500">$50.00</span>
+                                    <b class="text-white">$25.00 USD</b>
+                                    <span class="text-white font-normal">per day</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-1">
+                                <div
+                                    class="inline-flex items-center gap-1 bg-brand-gray-dark text-brand-gray-medium px-1 py-0.5 hover:bg-yellow-400 hover:text-white cursor-pointer">
+                                    <i class="fas fa-cog text-xs"></i> <span class="text-xs-custom">MANUAL</span>
+                                </div>
+                                <div
+                                    class="inline-flex items-center gap-1 bg-brand-gray-dark text-brand-gray-medium px-1 py-0.5 hover:bg-yellow-400 hover:text-white cursor-pointer">
+                                    <i class="fas fa-gas-pump text-xs"></i> <span class="text-xs-custom">PETROL</span>
+                                </div>
+                                <div
+                                    class="inline-flex items-center gap-1 bg-brand-gray-dark text-brand-gray-medium px-1 py-0.5 hover:bg-yellow-400 hover:text-white cursor-pointer">
+                                    <i class="fas fa-tachometer-alt text-xs"></i> <span class="text-xs-custom">2.3k
+                                        CC</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car Card 3 -->
+                <div class="rounded-lg p-3 sm:p-4 md:p-5 lg:p-6 transition-all duration-300">
+                    <div class="flex flex-row gap-3 sm:gap-4">
+                        <div class="flex-shrink-0">
+                            <img src="assets/images/discount-car-03.jpg" alt="Audi Cabriolet R8"
+                                class="w-[100px] h-[100px] sm:w-[110px] sm:h-[110px] md:w-[120px] md:h-[120px] object-cover" />
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between">
+                            <div class="flex items-center mb-1 text-yellow-400">★★★★★</div>
+                            <h4
+                                class="text-lg sm:text-xl font-semibold text-white hover:text-yellow-400 transition-colors duration-200 cursor-pointer">
+                                Audi Cabriolet R8
+                            </h4>
+
+                            <!-- Pricing -->
+                            <div class="mb-2 hover:text-yellow-400 transition-colors duration-200">
+                                <div class="r-price-discount">
+                                    <span class="r-cut-price text-base-custom line-through text-gray-500">$50.00</span>
+                                    <b class="text-white">$25.00 USD</b>
+                                    <span class="text-white font-normal">per day</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-1">
+                                <div
+                                    class="inline-flex items-center gap-1 bg-brand-gray-dark text-brand-gray-medium px-1 py-0.5 hover:bg-yellow-400 hover:text-white cursor-pointer">
+                                    <i class="fas fa-cog text-xs"></i> <span class="text-xs-custom">MANUAL</span>
+                                </div>
+                                <div
+                                    class="inline-flex items-center gap-1 bg-brand-gray-dark text-brand-gray-medium px-1 py-0.5 hover:bg-yellow-400 hover:text-white cursor-pointer">
+                                    <i class="fas fa-gas-pump text-xs"></i> <span class="text-xs-custom">PETROL</span>
+                                </div>
+                                <div
+                                    class="inline-flex items-center gap-1 bg-brand-gray-dark text-brand-gray-medium px-1 py-0.5 hover:bg-yellow-400 hover:text-white cursor-pointer">
+                                    <i class="fas fa-tachometer-alt text-xs"></i> <span class="text-xs-custom">2.3k
+                                        CC</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header -->
+            <div class="mb-12 md:mb-16 text-center">
+                <span class="block text-xs md:text-sm mb-2 md:mb-4 uppercase tracking-wide">Latest Testimonial
+                </span>
+                <h2 class="text-3xl md:text-4xl ">
+                    What They Say<span class="font-bold"> About Us.</span>
+                </h2>
+            </div>
+
+            <!-- Testimonial Slider (Static Example) -->
+            <div class="relative max-w-4xl mx-auto mb-12 sm:mb-16">
+                <!-- Testimonial Text -->
+                <div class="text-center px-4 sm:px-6 lg:px-8 mb-8">
+                    <p
+                        class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-medium max-w-4xl mx-auto text-gray-600 leading-relaxed">
+                        "I've been using Royal Cars for my business trips for over a year now. Their fleet is always
+                        well-maintained and their customer service is outstanding. They truly understand customer
+                        needs."
+                    </p>
+                </div>
+
+                <!-- Profile Images (Static Arrangement) -->
+                <div class="flex justify-center items-center gap-6 pb-14">
+                    <!-- Profile 1 (Active) -->
+                    <div class="flex flex-col items-center">
+                        <img src="assets/images/users/user-01.png" alt="John Doe"
+                            class="rounded-full w-25 h-25 object-cover mb-2" />
+                        <h4 class="font-medium text-base">John Doe</h4>
+                        <p class="text-sm text-gray-400">Software Engineer</p>
+                    </div>
+
+                    <!-- Profile 2 (Side, Smaller) -->
+                    <div class="flex flex-col items-center opacity-50">
+                        <img src="assets/images/users/user-02.jpg" alt="Sarah Smith"
+                            class="rounded-full w-12 h-12 object-cover mb-2" />
+                    </div>
+
+                    <!-- Profile 3 (Side, Smaller) -->
+                    <div class="flex flex-col items-center opacity-50">
+                        <img src="assets/images/users/user-03.jpg" alt="Michael Lee"
+                            class="rounded-full w-12 h-12 object-cover mb-2" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
 
     <!-- JavaScript -->
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>

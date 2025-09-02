@@ -22,79 +22,15 @@
     <script src="../assets/js/tailwind-config.js"></script>
 </head>
 <body class="bg-background text-foreground font-sans">
-    <!-- Header -->
-    <div class="fixed top-0 left-0 right-0 z-50">
-        <div class="transition-all duration-300 bg-transparent" id="header">
-            <div class="container mx-auto px-4">
-                <div class="flex items-center justify-between h-20">
-                    <!-- Logo -->
-                    <a href="../index.html" class="flex items-center">
-                        <img src="../../frontend/public/images/logo.png" alt="Royal Cars Logo" class="h-12" />
-                    </a>
-
-                    <!-- Desktop Navigation -->
-                    <nav class="hidden md:flex items-center space-x-8">
-                        <a href="../index.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">HOME</a>
-                        <a href="about.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">ABOUT US</a>
-                        <a href="vehicles.html" class="font-medium transition-colors duration-200 text-white border-b-2 border-white">VEHICLES</a>
-                        <a href="gallery.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">GALLERY</a>
-                        <a href="drivers.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">DRIVERS</a>
-                        <a href="contact.html" class="font-medium transition-colors duration-200 text-white/80 hover:text-white">CONTACT US</a>
-                    </nav>
-
-                    <!-- Utility Icons -->
-                    <div class="hidden md:flex items-center space-x-8">
-                        <div class="flex items-center space-x-2 group cursor-pointer">
-                            <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                                <i class="fas fa-user w-5 h-5 text-white group-hover:text-white"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-sm font-medium text-white">LOGIN</span>
-                                <span class="text-xs text-white/70">Account</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-2 group cursor-pointer">
-                            <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                                <i class="fas fa-search w-5 h-5 text-white group-hover:text-white"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-sm font-medium text-white">SEARCH</span>
-                                <span class="text-xs text-white/70">Find Cars</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mobile menu button -->
-                    <button
-                        type="button"
-                        class="md:hidden p-3 rounded-lg text-white hover:text-white hover:bg-white/20 bg-brand-yellow/20 backdrop-blur-sm transition-all duration-300 shadow-sm"
-                        id="mobile-menu-btn"
-                    >
-                        <i class="fas fa-bars w-6 h-6" id="menu-icon"></i>
-                    </button>
-                </div>
-
-                <!-- Mobile Navigation -->
-                <div class="md:hidden py-6 border-t border-white/20 bg-brand-yellow shadow-lg hidden" id="mobile-menu">
-                    <nav class="flex flex-col space-y-2">
-                        <a href="../index.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">HOME</a>
-                        <a href="about.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">ABOUT US</a>
-                        <a href="vehicles.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark bg-white/20 shadow-sm">VEHICLES</a>
-                        <a href="gallery.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">GALLERY</a>
-                        <a href="drivers.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">DRIVERS</a>
-                        <a href="contact.html" class="font-medium transition-all duration-300 px-6 py-3 rounded-lg mx-4 text-brand-dark/80 hover:text-brand-dark hover:bg-white/10">CONTACT US</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Header Container -->
+    <div id="header-container"></div>
 
     <!-- Page Hero -->
     <section class="relative py-32 sm:py-40 lg:py-48">
         <!-- Background Image -->
         <div
             class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style="background-image: url('../../frontend/public/images/inner-header.jpg')"
+            style="background-image: url('../../assets/images/inner-header.jpg')"
         ></div>
 
         <!-- Overlay -->
@@ -104,7 +40,7 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
                 <div class="mb-4">
-                    <h2 class="text-sm font-medium text-brand-yellow uppercase tracking-wider">VEHICLES</h2>
+                    <h2 class="text-sm font-medium text-brand-yellow uppercase tracking-wider">VEHICLE COLLECTION</h2>
                 </div>
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
                     Our <span class="text-brand-yellow">Vehicles</span>
@@ -124,30 +60,32 @@
     </section>
 
     <!-- Search Form Section -->
-    <div class="bg-brand-cream">
-        <div class="container mx-auto px-4 py-8">
+    <div class="bg-[#f8f4da] py-8">
+        <div class="container mx-auto px-4">
             <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Pick Up Location</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Pick-up Location</label>
                         <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-yellow focus:border-transparent">
-                            <option value="">Select Location</option>
-                            <option value="istanbul">Istanbul</option>
-                            <option value="ankara">Ankara</option>
-                            <option value="izmir">Izmir</option>
+                            <option>Select Location</option>
+                            <option>Istanbul Airport</option>
+                            <option>Sabiha Gokcen Airport</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Drop Off Location</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Drop-off Location</label>
                         <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-yellow focus:border-transparent">
-                            <option value="">Select Location</option>
-                            <option value="istanbul">Istanbul</option>
-                            <option value="ankara">Ankara</option>
-                            <option value="izmir">Izmir</option>
+                            <option>Select Location</option>
+                            <option>Istanbul Airport</option>
+                            <option>Sabiha Gokcen Airport</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Pick Up Date</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Pick-up Date</label>
+                        <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-yellow focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Return Date</label>
                         <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-yellow focus:border-transparent">
                     </div>
                     <div class="flex items-end">
@@ -160,13 +98,15 @@
         </div>
     </div>
 
-    <!-- Vehicles Section -->
-    <section class="py-16">
-        <div class="container mx-auto px-4">
+    <!-- Vehicle Filter Module -->
+    <section class="py-16 sm:py-20 lg:py-24">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header -->
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">
+                <h2 class="text-sm font-medium text-brand-yellow uppercase tracking-wider mb-4">BROWSE OUR VEHICLE COLLECTION</h2>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-dark mb-4">
                     Our <span class="text-brand-yellow">Vehicles</span>
-                </h2>
+                </h1>
                 <p class="text-lg text-brand-text-gray">BROWSE OUR VEHICLE COLLECTION</p>
             </div>
 
@@ -210,7 +150,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="vehicles-grid">
                 <!-- Vehicle Card 1 -->
                 <div class="car-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300" data-brand="Audi" data-price="500">
-                    <img src="../../frontend/public/images/cars/best-01.jpg" alt="Audi A4" class="w-full h-48 object-cover">
+                    <img src="../../assets/images/cars/best-01.jpg" alt="Audi A4" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-brand-dark">Audi A4</h3>
                         <p class="text-brand-text-gray mb-4">Luxury sedan, automatic transmission, gasoline</p>
@@ -230,7 +170,7 @@
 
                 <!-- Vehicle Card 2 -->
                 <div class="car-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300" data-brand="BMW" data-price="600">
-                    <img src="../../frontend/public/images/cars/best-02.jpg" alt="BMW 3 Series" class="w-full h-48 object-cover">
+                    <img src="../../assets/images/cars/best-02.jpg" alt="BMW 3 Series" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-brand-dark">BMW 3 Series</h3>
                         <p class="text-brand-text-gray mb-4">Sport sedan, automatic transmission, gasoline</p>
@@ -250,7 +190,7 @@
 
                 <!-- Vehicle Card 3 -->
                 <div class="car-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300" data-brand="Mercedes" data-price="700">
-                    <img src="../../frontend/public/images/cars/best-03.jpg" alt="Mercedes C-Class" class="w-full h-48 object-cover">
+                    <img src="../../assets/images/cars/best-03.jpg" alt="Mercedes C-Class" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-brand-dark">Mercedes C-Class</h3>
                         <p class="text-brand-text-gray mb-4">Luxury sedan, automatic transmission, gasoline</p>
@@ -270,13 +210,13 @@
 
                 <!-- Vehicle Card 4 -->
                 <div class="car-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300" data-brand="Volkswagen" data-price="400">
-                    <img src="../../frontend/public/images/cars/best-04.jpg" alt="Volkswagen Golf" class="w-full h-48 object-cover">
+                    <img src="../../assets/images/cars/best-04.jpg" alt="Volkswagen Golf" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-brand-dark">Volkswagen Golf</h3>
-                        <p class="text-brand-text-gray mb-4">Hatchback, automatic transmission, diesel</p>
+                        <p class="text-brand-text-gray mb-4">Compact hatchback, manual transmission, diesel</p>
                         <div class="flex justify-between items-center mb-4">
                             <div class="flex space-x-4 text-sm text-brand-text-gray">
-                                <span><i class="fas fa-cog mr-1"></i> Automatic</span>
+                                <span><i class="fas fa-cog mr-1"></i> Manual</span>
                                 <span><i class="fas fa-gas-pump mr-1"></i> Diesel</span>
                                 <span><i class="fas fa-road mr-1"></i> 35K km</span>
                             </div>
@@ -290,15 +230,15 @@
 
                 <!-- Vehicle Card 5 -->
                 <div class="car-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300" data-brand="Toyota" data-price="450">
-                    <img src="../../frontend/public/images/cars/best-05.jpg" alt="Toyota Camry" class="w-full h-48 object-cover">
+                    <img src="../../assets/images/cars/best-05.jpg" alt="Toyota Corolla" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-brand-dark">Toyota Camry</h3>
-                        <p class="text-brand-text-gray mb-4">Sedan, automatic transmission, hybrid</p>
+                        <h3 class="text-xl font-semibold mb-2 text-brand-dark">Toyota Corolla</h3>
+                        <p class="text-brand-text-gray mb-4">Reliable sedan, automatic transmission, hybrid</p>
                         <div class="flex justify-between items-center mb-4">
                             <div class="flex space-x-4 text-sm text-brand-text-gray">
                                 <span><i class="fas fa-cog mr-1"></i> Automatic</span>
                                 <span><i class="fas fa-gas-pump mr-1"></i> Hybrid</span>
-                                <span><i class="fas fa-road mr-1"></i> 28K km</span>
+                                <span><i class="fas fa-road mr-1"></i> 15K km</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-center">
@@ -309,31 +249,24 @@
                 </div>
 
                 <!-- Vehicle Card 6 -->
-                <div class="car-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300" data-brand="Honda" data-price="350">
-                    <img src="../../frontend/public/images/cars/best-06.jpg" alt="Honda Civic" class="w-full h-48 object-cover">
+                <div class="car-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300" data-brand="Honda" data-price="480">
+                    <img src="../../assets/images/cars/best-06.jpg" alt="Honda Civic" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-brand-dark">Honda Civic</h3>
-                        <p class="text-brand-text-gray mb-4">Sedan, manual transmission, gasoline</p>
+                        <p class="text-brand-text-gray mb-4">Sporty compact, manual transmission, gasoline</p>
                         <div class="flex justify-between items-center mb-4">
                             <div class="flex space-x-4 text-sm text-brand-text-gray">
                                 <span><i class="fas fa-cog mr-1"></i> Manual</span>
                                 <span><i class="fas fa-gas-pump mr-1"></i> Gasoline</span>
-                                <span><i class="fas fa-road mr-1"></i> 40K km</span>
+                                <span><i class="fas fa-road mr-1"></i> 28K km</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-brand-yellow price">₺350/day</span>
+                            <span class="text-2xl font-bold text-brand-yellow price">₺480/day</span>
                             <a href="#" class="bg-brand-yellow text-brand-dark px-4 py-2 rounded hover:bg-brand-yellowDark transition-colors font-semibold">Rent</a>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- No Results Message -->
-            <div id="no-results" class="hidden text-center py-12">
-                <i class="fas fa-car text-6xl text-gray-300 mb-4"></i>
-                <h3 class="text-xl font-semibold text-gray-600 mb-2">No Vehicles Found</h3>
-                <p class="text-gray-500">No vehicles match your search criteria. Please try different filters.</p>
             </div>
         </div>
     </section>
@@ -343,7 +276,7 @@
         <!-- Background Image -->
         <div 
             class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style="background-image: url('../../frontend/public/images/contact-form-bg.jpg')"
+            style="background-image: url('../../assets/images/contact-form-bg.jpg')"
         >
             <div class="absolute inset-0 bg-black/40"></div>
         </div>
@@ -351,12 +284,8 @@
         <!-- Content -->
         <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Contact Us</h2>
-                    <p class="text-lg text-gray-300">Get in touch with our team for any questions or inquiries</p>
-                </div>
-                
                 <div class="bg-white rounded-lg shadow-xl p-8">
+                    <h2 class="text-2xl font-bold text-brand-dark mb-6 text-center">Send us a Message</h2>
                     <form id="contact-form" onsubmit="submitContactForm(event)">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
@@ -391,126 +320,50 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-brand-gray-dark text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Company Info -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Royal Car</h3>
-                    <p class="text-gray-400 mb-4">Premium araç kiralama hizmeti ile lüks ve konforu bir arada sunuyoruz.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Hızlı Linkler</h3>
-                    <ul class="space-y-2">
-                        <li><a href="../index.html" class="text-gray-400 hover:text-brand-yellow transition-colors">Ana Sayfa</a></li>
-                        <li><a href="vehicles.html" class="text-brand-yellow">Araçlar</a></li>
-                        <li><a href="about.html" class="text-gray-400 hover:text-brand-yellow transition-colors">Hakkımızda</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-brand-yellow transition-colors">İletişim</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Services -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Hizmetler</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">Günlük Kiralama</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">Haftalık Kiralama</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">Aylık Kiralama</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-brand-yellow transition-colors">Şoförlü Hizmet</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">İletişim</h3>
-                    <div class="space-y-2 text-gray-400">
-                        <p><i class="fas fa-phone mr-2"></i> +90 555 123 4567</p>
-                        <p><i class="fas fa-envelope mr-2"></i> info@royalcar.com</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i> İstanbul, Türkiye</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Royal Car. Tüm hakları saklıdır.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
 
     <!-- JavaScript -->
     <script src="../assets/js/main.js"></script>
     <script>
-        // Enhanced car filtering
+        // Vehicle filtering functionality
         function filterCars() {
             const searchTerm = document.getElementById('car-search').value.toLowerCase();
             const brandFilter = document.getElementById('brand-filter').value;
             const carCards = document.querySelectorAll('.car-card');
-            let visibleCount = 0;
             
             carCards.forEach(card => {
-                const carName = card.querySelector('h3').textContent.toLowerCase();
-                const carDescription = card.querySelector('p').textContent.toLowerCase();
-                const carBrand = card.dataset.brand;
-                
-                const matchesSearch = carName.includes(searchTerm) || carDescription.includes(searchTerm);
-                const matchesBrand = !brandFilter || carBrand === brandFilter;
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const brand = card.dataset.brand;
+                const matchesSearch = title.includes(searchTerm);
+                const matchesBrand = brandFilter === '' || brand === brandFilter;
                 
                 if (matchesSearch && matchesBrand) {
                     card.style.display = 'block';
-                    visibleCount++;
                 } else {
                     card.style.display = 'none';
                 }
             });
-            
-            // Show/hide no results message
-            const noResults = document.getElementById('no-results');
-            if (visibleCount === 0) {
-                noResults.classList.remove('hidden');
-            } else {
-                noResults.classList.add('hidden');
-            }
         }
         
-        // Enhanced price filtering
         function filterByPrice() {
             const minPrice = parseInt(document.getElementById('min-price').value) || 0;
             const maxPrice = parseInt(document.getElementById('max-price').value) || Infinity;
             const carCards = document.querySelectorAll('.car-card');
-            let visibleCount = 0;
             
             carCards.forEach(card => {
                 const price = parseInt(card.dataset.price);
-                
                 if (price >= minPrice && price <= maxPrice) {
                     card.style.display = 'block';
-                    visibleCount++;
                 } else {
                     card.style.display = 'none';
                 }
             });
-            
-            // Show/hide no results message
-            const noResults = document.getElementById('no-results');
-            if (visibleCount === 0) {
-                noResults.classList.remove('hidden');
-            } else {
-                noResults.classList.add('hidden');
-            }
+        }
+        
+        function submitContactForm(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
         }
     </script>
 </body>

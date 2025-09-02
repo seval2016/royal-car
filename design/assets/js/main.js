@@ -1,274 +1,135 @@
-// Mobile Menu Toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-            // Toggle icon
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.className = 'fas fa-bars w-6 h-6';
-            } else {
-                menuIcon.className = 'fas fa-times w-6 h-6';
-            }
-        });
-    }
-    
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
-            mobileMenu.classList.add('hidden');
-            menuIcon.className = 'fas fa-bars w-6 h-6';
-        }
-    });
+// Main JavaScript for Royal Car Design
+console.log("main.js loaded");
+
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM loaded, loading components...");
+
+  // Load common components (Header & Footer)
+  loadCommonComponents();
 });
 
-// Header scroll effect
-window.addEventListener('scroll', function() {
-    const header = document.getElementById('header');
-    if (window.scrollY > 50) {
-        header.classList.add('bg-brand-gray-dark');
-    } else {
-        header.classList.remove('bg-brand-gray-dark');
-    }
-});
+// Function to load common components
+function loadCommonComponents() {
+  console.log("Loading common components...");
 
-// Hero Slider
-document.addEventListener('DOMContentLoaded', function() {
-    const slides = [
-        {
-            image: "../frontend/public/images/main-slider-01.jpg",
-            title: "Kia Rio",
-            subtitle: "FOR RENT $50 PER DAY",
-            description: "Luxury Sedan with Premium Features",
-        },
-        {
-            image: "../frontend/public/images/main-slider-02.jpg",
-            title: "BMW 3",
-            subtitle: "FOR RENT $150 PER DAY",
-            description: "Premium SUV for Adventure",
-        },
-        {
-            image: "../frontend/public/images/main-slider-03.jpg",
-            title: "Audi A4",
-            subtitle: "FOR RENT $120 PER DAY",
-            description: "Elegant Luxury Experience",
-        },
-    ];
+  // Get current page path to determine active navigation
+  const currentPath = window.location.pathname;
+  const isHomePage =
+    currentPath.endsWith("index.html") ||
+    currentPath.endsWith("/") ||
+    currentPath === "";
 
-    let currentSlide = 0;
-    const heroBackground = document.getElementById('hero-background');
-    const heroTitle = document.getElementById('hero-title');
-    const heroSubtitle = document.getElementById('hero-subtitle');
-    const prevBtn = document.getElementById('prev-slide');
-    const nextBtn = document.getElementById('next-slide');
-    const paginationButtons = document.querySelectorAll('#slider-pagination button');
+  console.log("Current path:", currentPath);
+  console.log("Is home page:", isHomePage);
 
-    function updateSlide() {
-        const slide = slides[currentSlide];
-        
-        // Update background
-        heroBackground.style.backgroundImage = `url(${slide.image})`;
-        
-        // Update content
-        heroTitle.textContent = slide.title;
-        heroSubtitle.innerHTML = `FOR RENT <strong class="text-brand-yellow font-semibold">$${slide.subtitle.split('$')[1].split(' ')[0]}</strong> PER DAY`;
-        
-        // Update pagination
-        paginationButtons.forEach((btn, index) => {
-            if (index === currentSlide) {
-                btn.classList.add('font-bold');
-                btn.innerHTML = `${String(index + 1).padStart(2, "0")}<div class="absolute bottom-0 left-1/4 right-1/4 h-0.5 bg-brand-yellow"></div>`;
-            } else {
-                btn.classList.remove('font-bold');
-                btn.innerHTML = String(index + 1).padStart(2, "0");
-            }
-        });
-    }
+  // Load Header
+  loadHeader(isHomePage);
 
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        updateSlide();
-    }
-
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        updateSlide();
-    }
-
-    // Event listeners
-    if (nextBtn) {
-        nextBtn.addEventListener('click', nextSlide);
-    }
-    
-    if (prevBtn) {
-        prevBtn.addEventListener('click', prevSlide);
-    }
-
-    // Pagination click events
-    paginationButtons.forEach((btn, index) => {
-        btn.addEventListener('click', () => {
-            currentSlide = index;
-            updateSlide();
-        });
-    });
-
-    // Auto slide every 5 seconds
-    setInterval(nextSlide, 5000);
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Form validation
-function validateForm(formId) {
-    const form = document.getElementById(formId);
-    if (!form) return true;
-    
-    const inputs = form.querySelectorAll('input[required], textarea[required]');
-    let isValid = true;
-    
-    inputs.forEach(input => {
-        if (!input.value.trim()) {
-            input.classList.add('border-red-500');
-            isValid = false;
-        } else {
-            input.classList.remove('border-red-500');
-        }
-    });
-    
-    return isValid;
+  // Load Footer
+  loadFooter();
 }
 
-// Contact form submission
-function submitContactForm(event) {
-    event.preventDefault();
-    
-    if (validateForm('contact-form')) {
-        // Show success message
-        const successMessage = document.createElement('div');
-        successMessage.className = 'bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4';
-        successMessage.innerHTML = 'Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.';
-        
-        const form = document.getElementById('contact-form');
-        form.parentNode.insertBefore(successMessage, form);
-        
-        // Reset form
-        form.reset();
-        
-        // Remove success message after 5 seconds
-        setTimeout(() => {
-            successMessage.remove();
-        }, 5000);
-    }
-}
+// Function to load header
+function loadHeader(isHomePage) {
+  const headerContainer = document.getElementById("header-container");
+  if (!headerContainer) {
+    console.error("Header container not found!");
+    return;
+  }
 
-// Car search functionality
-function filterCars() {
-    const searchTerm = document.getElementById('car-search').value.toLowerCase();
-    const carCards = document.querySelectorAll('.car-card');
-    
-    carCards.forEach(card => {
-        const carName = card.querySelector('h3').textContent.toLowerCase();
-        const carDescription = card.querySelector('p').textContent.toLowerCase();
-        
-        if (carName.includes(searchTerm) || carDescription.includes(searchTerm)) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-}
+  console.log("Loading header for home page:", isHomePage);
 
-// Price range filter
-function filterByPrice() {
-    const minPrice = document.getElementById('min-price').value;
-    const maxPrice = document.getElementById('max-price').value;
-    const carCards = document.querySelectorAll('.car-card');
-    
-    carCards.forEach(card => {
-        const priceElement = card.querySelector('.price');
-        const price = parseInt(priceElement.textContent.replace(/[^\d]/g, ''));
-        
-        const showCard = (!minPrice || price >= minPrice) && (!maxPrice || price <= maxPrice);
-        card.style.display = showCard ? 'block' : 'none';
-    });
-}
+    const headerHTML = `
+        <div class="bg-gray-800 text-white p-5">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <!-- Logo - Sol -->
+                    <div class="flex-shrink-0 mb-4 md:mb-0">
+                        <a href="${
+                          isHomePage ? "index.html" : "../index.html"
+                        }" class="flex items-center">
+                            <img src="${
+                              isHomePage
+                                ? "assets/images/logo.png"
+                                : "../assets/images/logo.png"
+                            }" alt="Royal Cars Logo" class="h-12" />
+                        </a>
+                    </div>
 
-// Lazy loading for images
-function lazyLoadImages() {
-    const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-}
+                    <!-- Navigation Menu - Orta -->
+                    <nav class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 mb-4 md:mb-0">
+                        <a href="${
+                          isHomePage ? "index.html" : "../index.html"
+                        }" class="text-white hover:text-gray-300 transition-colors duration-200">HOME</a>
+                        <a href="${
+                          isHomePage ? "pages/about.html" : "about.html"
+                        }" class="text-white hover:text-gray-300 transition-colors duration-200">ABOUT</a>
+                        <a href="${
+                          isHomePage ? "pages/vehicles.html" : "vehicles.html"
+                        }" class="text-white hover:text-gray-300 transition-colors duration-200">VEHICLES</a>
+                        <a href="${
+                          isHomePage ? "pages/gallery.html" : "gallery.html"
+                        }" class="text-white hover:text-gray-300 transition-colors duration-200">GALLERY</a>
+                        <a href="${
+                          isHomePage ? "pages/drivers.html" : "drivers.html"
+                        }" class="text-white hover:text-gray-300 transition-colors duration-200">DRIVERS</a>
+                        <a href="${
+                          isHomePage ? "pages/contact.html" : "contact.html"
+                        }" class="text-white hover:text-gray-300 transition-colors duration-200">CONTACT US</a>
+                    </nav>
 
-// Initialize lazy loading
-document.addEventListener('DOMContentLoaded', lazyLoadImages);
-
-// Add loading animation
-function showLoading() {
-    const loading = document.createElement('div');
-    loading.id = 'loading';
-    loading.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
-    loading.innerHTML = `
-        <div class="bg-white p-4 rounded-lg">
-            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-yellow"></div>
+                    <!-- Utility Icons - Sağ -->
+                    <div class="flex items-center space-x-6">
+                        <!-- Login Icon -->
+                        <div class="flex items-center space-x-2 group cursor-pointer">
+                            <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                                <i class="fas fa-user text-white group-hover:text-white"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-medium text-white">LOGIN</span>
+                                <span class="text-xs text-white/70">Account</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Search Icon -->
+                        <div class="flex items-center space-x-2 group cursor-pointer">
+                            <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                                <i class="fas fa-search text-white group-hover:text-white"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-medium text-white">SEARCH</span>
+                                <span class="text-xs text-white/70">Find Cars</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     `;
-    document.body.appendChild(loading);
+
+  headerContainer.innerHTML = headerHTML;
+  console.log("Header loaded successfully");
 }
 
-function hideLoading() {
-    const loading = document.getElementById('loading');
-    if (loading) {
-        loading.remove();
-    }
-}
+// Function to load footer
+function loadFooter() {
+  const footerContainer = document.getElementById("footer-container");
+  if (!footerContainer) {
+    console.error("Footer container not found!");
+    return;
+  }
 
-// Utility functions
-function formatPrice(price) {
-    return new Intl.NumberFormat('tr-TR', {
-        style: 'currency',
-        currency: 'TRY'
-    }).format(price);
-}
+  console.log("Loading footer...");
 
-function formatDate(date) {
-    return new Intl.DateTimeFormat('tr-TR').format(new Date(date));
-}
+  const footerHTML = `
+        <div class="bg-gray-600 text-white p-5 text-center">
+            <div class="container mx-auto px-4">
+                <h3 class="text-lg font-semibold mb-2">Footer Loaded Successfully!</h3>
+                <p class="text-sm">&copy; 2024 Royal Car. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    `;
 
-// Export functions for use in other scripts
-window.RoyalCar = {
-    validateForm,
-    submitContactForm,
-    filterCars,
-    filterByPrice,
-    showLoading,
-    hideLoading,
-    formatPrice,
-    formatDate
-};
+  footerContainer.innerHTML = footerHTML;
+  console.log("Footer loaded successfully");
+}

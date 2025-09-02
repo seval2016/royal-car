@@ -1,24 +1,9 @@
 import React from 'react';
 import { Title } from '../common';
+import advantagesData from '../../data/advantages.json';
 
 const Advantages = () => {
-  const advantages = [
-    {
-      icon: '/images/advantage-icon-1.png',
-      title: '24/7 Customer Online Support',
-      subtitle: 'Call us Anywhere Anytime'
-    },
-    {
-      icon: '/images/advantage-icon-2.png',
-      title: 'Reservation Anytime You Wants',
-      subtitle: '24/7 Online Reservation'
-    },
-    {
-      icon: '/images/advantage-icon-3.png',
-      title: 'Lots of Picking Locations',
-      subtitle: '250+ Locations'
-    }
-  ];
+  const { advantages } = advantagesData;
 
   return (
     <section className="py-16 md:py-24 bg-brand-cream">
@@ -36,8 +21,8 @@ const Advantages = () => {
 
         {/* Advantages Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {advantages.map((advantage, index) => (
-            <div key={index} className="bg-white rounded-lg p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 min-h-[220px] md:min-h-[260px] flex flex-col justify-center">
+          {advantages.map((advantage) => (
+            <div key={advantage.id} className="bg-white rounded-lg p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 min-h-[220px] md:min-h-[260px] flex flex-col justify-center">
               {/* Icon */}
               <div className="mb-4 md:mb-6">
                 <img 

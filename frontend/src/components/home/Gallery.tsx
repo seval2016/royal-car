@@ -1,42 +1,12 @@
 import { useState } from "react";
 import { Search, ChevronLeft, ChevronRight, X } from "lucide-react";
+import galleryData from "../../data/gallery.json";
 
 const Gallery = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const galleryImages = [
-    {
-      id: 1,
-      src: "/images/gallery/gallery-img01.jpg",
-      alt: "Luxury Car 1",
-      title: "Premium Sedan",
-    },
-    {
-      id: 2,
-      src: "/images/gallery/gallery-img02.jpg",
-      alt: "Luxury Car 2",
-      title: "Sports Car",
-    },
-    {
-      id: 3,
-      src: "/images/gallery/gallery-img03.jpg",
-      alt: "Luxury Car 3",
-      title: "SUV Vehicle",
-    },
-    {
-      id: 4,
-      src: "/images/gallery/gallery-img04.jpg",
-      alt: "Luxury Car 4",
-      title: "Compact Car",
-    },
-    {
-      id: 5,
-      src: "/images/gallery/gallery-img05.jpg",
-      alt: "Luxury Car 5",
-      title: "Family Car",
-    },
-  ];
+  const galleryImages = galleryData;
 
   const openModal = (index: number) => {
     setCurrentImageIndex(index);

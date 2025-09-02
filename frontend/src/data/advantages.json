@@ -1,0 +1,22 @@
+{
+  "advantages": [
+    {
+      "id": 1,
+      "icon": "/images/advantage-icon-1.png",
+      "title": "24/7 Customer Online Support",
+      "subtitle": "Call us Anywhere Anytime"
+    },
+    {
+      "id": 2,
+      "icon": "/images/advantage-icon-2.png",
+      "title": "Reservation Anytime You Wants",
+      "subtitle": "24/7 Online Reservation"
+    },
+    {
+      "id": 3,
+      "icon": "/images/advantage-icon-3.png",
+      "title": "Lots of Picking Locations",
+      "subtitle": "250+ Locations"
+    }
+  ]
+}
