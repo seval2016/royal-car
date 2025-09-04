@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
-import { PageHero, DriverSlider } from "../components/common";
+import { PageHero, DriverSlider, ContactForm } from "../components/common";
 import { DriverDetails } from "../components/driver";
 import driversData from "../data/drivers.json";
 
@@ -38,6 +38,26 @@ const DriversPage = () => {
           <DriverSlider drivers={drivers} />
         </div>
       </div>
+      
+      {/* Contact Form Section */}
+      <section className="relative py-16 sm:py-20 lg:py-24">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/contact-form-bg.jpg')" }}
+        >
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+          <ContactForm 
+            title="Contact Us"
+            subtitle="Get in touch with our team for any questions or inquiries"
+            variant="default"
+          />
+        </div>
+      </section>
     </Layout>
   );
 };

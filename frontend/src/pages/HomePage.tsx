@@ -15,7 +15,7 @@ import { Statistics, Gallery } from '../components/common';
 
 const HomePage = () => {
   return (
-    <Layout showContactForm={false}>
+    <Layout>
       <HeroSection />
       <Advantages />
       <About />

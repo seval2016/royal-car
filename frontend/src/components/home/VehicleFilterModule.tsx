@@ -33,7 +33,7 @@ const VehicleFilterModule = () => {
         <div className="mb-6 sm:mb-8">
           <Title
             subtitle="OUR VEHICLES BRANDS & TYPE"
-            title="Best Vehicles."
+            title="Best Vehicles." 
             titleHighlight="Find Your"
             align="center"
             className="mb-4 sm:mb-6"

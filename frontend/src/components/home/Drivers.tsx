@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { HelpCircle } from "lucide-react";
+import  { useState } from "react";
 import Title from "../common/Title";
 import Button from "../common/Button";
 import DriverCard from "../common/DriverCard";

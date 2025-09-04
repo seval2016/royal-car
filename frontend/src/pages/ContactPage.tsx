@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
-import { PageHero, Title } from "../components/common";
+import { PageHero, Title, ContactForm } from "../components/common";
 import { ContactHero } from "../components/contact";
 
 const ContactPage = () => {
@@ -29,6 +29,26 @@ const ContactPage = () => {
 
         <ContactHero />
       </div>
+      
+      {/* Contact Form Section with Background Image */}
+      <section className="relative py-16 sm:py-20 lg:py-24">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/contact-form-bg.jpg')" }}
+        >
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+          <ContactForm 
+            title="Send us a Message"
+            subtitle="We'd love to hear from you. Send us a message and we'll respond as soon as possible."
+            variant="default"
+          />
+        </div>
+      </section>
     </Layout>
   );
 };

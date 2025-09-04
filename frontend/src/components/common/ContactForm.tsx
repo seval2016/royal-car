@@ -23,11 +23,12 @@ interface FormData {
 
   const ContactForm: React.FC<ContactFormProps> = ({
     title = "In Touch",
+    subtitle = "Get in touch with our team for any questions or inquiries",
     className = "",
     showTitle = true,
-  variant = 'default',
-  onSubmit
-}) => {
+    variant = 'default',
+    onSubmit
+  }) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -107,6 +108,7 @@ interface FormData {
           <Title
             subtitle="KEEP IN TOUCH"
             title={title}
+            titleHighlight={subtitle}
             subtitleClassName="text-white"
             titleClassName="text-brand-yellow font-bold"
             align="center"
