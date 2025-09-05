@@ -16,16 +16,10 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
     List<Contact> findByEmail(String email);
     
     // Telefon numarası ile iletişim formlarını bulma
-    List<Contact> findByPhoneNumber(String phoneNumber);
+    List<Contact> findByPhone(String phone);
     
     // Ad ile iletişim formlarını bulma
-    List<Contact> findByFirstNameIgnoreCase(String firstName);
-    
-    // Soyad ile iletişim formlarını bulma
-    List<Contact> findByLastNameIgnoreCase(String lastName);
-    
-    // Ad ve soyad ile iletişim formlarını bulma
-    List<Contact> findByFirstNameIgnoreCaseAndLastNameIgnoreCase(String firstName, String lastName);
+    List<Contact> findByNameIgnoreCase(String name);
     
     // Duruma göre iletişim formlarını bulma
     List<Contact> findByStatus(Contact.ContactStatus status);
@@ -33,17 +27,6 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
     // Durum listesine göre iletişim formlarını bulma
     List<Contact> findByStatusIn(List<Contact.ContactStatus> statuses);
     
-    // Yeni (okunmamış) iletişim formlarını bulma
-    List<Contact> findByStatusNew();
-    
-    // Okunmuş iletişim formlarını bulma
-    List<Contact> findByStatusRead();
-    
-    // Yanıtlanmış iletişim formlarını bulma
-    List<Contact> findByStatusReplied();
-    
-    // Kapanmış iletişim formlarını bulma
-    List<Contact> findByStatusClosed();
     
     // Konuya göre iletişim formlarını bulma
     List<Contact> findBySubjectIgnoreCase(String subject);
@@ -56,10 +39,9 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
     @Query("SELECT c FROM Contact c WHERE LOWER(c.message) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
     List<Contact> findByMessageContainingIgnoreCase(@Param("searchTerm") String searchTerm);
     
-    // Ad, soyad, konu veya mesajda arama yapma
+    // Ad, konu veya mesajda arama yapma
     @Query("SELECT c FROM Contact c WHERE " +
-           "LOWER(c.firstName) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
-           "LOWER(c.lastName) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
+           "LOWER(c.name) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
            "LOWER(c.subject) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
            "LOWER(c.message) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
     List<Contact> findBySearchTerm(@Param("searchTerm") String searchTerm);
@@ -86,13 +68,10 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
     List<Contact> findByEmailAndStatus(String email, Contact.ContactStatus status);
     
     // Telefon numarası ve duruma göre iletişim formlarını bulma
-    List<Contact> findByPhoneNumberAndStatus(String phoneNumber, Contact.ContactStatus status);
+    List<Contact> findByPhoneAndStatus(String phone, Contact.ContactStatus status);
     
     // Ad ve duruma göre iletişim formlarını bulma
-    List<Contact> findByFirstNameIgnoreCaseAndStatus(String firstName, Contact.ContactStatus status);
-    
-    // Soyad ve duruma göre iletişim formlarını bulma
-    List<Contact> findByLastNameIgnoreCaseAndStatus(String lastName, Contact.ContactStatus status);
+    List<Contact> findByNameIgnoreCaseAndStatus(String name, Contact.ContactStatus status);
     
     // Konu ve duruma göre iletişim formlarını bulma
     List<Contact> findBySubjectIgnoreCaseAndStatus(String subject, Contact.ContactStatus status);
@@ -102,18 +81,16 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
     
     // Gelişmiş arama sorgusu
     @Query("SELECT c FROM Contact c WHERE " +
-           "(:firstName IS NULL OR LOWER(c.firstName) LIKE LOWER(CONCAT('%', :firstName, '%'))) AND " +
-           "(:lastName IS NULL OR LOWER(c.lastName) LIKE LOWER(CONCAT('%', :lastName, '%'))) AND " +
+           "(:name IS NULL OR LOWER(c.name) LIKE LOWER(CONCAT('%', :name, '%'))) AND " +
            "(:email IS NULL OR LOWER(c.email) LIKE LOWER(CONCAT('%', :email, '%'))) AND " +
-           "(:phoneNumber IS NULL OR c.phoneNumber LIKE CONCAT('%', :phoneNumber, '%')) AND " +
+           "(:phone IS NULL OR c.phone LIKE CONCAT('%', :phone, '%')) AND " +
            "(:subject IS NULL OR LOWER(c.subject) LIKE LOWER(CONCAT('%', :subject, '%'))) AND " +
            "(:status IS NULL OR c.status = :status) AND " +
            "(:startDate IS NULL OR c.createdAt >= :startDate) AND " +
            "(:endDate IS NULL OR c.createdAt <= :endDate)")
-    List<Contact> findContactsByCriteria(@Param("firstName") String firstName,
-                                        @Param("lastName") String lastName,
+    List<Contact> findContactsByCriteria(@Param("name") String name,
                                         @Param("email") String email,
-                                        @Param("phoneNumber") String phoneNumber,
+                                        @Param("phone") String phone,
                                         @Param("subject") String subject,
                                         @Param("status") Contact.ContactStatus status,
                                         @Param("startDate") LocalDateTime startDate,
@@ -129,13 +106,10 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
     long countByEmail(String email);
     
     // Telefon numarası ile iletişim formu sayısını bulma
-    long countByPhoneNumber(String phoneNumber);
+    long countByPhone(String phone);
     
     // Ad ile iletişim formu sayısını bulma
-    long countByFirstNameIgnoreCase(String firstName);
-    
-    // Soyad ile iletişim formu sayısını bulma
-    long countByLastNameIgnoreCase(String lastName);
+    long countByNameIgnoreCase(String name);
     
     // Konu ile iletişim formu sayısını bulma
     long countBySubjectIgnoreCase(String subject);

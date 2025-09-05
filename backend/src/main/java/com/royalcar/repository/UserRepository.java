@@ -25,10 +25,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     boolean existsByUsername(String username);
     
     // Telefon numarası ile kullanıcı bulma
-    Optional<User> findByPhoneNumber(String phoneNumber);
+    Optional<User> findByPhone(String phone);
     
     // Telefon numarası ile kullanıcı var mı kontrol etme
-    boolean existsByPhoneNumber(String phoneNumber);
+    boolean existsByPhone(String phone);
     
     // Role göre kullanıcıları bulma
     List<User> findByRole(User.UserRole role);
@@ -53,8 +53,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     boolean existsByUsernameAndIdNot(@Param("username") String username, @Param("userId") Long userId);
     
     // Telefon numarası ile kullanıcı var mı kontrol etme (ID hariç)
-    @Query("SELECT COUNT(u) > 0 FROM User u WHERE u.phoneNumber = :phoneNumber AND u.id != :userId")
-    boolean existsByPhoneNumberAndIdNot(@Param("phoneNumber") String phoneNumber, @Param("userId") Long userId);
+    @Query("SELECT COUNT(u) > 0 FROM User u WHERE u.phone = :phone AND u.id != :userId")
+    boolean existsByPhoneAndIdNot(@Param("phone") String phone, @Param("userId") Long userId);
     
     // Son kayıt tarihine göre kullanıcıları bulma
     List<User> findByCreatedAtBetween(java.time.LocalDateTime startDate, java.time.LocalDateTime endDate);
