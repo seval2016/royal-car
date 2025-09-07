@@ -57,8 +57,8 @@ const Gallery = ({
 
   return (
     <>
-             {/* Gallery Section */}
-       <section className={`${className}`}>
+      {/* Gallery Section */}
+      <section className={`${className}`}>
         <div className="w-full">
           {/* Section Header */}
           {showHeader && (
@@ -72,67 +72,71 @@ const Gallery = ({
 
           {/* Gallery Grid */}
           {gridType === "flex" ? (
-            // HomePage stili - flex layout
-            <div className="flex flex-wrap">
+            // HomePage stili - grid layout
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 w-full gap-0">
               {galleryImages.map((image, index) => (
                 <div
                   key={image.id}
-                  className="group relative overflow-hidden cursor-pointer flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
+                  className="group relative overflow-hidden cursor-pointer"
                   onClick={() => openModal(index)}
                 >
                   {/* Image */}
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-auto object-cover"
                   />
 
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 hover:bg-brand-yellow bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out m-4">
-                                         {/* Search Icon - Ortada */}
-                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                       <div className="bg-white rounded-full p-2">
-                         <Search className="w-6 h-6 text-brand-yellow" />
-                       </div>
-                     </div>
+                  <div className="absolute inset-0 hover:bg-brand-yellow bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out m-8">
+                    {/* Search Icon - Ortada */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="bg-white rounded-full p-2">
+                        <Search className="w-6 h-6 text-brand-yellow" />
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-                         // Gallery sayfası stili - 3'lü grid
-             <div className="container mx-auto px-4 py-32">
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            // Gallery sayfası stili - 3'lü grid
+            <div className="container mx-auto px-4 py-32">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {galleryImages.map((image, index) => (
-                                     <div
-                     key={image.id}
-                     className="group relative overflow-hidden cursor-pointer"
-                     onClick={() => openModal(index)}
-                   >
-                                         {/* Image Container */}
-                     <div className="relative aspect-[4/3] overflow-hidden">
-                       <img
-                         src={image.src}
-                         alt={image.alt}
-                         className="w-full h-full object-cover"
-                       />
+                  <div
+                    key={image.id}
+                    className="group relative overflow-hidden cursor-pointer"
+                    onClick={() => openModal(index)}
+                  >
+                    {/* Image Container */}
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-full object-cover"
+                      />
 
-                                               {/* Hover Overlay */}
-                        <div className="absolute inset-0 hover:bg-brand-yellow bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out m-4">
-                                                     {/* Car Info - Sol taraf */}
-                           <div className="absolute bottom-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
-                             <span className="text-gray-700 text-sm block mb-1">Registered 2016</span>
-                             <h5 className="text-gray-800 font-bold text-xl m-0"><b>{image.manufacturer}</b> {image.model}</h5>
-                           </div>
-                          
-                          {/* Search Icon - Sağ alt köşe */}
-                          <div className="absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
-                            <div className="bg-white rounded-full p-2">
-                              <Search className="w-6 h-6 text-brand-yellow" />
-                            </div>
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 hover:bg-brand-yellow bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out m-4">
+                        {/* Car Info - Sol taraf */}
+                        <div className="absolute bottom-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+                          <span className="text-gray-700 text-sm block mb-1">
+                            Registered 2016
+                          </span>
+                          <h5 className="text-gray-800 font-bold text-xl m-0">
+                            <b>{image.manufacturer}</b> {image.model}
+                          </h5>
+                        </div>
+
+                        {/* Search Icon - Sağ alt köşe */}
+                        <div className="absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+                          <div className="bg-white rounded-full p-2">
+                            <Search className="w-6 h-6 text-brand-yellow" />
                           </div>
                         </div>
-                     </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
