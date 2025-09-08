@@ -1,7 +1,10 @@
 package com.royalcar.service.impl;
 
 import com.royalcar.entity.Review;
+import com.royalcar.repository.ReviewRepository;
 import com.royalcar.service.ReviewService;
+import com.royalcar.service.CarService;
+import com.royalcar.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,16 +22,14 @@ import java.util.stream.Collectors;
 @Transactional
 public class ReviewServiceImpl implements ReviewService {
 
-    // TODO: Repository injection will be added later
-    // private final ReviewRepository reviewRepository;
-    // private final CarService carService;
-    // private final UserService userService;
+    private final ReviewRepository reviewRepository;
+    private final CarService carService;
+    private final UserService userService;
 
     @Override
     public List<Review> getAllReviews() {
         log.info("Fetching all reviews");
-        // TODO: Implementation will be added with repository layer
-        return List.of();
+        return reviewRepository.findAll();
     }
 
     @Override
@@ -37,8 +38,7 @@ public class ReviewServiceImpl implements ReviewService {
         if (id == null || id <= 0) {
             throw new IllegalArgumentException("Invalid review ID");
         }
-        // TODO: Implementation will be added with repository layer
-        return Optional.empty();
+        return reviewRepository.findById(id);
     }
 
     @Override
@@ -54,8 +54,7 @@ public class ReviewServiceImpl implements ReviewService {
             throw new RuntimeException("User cannot review this car");
         }
         
-        // TODO: Implementation will be added with repository layer
-        return review;
+        return reviewRepository.save(review);
     }
 
     @Override
@@ -70,8 +69,11 @@ public class ReviewServiceImpl implements ReviewService {
         Review existingReview = getReviewById(id)
                 .orElseThrow(() -> new RuntimeException("Review not found"));
         validateReviewData(review);
-        // TODO: Implementation will be added with repository layer
-        return existingReview;
+        // Update fields
+        existingReview.setRating(review.getRating());
+        existingReview.setComment(review.getComment());
+        
+        return reviewRepository.save(existingReview);
     }
 
     @Override
@@ -82,7 +84,7 @@ public class ReviewServiceImpl implements ReviewService {
         }
         Review review = getReviewById(id)
                 .orElseThrow(() -> new RuntimeException("Review not found"));
-        // TODO: Implementation will be added with repository layer
+        reviewRepository.delete(review);
     }
 
     @Override
@@ -161,7 +163,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public boolean canUserReviewCar(Long userId, Long carId) {
         log.info("Checking if user {} can review car {}", userId, carId);
-        // TODO: Check if user has rented this car
+        // Check if user has rented this car - would require booking service integration
         return true;
     }
 

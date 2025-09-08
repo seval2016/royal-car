@@ -1,7 +1,13 @@
 package com.royalcar.controller;
 
 import com.royalcar.common.dto.ApiResponse;
+import com.royalcar.dto.request.LoginRequest;
+import com.royalcar.dto.request.RegisterRequest;
+import com.royalcar.dto.response.AuthenticationResponse;
+import com.royalcar.dto.response.UserResponse;
 import com.royalcar.entity.User;
+import com.royalcar.service.AuthService;
+import com.royalcar.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -16,38 +22,65 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "User Management", description = "User registration, authentication and profile operations")
 public class UserController {
 
-    // TODO: Service injection will be added later
+    private final AuthService authService;
+    private final UserService userService;
     
     @PostMapping("/register")
     @Operation(summary = "Register new user", description = "Create a new user account")
-    public ResponseEntity<ApiResponse<User>> registerUser(@Valid @RequestBody UserRegistrationRequest request) {
-        // TODO: Implementation will be added with service layer
+    public ResponseEntity<ApiResponse<AuthenticationResponse>> registerUser(@Valid @RequestBody UserRegistrationRequest request) {
+        RegisterRequest registerRequest = RegisterRequest.builder()
+                .email(request.getEmail())
+                .password(request.getPassword())
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .phoneNumber(request.getPhone())
+                .build();
+        AuthenticationResponse response = authService.register(registerRequest);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponse.success("User registered successfully", null));
+                .body(ApiResponse.success("User registered successfully", response));
     }
     
     @PostMapping("/login")
     @Operation(summary = "User login", description = "Authenticate user and return token")
-    public ResponseEntity<ApiResponse<String>> loginUser(@Valid @RequestBody UserLoginRequest request) {
-        // TODO: Implementation will be added with service layer
-        return ResponseEntity.ok(ApiResponse.success("Login successful", "jwt-token-here"));
+    public ResponseEntity<ApiResponse<AuthenticationResponse>> loginUser(@Valid @RequestBody UserLoginRequest request) {
+        LoginRequest loginRequest = LoginRequest.builder()
+                .usernameOrEmail(request.getEmail())
+                .password(request.getPassword())
+                .build();
+        AuthenticationResponse response = authService.login(loginRequest);
+        return ResponseEntity.ok(ApiResponse.success("Login successful", response));
     }
     
     @GetMapping("/profile")
     @Operation(summary = "Get user profile", description = "Retrieve current user profile information")
-    public ResponseEntity<ApiResponse<User>> getUserProfile() {
-        // TODO: Implementation will be added with service layer
-        return ResponseEntity.ok(ApiResponse.success("Profile retrieved successfully", null));
+    public ResponseEntity<ApiResponse<UserResponse>> getUserProfile() {
+        UserResponse user = authService.getCurrentUser();
+        return ResponseEntity.ok(ApiResponse.success("Profile retrieved successfully", user));
     }
     
     @PutMapping("/profile")
     @Operation(summary = "Update user profile", description = "Update current user profile information")
-    public ResponseEntity<ApiResponse<User>> updateUserProfile(@Valid @RequestBody UserUpdateRequest request) {
-        // TODO: Implementation will be added with service layer
-        return ResponseEntity.ok(ApiResponse.success("Profile updated successfully", null));
+    public ResponseEntity<ApiResponse<UserResponse>> updateUserProfile(@Valid @RequestBody UserUpdateRequest request) {
+        // Get current user ID from auth service
+        UserResponse currentUser = authService.getCurrentUser();
+        User user = new User();
+        user.setFirstName(request.getFirstName());
+        user.setLastName(request.getLastName());
+        user.setPhone(request.getPhone());
+        User updatedUser = userService.updateUserProfile(currentUser.getId(), user);
+        // Convert User to UserResponse
+        UserResponse userResponse = UserResponse.builder()
+                .id(updatedUser.getId())
+                .firstName(updatedUser.getFirstName())
+                .lastName(updatedUser.getLastName())
+                .email(updatedUser.getEmail())
+                .phoneNumber(updatedUser.getPhone())
+                .isActive(updatedUser.getIsActive())
+                .build();
+        return ResponseEntity.ok(ApiResponse.success("Profile updated successfully", userResponse));
     }
     
-    // TODO: DTO classes will be created later
+    // DTO classes
     public static class UserRegistrationRequest {
         private String firstName;
         private String lastName;
@@ -55,14 +88,28 @@ public class UserController {
         private String password;
         private String phone;
         
-        // Getters and setters will be added
+        // Getters and setters
+        public String getFirstName() { return firstName; }
+        public void setFirstName(String firstName) { this.firstName = firstName; }
+        public String getLastName() { return lastName; }
+        public void setLastName(String lastName) { this.lastName = lastName; }
+        public String getEmail() { return email; }
+        public void setEmail(String email) { this.email = email; }
+        public String getPassword() { return password; }
+        public void setPassword(String password) { this.password = password; }
+        public String getPhone() { return phone; }
+        public void setPhone(String phone) { this.phone = phone; }
     }
     
     public static class UserLoginRequest {
         private String email;
         private String password;
         
-        // Getters and setters will be added
+        // Getters and setters
+        public String getEmail() { return email; }
+        public void setEmail(String email) { this.email = email; }
+        public String getPassword() { return password; }
+        public void setPassword(String password) { this.password = password; }
     }
     
     public static class UserUpdateRequest {
@@ -70,6 +117,12 @@ public class UserController {
         private String lastName;
         private String phone;
         
-        // Getters and setters will be added
+        // Getters and setters
+        public String getFirstName() { return firstName; }
+        public void setFirstName(String firstName) { this.firstName = firstName; }
+        public String getLastName() { return lastName; }
+        public void setLastName(String lastName) { this.lastName = lastName; }
+        public String getPhone() { return phone; }
+        public void setPhone(String phone) { this.phone = phone; }
     }
 }

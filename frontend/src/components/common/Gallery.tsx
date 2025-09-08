@@ -73,7 +73,7 @@ const Gallery = ({
           {/* Gallery Grid */}
           {gridType === "flex" ? (
             // HomePage stili - grid layout
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 w-full gap-0">
+            <div className="grid grid-cols-5 w-full gap-0">
               {galleryImages.map((image, index) => (
                 <div
                   key={image.id}
@@ -88,11 +88,11 @@ const Gallery = ({
                   />
 
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 hover:bg-brand-yellow bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out m-8">
+                  <div className="absolute inset-0 hover:bg-brand-yellow bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out m-4 md:m-8">
                     {/* Search Icon - Ortada */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="bg-white rounded-full p-2">
-                        <Search className="w-6 h-6 text-brand-yellow" />
+                        <Search className="w-4 h-4 md:w-6 md:h-6 text-brand-yellow" />
                       </div>
                     </div>
                   </div>

@@ -1,7 +1,10 @@
 package com.royalcar.service.impl;
 
 import com.royalcar.entity.Booking;
+import com.royalcar.repository.BookingRepository;
 import com.royalcar.service.BookingService;
+import com.royalcar.service.CarService;
+import com.royalcar.service.DriverService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,16 +22,14 @@ import java.util.stream.Collectors;
 @Transactional
 public class BookingServiceImpl implements BookingService {
 
-    // TODO: Repository injection will be added later
-    // private final BookingRepository bookingRepository;
-    // private final CarService carService;
-    // private final DriverService driverService;
+    private final BookingRepository bookingRepository;
+    private final CarService carService;
+    private final DriverService driverService;
 
     @Override
     public List<Booking> getAllBookings() {
         log.info("Fetching all bookings");
-        // TODO: Implementation will be added with repository layer
-        return List.of();
+        return bookingRepository.findAll();
     }
 
     @Override
@@ -37,8 +38,7 @@ public class BookingServiceImpl implements BookingService {
         if (id == null || id <= 0) {
             throw new IllegalArgumentException("Invalid booking ID");
         }
-        // TODO: Implementation will be added with repository layer
-        return Optional.empty();
+        return bookingRepository.findById(id);
     }
 
     @Override
@@ -68,8 +68,7 @@ public class BookingServiceImpl implements BookingService {
                 booking.getPickupDate(), booking.getReturnDate(), booking.getDriverRequired());
         booking.setTotalPrice(java.math.BigDecimal.valueOf(totalPrice));
         
-        // TODO: Implementation will be added with repository layer
-        return booking;
+        return bookingRepository.save(booking);
     }
 
     @Override
@@ -86,8 +85,19 @@ public class BookingServiceImpl implements BookingService {
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
         
         validateBookingData(booking);
-        // TODO: Implementation will be added with repository layer
-        return existingBooking;
+        // Update fields
+        existingBooking.setPickupDate(booking.getPickupDate());
+        existingBooking.setReturnDate(booking.getReturnDate());
+        existingBooking.setDriverRequired(booking.getDriverRequired());
+        existingBooking.setStatus(booking.getStatus());
+        
+        // Recalculate total price
+        double totalPrice = calculateTotalPrice(existingBooking.getCar().getId(),
+                existingBooking.getPickupDate(), existingBooking.getReturnDate(), 
+                existingBooking.getDriverRequired());
+        existingBooking.setTotalPrice(java.math.BigDecimal.valueOf(totalPrice));
+        
+        return bookingRepository.save(existingBooking);
     }
 
     @Override
@@ -98,7 +108,7 @@ public class BookingServiceImpl implements BookingService {
         }
         Booking booking = getBookingById(id)
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
-        // TODO: Implementation will be added with repository layer
+        bookingRepository.delete(booking);
     }
 
     @Override
@@ -129,7 +139,7 @@ public class BookingServiceImpl implements BookingService {
         Booking booking = getBookingById(id)
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
         booking.setStatus(com.royalcar.entity.Booking.BookingStatus.CONFIRMED);
-        // TODO: Save to repository
+        bookingRepository.save(booking);
         return booking;
     }
 
@@ -139,7 +149,7 @@ public class BookingServiceImpl implements BookingService {
         Booking booking = getBookingById(id)
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
         booking.setStatus(com.royalcar.entity.Booking.BookingStatus.CANCELLED);
-        // TODO: Save to repository
+        bookingRepository.save(booking);
         return booking;
     }
 
@@ -149,7 +159,7 @@ public class BookingServiceImpl implements BookingService {
         Booking booking = getBookingById(id)
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
         booking.setStatus(com.royalcar.entity.Booking.BookingStatus.COMPLETED);
-        // TODO: Save to repository
+        bookingRepository.save(booking);
         return booking;
     }
 
@@ -159,7 +169,7 @@ public class BookingServiceImpl implements BookingService {
         Booking booking = getBookingById(id)
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
         booking.setStatus(com.royalcar.entity.Booking.BookingStatus.valueOf(status.toUpperCase()));
-        // TODO: Save to repository
+        bookingRepository.save(booking);
     }
 
     @Override
@@ -172,8 +182,13 @@ public class BookingServiceImpl implements BookingService {
             throw new IllegalArgumentException("Pickup date cannot be after return date");
         }
         
-        // TODO: Implementation will be added with repository layer
-        return true;
+        // Check if car has any conflicting bookings during this period
+        List<Booking> carBookings = getCarBookings(carId);
+        return carBookings.stream()
+                .filter(booking -> booking.getStatus() == com.royalcar.entity.Booking.BookingStatus.CONFIRMED ||
+                                 booking.getStatus() == com.royalcar.entity.Booking.BookingStatus.ACTIVE)
+                .noneMatch(booking -> !booking.getReturnDate().isBefore(pickupDate) && 
+                                    !booking.getPickupDate().isAfter(returnDate));
     }
 
     @Override
@@ -186,8 +201,15 @@ public class BookingServiceImpl implements BookingService {
             throw new IllegalArgumentException("Pickup date cannot be after return date");
         }
         
-        // TODO: Implementation will be added with repository layer
-        return true;
+        // Check if driver has any conflicting bookings during this period
+        List<Booking> allBookings = getAllBookings();
+        return allBookings.stream()
+                .filter(booking -> booking.getDriver() != null && 
+                                 booking.getDriver().getId().equals(driverId))
+                .filter(booking -> booking.getStatus() == com.royalcar.entity.Booking.BookingStatus.CONFIRMED ||
+                                 booking.getStatus() == com.royalcar.entity.Booking.BookingStatus.ACTIVE)
+                .noneMatch(booking -> !booking.getReturnDate().isBefore(pickupDate) && 
+                                    !booking.getPickupDate().isAfter(returnDate));
     }
 
     @Override
@@ -201,8 +223,9 @@ public class BookingServiceImpl implements BookingService {
         long days = ChronoUnit.DAYS.between(pickupDate, returnDate);
         if (days <= 0) days = 1; // Minimum 1 day
         
-        // TODO: Get car price from car service
-        double carPricePerDay = 100.0; // Default price
+        // Get car price from car service
+        var car = carService.getCarById(carId).orElseThrow(() -> new RuntimeException("Car not found"));
+        double carPricePerDay = car.getPrice().doubleValue();
         double driverPricePerDay = driverRequired ? 50.0 : 0.0;
         
         return (carPricePerDay + driverPricePerDay) * days;

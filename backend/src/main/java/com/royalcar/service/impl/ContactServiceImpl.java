@@ -1,6 +1,7 @@
 package com.royalcar.service.impl;
 
 import com.royalcar.entity.Contact;
+import com.royalcar.repository.ContactRepository;
 import com.royalcar.service.ContactService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,15 +19,12 @@ import java.util.stream.Collectors;
 @Transactional
 public class ContactServiceImpl implements ContactService {
 
-    // TODO: Repository injection will be added later
-    // private final ContactRepository contactRepository;
-    // private final EmailService emailService;
+    private final ContactRepository contactRepository;
 
     @Override
     public List<Contact> getAllContacts() {
         log.info("Fetching all contacts");
-        // TODO: Implementation will be added with repository layer
-        return List.of();
+        return contactRepository.findAll();
     }
 
     @Override
@@ -35,8 +33,7 @@ public class ContactServiceImpl implements ContactService {
         if (id == null || id <= 0) {
             throw new IllegalArgumentException("Invalid contact ID");
         }
-        // TODO: Implementation will be added with repository layer
-        return Optional.empty();
+        return contactRepository.findById(id);
     }
 
     @Override
@@ -50,8 +47,7 @@ public class ContactServiceImpl implements ContactService {
         // Send notification email
         sendNotificationEmail(contact);
         
-        // TODO: Implementation will be added with repository layer
-        return contact;
+        return contactRepository.save(contact);
     }
 
     @Override
@@ -66,8 +62,16 @@ public class ContactServiceImpl implements ContactService {
         Contact existingContact = getContactById(id)
                 .orElseThrow(() -> new RuntimeException("Contact not found"));
         validateContactData(contact);
-        // TODO: Implementation will be added with repository layer
-        return existingContact;
+        // Update fields
+        existingContact.setName(contact.getName());
+        existingContact.setEmail(contact.getEmail());
+        existingContact.setPhone(contact.getPhone());
+        existingContact.setSubject(contact.getSubject());
+        existingContact.setMessage(contact.getMessage());
+        existingContact.setStatus(contact.getStatus());
+        existingContact.setReadAt(contact.getReadAt());
+        
+        return contactRepository.save(existingContact);
     }
 
     @Override
@@ -78,7 +82,7 @@ public class ContactServiceImpl implements ContactService {
         }
         Contact contact = getContactById(id)
                 .orElseThrow(() -> new RuntimeException("Contact not found"));
-        // TODO: Implementation will be added with repository layer
+        contactRepository.delete(contact);
     }
 
     @Override
@@ -88,8 +92,7 @@ public class ContactServiceImpl implements ContactService {
                 .orElseThrow(() -> new RuntimeException("Contact not found"));
         contact.setStatus(Contact.ContactStatus.READ);
         contact.setReadAt(LocalDateTime.now());
-        // TODO: Save to repository
-        return contact;
+        return contactRepository.save(contact);
     }
 
     @Override
@@ -99,8 +102,7 @@ public class ContactServiceImpl implements ContactService {
                 .orElseThrow(() -> new RuntimeException("Contact not found"));
         contact.setStatus(Contact.ContactStatus.NEW);
         contact.setReadAt(null);
-        // TODO: Save to repository
-        return contact;
+        return contactRepository.save(contact);
     }
 
     @Override
@@ -130,7 +132,7 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public void sendNotificationEmail(Contact contact) {
         log.info("Sending notification email for contact: {}", contact.getEmail());
-        // TODO: Implementation will be added with email service
+        // Email service implementation - would send notification to admin
         log.info("Email notification would be sent to admin for contact from: {}", contact.getEmail());
     }
 

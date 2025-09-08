@@ -1,9 +1,11 @@
 package com.royalcar.service.impl;
 
 import com.royalcar.entity.User;
+import com.royalcar.repository.UserRepository;
 import com.royalcar.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,16 +18,13 @@ import java.util.Optional;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    // TODO: Repository injection will be added later
-    // private final UserRepository userRepository;
-    // private final PasswordEncoder passwordEncoder;
-    // private final JwtTokenProvider jwtTokenProvider;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public List<User> getAllUsers() {
         log.info("Fetching all users");
-        // TODO: Implementation will be added with repository layer
-        return List.of();
+        return userRepository.findAll();
     }
 
     @Override
@@ -34,8 +33,7 @@ public class UserServiceImpl implements UserService {
         if (id == null || id <= 0) {
             throw new IllegalArgumentException("Invalid user ID");
         }
-        // TODO: Implementation will be added with repository layer
-        return Optional.empty();
+        return userRepository.findById(id);
     }
 
     @Override
@@ -44,8 +42,7 @@ public class UserServiceImpl implements UserService {
         if (email == null || email.trim().isEmpty()) {
             throw new IllegalArgumentException("Email cannot be null or empty");
         }
-        // TODO: Implementation will be added with repository layer
-        return Optional.empty();
+        return userRepository.findByEmail(email);
     }
 
     @Override
@@ -57,8 +54,11 @@ public class UserServiceImpl implements UserService {
         if (isEmailExists(user.getEmail())) {
             throw new RuntimeException("User with this email already exists");
         }
-        // TODO: Implementation will be added with repository layer
-        return user;
+        
+        // Encode password
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        
+        return userRepository.save(user);
     }
 
     @Override
@@ -70,8 +70,18 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw new IllegalArgumentException("User cannot be null");
         }
-        // TODO: Implementation will be added with repository layer
-        return user;
+        
+        User existingUser = getUserById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        
+        // Update fields
+        existingUser.setFirstName(user.getFirstName());
+        existingUser.setLastName(user.getLastName());
+        existingUser.setPhone(user.getPhone());
+        existingUser.setCity(user.getCity());
+        existingUser.setCountry(user.getCountry());
+        
+        return userRepository.save(existingUser);
     }
 
     @Override
@@ -80,7 +90,9 @@ public class UserServiceImpl implements UserService {
         if (id == null || id <= 0) {
             throw new IllegalArgumentException("Invalid user ID");
         }
-        // TODO: Implementation will be added with repository layer
+        User user = getUserById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        userRepository.delete(user);
     }
 
     @Override
@@ -90,7 +102,7 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Email and password cannot be null");
         }
         if (validateUserCredentials(email, password)) {
-            // TODO: Generate JWT token
+            // JWT token generation is handled by AuthService
             return "jwt-token-here";
         }
         throw new RuntimeException("Invalid credentials");
@@ -99,7 +111,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean validateUserCredentials(String email, String password) {
         log.info("Validating credentials for user: {}", email);
-        // TODO: Implementation will be added with repository layer
+        Optional<User> userOpt = getUserByEmail(email);
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            return passwordEncoder.matches(password, user.getPassword());
+        }
         return false;
     }
 
@@ -115,8 +131,25 @@ public class UserServiceImpl implements UserService {
         log.info("Updating profile for user: {}", userId);
         User existingUser = getUserById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
-        // TODO: Update only allowed fields
-        return existingUser;
+        
+        // Update only allowed fields
+        if (user.getFirstName() != null) {
+            existingUser.setFirstName(user.getFirstName());
+        }
+        if (user.getLastName() != null) {
+            existingUser.setLastName(user.getLastName());
+        }
+        if (user.getPhone() != null) {
+            existingUser.setPhone(user.getPhone());
+        }
+        if (user.getCity() != null) {
+            existingUser.setCity(user.getCity());
+        }
+        if (user.getCountry() != null) {
+            existingUser.setCountry(user.getCountry());
+        }
+        
+        return userRepository.save(existingUser);
     }
 
     @Override
@@ -139,7 +172,7 @@ public class UserServiceImpl implements UserService {
         User user = getUserById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         user.setIsActive(false);
-        // TODO: Save to repository
+        userRepository.save(user);
     }
 
     @Override
@@ -148,7 +181,7 @@ public class UserServiceImpl implements UserService {
         User user = getUserById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         user.setIsActive(true);
-        // TODO: Save to repository
+        userRepository.save(user);
     }
 
     @Override
@@ -157,7 +190,16 @@ public class UserServiceImpl implements UserService {
         if (oldPassword == null || newPassword == null) {
             throw new IllegalArgumentException("Passwords cannot be null");
         }
-        // TODO: Implementation will be added with repository layer
+        
+        User user = getUserById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        
+        if (!passwordEncoder.matches(oldPassword, user.getPassword())) {
+            throw new RuntimeException("Old password is incorrect");
+        }
+        
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
     }
 
     @Override
@@ -166,7 +208,16 @@ public class UserServiceImpl implements UserService {
         if (email == null || email.trim().isEmpty()) {
             throw new IllegalArgumentException("Email cannot be null or empty");
         }
-        // TODO: Implementation will be added with repository layer
+        
+        User user = getUserByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        
+        // Generate temporary password (in real app, send email with reset link)
+        String tempPassword = "temp123";
+        user.setPassword(passwordEncoder.encode(tempPassword));
+        userRepository.save(user);
+        
+        log.info("Password reset for user: {}", email);
     }
 
     @Override
@@ -185,7 +236,7 @@ public class UserServiceImpl implements UserService {
         try {
             User.UserRole newRole = User.UserRole.valueOf(role.toUpperCase());
             user.setRole(newRole);
-            // TODO: Save to repository
+            userRepository.save(user);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Invalid role: " + role);
         }

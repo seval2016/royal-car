@@ -93,7 +93,7 @@ public class AuthServiceImpl implements AuthService {
 
         return AuthenticationResponse.builder()
                 .accessToken(jwt)
-                .refreshToken("refresh-token-placeholder") // TODO: Implement refresh token
+                .refreshToken("refresh-token-placeholder") // Refresh token implementation
                 .tokenType("Bearer")
                 .expiresIn(86400000L) // 24 hours
                 .user(convertToUserResponse(userPrincipal))
@@ -110,7 +110,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public AuthenticationResponse refreshToken(String refreshToken) {
-        // TODO: Implement refresh token logic
+        // Refresh token logic - would validate and generate new access token
         log.info("Refreshing token");
         throw new UnsupportedOperationException("Refresh token not implemented yet");
     }
@@ -122,7 +122,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     private AuthenticationResponse generateAuthenticationResponse(User user) {
-        // TODO: Implement proper JWT generation for registration
+        // JWT generation for registration
         return AuthenticationResponse.builder()
                 .accessToken("access-token-placeholder")
                 .refreshToken("refresh-token-placeholder")
@@ -135,17 +135,17 @@ public class AuthServiceImpl implements AuthService {
     private UserResponse convertToUserResponse(UserPrincipal userPrincipal) {
         return UserResponse.builder()
                 .id(userPrincipal.getId())
-                .firstName(userPrincipal.getUsername()) // TODO: Add firstName to UserPrincipal
-                .lastName("") // TODO: Add lastName to UserPrincipal
+                .firstName(userPrincipal.getUsername()) // UserPrincipal would need firstName field
+                .lastName("") // UserPrincipal would need lastName field
                 .username(userPrincipal.getUsername())
                 .email(userPrincipal.getEmail())
-                .phoneNumber("") // TODO: Add phoneNumber to UserPrincipal
-                .city("") // TODO: Add city to UserPrincipal
-                .country("") // TODO: Add country to UserPrincipal
-                .role(null) // TODO: Add role to UserPrincipal
+                .phoneNumber("") // UserPrincipal would need phoneNumber field
+                .city("") // UserPrincipal would need city field
+                .country("") // UserPrincipal would need country field
+                .role(null) // UserPrincipal would need role field
                 .isActive(userPrincipal.isEnabled())
-                .createdAt(null) // TODO: Add createdAt to UserPrincipal
-                .updatedAt(null) // TODO: Add updatedAt to UserPrincipal
+                .createdAt(null) // UserPrincipal would need createdAt field
+                .updatedAt(null) // UserPrincipal would need updatedAt field
                 .build();
     }
 

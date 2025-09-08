@@ -2,6 +2,7 @@ package com.royalcar.controller;
 
 import com.royalcar.common.dto.ApiResponse;
 import com.royalcar.entity.Review;
+import com.royalcar.service.ReviewService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -18,68 +19,102 @@ import java.util.List;
 @Tag(name = "Review Management", description = "Customer reviews and ratings")
 public class ReviewController {
 
-    // TODO: Service injection will be added later
+    private final ReviewService reviewService;
     
     @GetMapping
     @Operation(summary = "Get all reviews", description = "Retrieve all customer reviews")
     public ResponseEntity<ApiResponse<List<Review>>> getAllReviews(
             @RequestParam(required = false) Long carId,
             @RequestParam(required = false) Integer rating) {
-        // TODO: Implementation will be added with service layer
-        return ResponseEntity.ok(ApiResponse.success("Reviews retrieved successfully", null));
+        List<Review> reviews = carId != null ? 
+                reviewService.getCarReviews(carId) : 
+                reviewService.getAllReviews();
+        if (rating != null) {
+            reviews = reviews.stream()
+                    .filter(review -> review.getRating().equals(rating))
+                    .toList();
+        }
+        return ResponseEntity.ok(ApiResponse.success("Reviews retrieved successfully", reviews));
     }
     
     @GetMapping("/{id}")
     @Operation(summary = "Get review by ID", description = "Retrieve a specific review")
     public ResponseEntity<ApiResponse<Review>> getReviewById(@PathVariable Long id) {
-        // TODO: Implementation will be added with service layer
-        return ResponseEntity.ok(ApiResponse.success("Review retrieved successfully", null));
+        Review review = reviewService.getReviewById(id)
+                .orElseThrow(() -> new RuntimeException("Review not found"));
+        return ResponseEntity.ok(ApiResponse.success("Review retrieved successfully", review));
     }
     
     @PostMapping
     @Operation(summary = "Create new review", description = "Create a new customer review")
     public ResponseEntity<ApiResponse<Review>> createReview(@Valid @RequestBody ReviewCreateRequest request) {
-        // TODO: Implementation will be added with service layer
+        Review review = convertToReview(request);
+        Review createdReview = reviewService.createReview(review);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponse.success("Review created successfully", null));
+                .body(ApiResponse.success("Review created successfully", createdReview));
     }
     
     @PutMapping("/{id}")
     @Operation(summary = "Update review", description = "Update an existing review")
     public ResponseEntity<ApiResponse<Review>> updateReview(@PathVariable Long id, @Valid @RequestBody ReviewUpdateRequest request) {
-        // TODO: Implementation will be added with service layer
-        return ResponseEntity.ok(ApiResponse.success("Review updated successfully", null));
+        Review review = convertToReview(request);
+        Review updatedReview = reviewService.updateReview(id, review);
+        return ResponseEntity.ok(ApiResponse.success("Review updated successfully", updatedReview));
     }
     
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete review", description = "Delete a review")
     public ResponseEntity<ApiResponse<Void>> deleteReview(@PathVariable Long id) {
-        // TODO: Implementation will be added with service layer
+        reviewService.deleteReview(id);
         return ResponseEntity.ok(ApiResponse.success("Review deleted successfully", null));
     }
     
     @GetMapping("/car/{carId}")
     @Operation(summary = "Get car reviews", description = "Get all reviews for a specific car")
     public ResponseEntity<ApiResponse<List<Review>>> getCarReviews(@PathVariable Long carId) {
-        // TODO: Implementation will be added with service layer
-        return ResponseEntity.ok(ApiResponse.success("Car reviews retrieved successfully", null));
+        List<Review> reviews = reviewService.getCarReviews(carId);
+        return ResponseEntity.ok(ApiResponse.success("Car reviews retrieved successfully", reviews));
     }
     
     @GetMapping("/user/{userId}")
     @Operation(summary = "Get user reviews", description = "Get all reviews by a specific user")
     public ResponseEntity<ApiResponse<List<Review>>> getUserReviews(@PathVariable Long userId) {
-        // TODO: Implementation will be added with service layer
-        return ResponseEntity.ok(ApiResponse.success("User reviews retrieved successfully", null));
+        List<Review> reviews = reviewService.getUserReviews(userId);
+        return ResponseEntity.ok(ApiResponse.success("User reviews retrieved successfully", reviews));
     }
     
-    // TODO: DTO classes will be created later
+    private Review convertToReview(ReviewCreateRequest request) {
+        Review review = new Review();
+        review.setRating(request.getRating());
+        review.setComment(request.getComment());
+        // Title field not available in Review entity
+        return review;
+    }
+    
+    private Review convertToReview(ReviewUpdateRequest request) {
+        Review review = new Review();
+        review.setRating(request.getRating());
+        review.setComment(request.getComment());
+        // Title field not available in Review entity
+        return review;
+    }
+    
+    // DTO classes
     public static class ReviewCreateRequest {
         private Long carId;
         private Integer rating;
         private String comment;
         private String title;
         
-        // Getters and setters will be added
+        // Getters and setters
+        public Long getCarId() { return carId; }
+        public void setCarId(Long carId) { this.carId = carId; }
+        public Integer getRating() { return rating; }
+        public void setRating(Integer rating) { this.rating = rating; }
+        public String getComment() { return comment; }
+        public void setComment(String comment) { this.comment = comment; }
+        public String getTitle() { return title; }
+        public void setTitle(String title) { this.title = title; }
     }
     
     public static class ReviewUpdateRequest {
@@ -87,6 +122,12 @@ public class ReviewController {
         private String comment;
         private String title;
         
-        // Getters and setters will be added
+        // Getters and setters
+        public Integer getRating() { return rating; }
+        public void setRating(Integer rating) { this.rating = rating; }
+        public String getComment() { return comment; }
+        public void setComment(String comment) { this.comment = comment; }
+        public String getTitle() { return title; }
+        public void setTitle(String title) { this.title = title; }
     }
 }
