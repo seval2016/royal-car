@@ -47,6 +47,16 @@ public class ReviewServiceImpl implements ReviewService {
         if (review == null) {
             throw new IllegalArgumentException("Review cannot be null");
         }
+        
+        // Fetch full entities from database
+        com.royalcar.entity.Car car = carService.getCarById(review.getCar().getId())
+                .orElseThrow(() -> new RuntimeException("Car not found with id: " + review.getCar().getId()));
+        review.setCar(car);
+        
+        com.royalcar.entity.User user = userService.getUserById(review.getUser().getId())
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + review.getUser().getId()));
+        review.setUser(user);
+        
         validateReviewData(review);
         
         // Check if user can review this car
@@ -68,10 +78,14 @@ public class ReviewServiceImpl implements ReviewService {
         }
         Review existingReview = getReviewById(id)
                 .orElseThrow(() -> new RuntimeException("Review not found"));
-        validateReviewData(review);
-        // Update fields
-        existingReview.setRating(review.getRating());
-        existingReview.setComment(review.getComment());
+        
+        // Update only non-null fields
+        if (review.getRating() != null) {
+            existingReview.setRating(review.getRating());
+        }
+        if (review.getComment() != null) {
+            existingReview.setComment(review.getComment());
+        }
         
         return reviewRepository.save(existingReview);
     }
