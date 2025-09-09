@@ -18,6 +18,9 @@ import java.math.BigDecimal;
 public class Car extends BaseEntity {
     
     @Column(nullable = false)
+    private String brand;
+    
+    @Column(nullable = false)
     private String manufacturer;
     
     @Column(nullable = false)

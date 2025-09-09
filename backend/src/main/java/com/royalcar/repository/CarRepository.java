@@ -66,11 +66,11 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     
     // Gelişmiş arama sorgusu
     @Query("SELECT c FROM Car c WHERE " +
-           "(:manufacturer IS NULL OR LOWER(c.manufacturer) LIKE LOWER(CONCAT('%', :manufacturer, '%'))) AND " +
-           "(:model IS NULL OR LOWER(c.model) LIKE LOWER(CONCAT('%', :model, '%'))) AND " +
+           "(:manufacturer IS NULL OR LOWER(c.manufacturer) LIKE LOWER('%' || :manufacturer || '%')) AND " +
+           "(:model IS NULL OR LOWER(c.model) LIKE LOWER('%' || :model || '%')) AND " +
            "(:minYear IS NULL OR c.year >= :minYear) AND " +
            "(:maxYear IS NULL OR c.year <= :maxYear) AND " +
-           "(:fuelType IS NULL OR LOWER(c.fuelType) LIKE LOWER(CONCAT('%', :fuelType, '%'))) AND " +
+           "(:fuelType IS NULL OR LOWER(c.fuelType) LIKE LOWER('%' || :fuelType || '%')) AND " +
            "(:isAvailable IS NULL OR c.isAvailable = :isAvailable)")
     List<Car> findCarsByCriteria(@Param("manufacturer") String manufacturer,
                                  @Param("model") String model,

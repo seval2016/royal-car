@@ -22,20 +22,25 @@ public class CarController {
 
     private final CarService carService;
     
+    // ==================== GET ENDPOINTS ====================
+    
     @GetMapping
-    @Operation(summary = "Get all cars", description = "Retrieve all available cars with optional filtering")
+    @Operation(summary = "Get all cars", description = "Retrieve all cars with optional filtering")
     public ResponseEntity<ApiResponse<List<Car>>> getAllCars(
+            @RequestParam(required = false) String brand,
             @RequestParam(required = false) String manufacturer,
+            @RequestParam(required = false) String model,
             @RequestParam(required = false) String fuelType,
+            @RequestParam(required = false) Integer minYear,
+            @RequestParam(required = false) Integer maxYear,
             @RequestParam(required = false) Boolean isAvailable) {
         
         List<Car> cars;
-        if (manufacturer != null || fuelType != null || isAvailable != null) {
-            cars = carService.searchCars(manufacturer, null, null, null, fuelType, isAvailable);
+        if (manufacturer != null || model != null || minYear != null || maxYear != null || fuelType != null || isAvailable != null) {
+            cars = carService.searchCars(manufacturer, model, minYear, maxYear, fuelType, isAvailable);
         } else {
             cars = carService.getAllCars();
         }
-        
         return ResponseEntity.ok(ApiResponse.success("Cars retrieved successfully", cars));
     }
     
@@ -47,6 +52,44 @@ public class CarController {
         return ResponseEntity.ok(ApiResponse.success("Car retrieved successfully", car));
     }
     
+    @GetMapping("/search")
+    @Operation(summary = "Search cars", description = "Advanced search for cars by various criteria")
+    public ResponseEntity<ApiResponse<List<Car>>> searchCars(
+            @RequestParam(required = false) String manufacturer,
+            @RequestParam(required = false) String model,
+            @RequestParam(required = false) Integer minYear,
+            @RequestParam(required = false) Integer maxYear,
+            @RequestParam(required = false) String fuelType,
+            @RequestParam(required = false) Boolean isAvailable,
+            @RequestParam(required = false) String brand) {
+        
+        List<Car> cars = carService.searchCars(manufacturer, model, minYear, maxYear, fuelType, isAvailable);
+        return ResponseEntity.ok(ApiResponse.success("Search completed successfully", cars));
+    }
+    
+    @GetMapping("/available")
+    @Operation(summary = "Get available cars", description = "Retrieve all available cars")
+    public ResponseEntity<ApiResponse<List<Car>>> getAvailableCars() {
+        List<Car> cars = carService.getAvailableCars();
+        return ResponseEntity.ok(ApiResponse.success("Available cars retrieved successfully", cars));
+    }
+    
+    @GetMapping("/manufacturer/{manufacturer}")
+    @Operation(summary = "Get cars by manufacturer", description = "Retrieve cars by specific manufacturer")
+    public ResponseEntity<ApiResponse<List<Car>>> getCarsByManufacturer(@PathVariable String manufacturer) {
+        List<Car> cars = carService.getCarsByManufacturer(manufacturer);
+        return ResponseEntity.ok(ApiResponse.success("Cars by manufacturer retrieved successfully", cars));
+    }
+    
+    @GetMapping("/fuel-type/{fuelType}")
+    @Operation(summary = "Get cars by fuel type", description = "Retrieve cars by specific fuel type")
+    public ResponseEntity<ApiResponse<List<Car>>> getCarsByFuelType(@PathVariable String fuelType) {
+        List<Car> cars = carService.getCarsByFuelType(fuelType);
+        return ResponseEntity.ok(ApiResponse.success("Cars by fuel type retrieved successfully", cars));
+    }
+    
+    // ==================== POST ENDPOINTS ====================
+    
     @PostMapping
     @Operation(summary = "Create new car", description = "Create a new car entry")
     public ResponseEntity<ApiResponse<Car>> createCar(@Valid @RequestBody CarCreateRequest request) {
@@ -56,13 +99,43 @@ public class CarController {
                 .body(ApiResponse.success("Car created successfully", createdCar));
     }
     
+    // ==================== PUT ENDPOINTS ====================
+    
     @PutMapping("/{id}")
     @Operation(summary = "Update car", description = "Update an existing car")
     public ResponseEntity<ApiResponse<Car>> updateCar(@PathVariable Long id, @Valid @RequestBody CarUpdateRequest request) {
-        Car car = convertToCar(request);
-        Car updatedCar = carService.updateCar(id, car);
+        Car existingCar = carService.getCarById(id)
+                .orElseThrow(() -> new RuntimeException("Car not found with id: " + id));
+        
+        // Update only non-null fields
+        if (request.getBrand() != null) existingCar.setBrand(request.getBrand());
+        if (request.getManufacturer() != null) existingCar.setManufacturer(request.getManufacturer());
+        if (request.getModel() != null) existingCar.setModel(request.getModel());
+        if (request.getModelCode() != null) existingCar.setModelCode(request.getModelCode());
+        if (request.getYear() != null) existingCar.setYear(request.getYear());
+        if (request.getPrice() != null) existingCar.setPrice(new BigDecimal(request.getPrice()));
+        if (request.getEngine() != null) existingCar.setEngine(request.getEngine());
+        if (request.getTransmission() != null) existingCar.setTransmission(request.getTransmission());
+        if (request.getFuelType() != null) existingCar.setFuelType(request.getFuelType());
+        if (request.getMileage() != null) existingCar.setMileage(request.getMileage());
+        if (request.getImage() != null) existingCar.setImage(request.getImage());
+        if (request.getDescription() != null) existingCar.setDescription(request.getDescription());
+        if (request.getIsAvailable() != null) existingCar.setIsAvailable(request.getIsAvailable());
+        
+        Car updatedCar = carService.updateCar(id, existingCar);
         return ResponseEntity.ok(ApiResponse.success("Car updated successfully", updatedCar));
     }
+    
+    @PutMapping("/{id}/availability")
+    @Operation(summary = "Update car availability", description = "Update car availability status")
+    public ResponseEntity<ApiResponse<Car>> updateCarAvailability(@PathVariable Long id, @RequestParam Boolean isAvailable) {
+        carService.updateCarAvailability(id, isAvailable);
+        Car updatedCar = carService.getCarById(id)
+                .orElseThrow(() -> new RuntimeException("Car not found with id: " + id));
+        return ResponseEntity.ok(ApiResponse.success("Car availability updated successfully", updatedCar));
+    }
+    
+    // ==================== DELETE ENDPOINTS ====================
     
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete car", description = "Delete a car by ID")
@@ -71,23 +144,41 @@ public class CarController {
         return ResponseEntity.ok(ApiResponse.success("Car deleted successfully", null));
     }
     
-    @GetMapping("/search")
-    @Operation(summary = "Search cars", description = "Search cars by various criteria")
-    public ResponseEntity<ApiResponse<List<Car>>> searchCars(
-            @RequestParam(required = false) String manufacturer,
-            @RequestParam(required = false) String model,
-            @RequestParam(required = false) Integer minYear,
-            @RequestParam(required = false) Integer maxYear,
-            @RequestParam(required = false) String fuelType,
-            @RequestParam(required = false) Boolean isAvailable) {
-        
-        List<Car> cars = carService.searchCars(manufacturer, model, minYear, maxYear, fuelType, isAvailable);
-        return ResponseEntity.ok(ApiResponse.success("Search completed successfully", cars));
+    // ==================== STATISTICS ENDPOINTS ====================
+    
+    @GetMapping("/stats/count")
+    @Operation(summary = "Get car count", description = "Get total number of cars")
+    public ResponseEntity<ApiResponse<Long>> getTotalCarCount() {
+        Long count = carService.getTotalCarCount();
+        return ResponseEntity.ok(ApiResponse.success("Total car count retrieved successfully", count));
     }
     
-    // Helper method to convert DTO to Entity
+    @GetMapping("/stats/available-count")
+    @Operation(summary = "Get available car count", description = "Get number of available cars")
+    public ResponseEntity<ApiResponse<Long>> getAvailableCarCount() {
+        Long count = carService.getAvailableCarCount();
+        return ResponseEntity.ok(ApiResponse.success("Available car count retrieved successfully", count));
+    }
+    
+    @GetMapping("/stats/manufacturers")
+    @Operation(summary = "Get all manufacturers", description = "Get list of all car manufacturers")
+    public ResponseEntity<ApiResponse<List<String>>> getAllManufacturers() {
+        List<String> manufacturers = carService.getAllManufacturers();
+        return ResponseEntity.ok(ApiResponse.success("Manufacturers retrieved successfully", manufacturers));
+    }
+    
+    @GetMapping("/stats/fuel-types")
+    @Operation(summary = "Get all fuel types", description = "Get list of all fuel types")
+    public ResponseEntity<ApiResponse<List<String>>> getAllFuelTypes() {
+        List<String> fuelTypes = carService.getAllFuelTypes();
+        return ResponseEntity.ok(ApiResponse.success("Fuel types retrieved successfully", fuelTypes));
+    }
+    
+    // ==================== HELPER METHODS ====================
+    
     private Car convertToCar(CarCreateRequest request) {
         Car car = new Car();
+        car.setBrand(request.getBrand());
         car.setManufacturer(request.getManufacturer());
         car.setModel(request.getModel());
         car.setModelCode(request.getModelCode());
@@ -99,12 +190,13 @@ public class CarController {
         car.setMileage(request.getMileage());
         car.setImage(request.getImage());
         car.setDescription(request.getDescription());
-        car.setIsAvailable(true); // Default to available
+        car.setIsAvailable(request.getIsAvailable() != null ? request.getIsAvailable() : true);
         return car;
     }
     
     private Car convertToCar(CarUpdateRequest request) {
         Car car = new Car();
+        car.setBrand(request.getBrand());
         car.setManufacturer(request.getManufacturer());
         car.setModel(request.getModel());
         car.setModelCode(request.getModelCode());
@@ -120,8 +212,10 @@ public class CarController {
         return car;
     }
     
-    // DTO classes
+    // ==================== DTO CLASSES ====================
+    
     public static class CarCreateRequest {
+        private String brand;
         private String manufacturer;
         private String model;
         private String modelCode;
@@ -133,8 +227,11 @@ public class CarController {
         private String mileage;
         private String image;
         private String description;
+        private Boolean isAvailable;
         
         // Getters and setters
+        public String getBrand() { return brand; }
+        public void setBrand(String brand) { this.brand = brand; }
         public String getManufacturer() { return manufacturer; }
         public void setManufacturer(String manufacturer) { this.manufacturer = manufacturer; }
         public String getModel() { return model; }
@@ -157,9 +254,12 @@ public class CarController {
         public void setImage(String image) { this.image = image; }
         public String getDescription() { return description; }
         public void setDescription(String description) { this.description = description; }
+        public Boolean getIsAvailable() { return isAvailable; }
+        public void setIsAvailable(Boolean isAvailable) { this.isAvailable = isAvailable; }
     }
     
     public static class CarUpdateRequest {
+        private String brand;
         private String manufacturer;
         private String model;
         private String modelCode;
@@ -174,6 +274,8 @@ public class CarController {
         private Boolean isAvailable;
         
         // Getters and setters
+        public String getBrand() { return brand; }
+        public void setBrand(String brand) { this.brand = brand; }
         public String getManufacturer() { return manufacturer; }
         public void setManufacturer(String manufacturer) { this.manufacturer = manufacturer; }
         public String getModel() { return model; }

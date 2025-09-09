@@ -1,6 +1,8 @@
 package com.royalcar.service.impl;
 
 import com.royalcar.entity.Booking;
+import com.royalcar.entity.Car;
+import com.royalcar.entity.Driver;
 import com.royalcar.repository.BookingRepository;
 import com.royalcar.service.BookingService;
 import com.royalcar.service.CarService;
@@ -49,6 +51,17 @@ public class BookingServiceImpl implements BookingService {
         }
         validateBookingData(booking);
         
+        // Fetch full entities from database
+        Car car = carService.getCarById(booking.getCar().getId())
+                .orElseThrow(() -> new RuntimeException("Car not found with id: " + booking.getCar().getId()));
+        booking.setCar(car);
+        
+        if (booking.getDriver() != null) {
+            Driver driver = driverService.getDriverById(booking.getDriver().getId())
+                    .orElseThrow(() -> new RuntimeException("Driver not found with id: " + booking.getDriver().getId()));
+            booking.setDriver(driver);
+        }
+        
         // Check car availability
         if (!isCarAvailableForPeriod(booking.getCar().getId(), 
                 booking.getPickupDate(), booking.getReturnDate())) {
@@ -84,12 +97,28 @@ public class BookingServiceImpl implements BookingService {
         Booking existingBooking = getBookingById(id)
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
         
-        validateBookingData(booking);
         // Update fields
-        existingBooking.setPickupDate(booking.getPickupDate());
-        existingBooking.setReturnDate(booking.getReturnDate());
-        existingBooking.setDriverRequired(booking.getDriverRequired());
-        existingBooking.setStatus(booking.getStatus());
+        if (booking.getPickupDate() != null) {
+            existingBooking.setPickupDate(booking.getPickupDate());
+        }
+        if (booking.getReturnDate() != null) {
+            existingBooking.setReturnDate(booking.getReturnDate());
+        }
+        if (booking.getDriverRequired() != null) {
+            existingBooking.setDriverRequired(booking.getDriverRequired());
+        }
+        if (booking.getStatus() != null) {
+            existingBooking.setStatus(booking.getStatus());
+        }
+        if (booking.getPickupLocation() != null) {
+            existingBooking.setPickupLocation(booking.getPickupLocation());
+        }
+        if (booking.getReturnLocation() != null) {
+            existingBooking.setReturnLocation(booking.getReturnLocation());
+        }
+        if (booking.getNotes() != null) {
+            existingBooking.setNotes(booking.getNotes());
+        }
         
         // Recalculate total price
         double totalPrice = calculateTotalPrice(existingBooking.getCar().getId(),

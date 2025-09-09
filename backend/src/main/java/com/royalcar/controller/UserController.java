@@ -16,6 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
@@ -24,6 +26,13 @@ public class UserController {
 
     private final AuthService authService;
     private final UserService userService;
+    
+    @GetMapping
+    @Operation(summary = "Get all users", description = "Retrieve all users")
+    public ResponseEntity<ApiResponse<List<User>>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        return ResponseEntity.ok(ApiResponse.success("Users retrieved successfully", users));
+    }
     
     @PostMapping("/register")
     @Operation(summary = "Register new user", description = "Create a new user account")
@@ -78,6 +87,21 @@ public class UserController {
                 .isActive(updatedUser.getIsActive())
                 .build();
         return ResponseEntity.ok(ApiResponse.success("Profile updated successfully", userResponse));
+    }
+    
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete user account", description = "Delete user account by ID")
+    public ResponseEntity<ApiResponse<String>> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.ok(ApiResponse.success("User account deleted successfully", null));
+    }
+    
+    @DeleteMapping("/profile")
+    @Operation(summary = "Deactivate user account", description = "Deactivate current user account (soft delete)")
+    public ResponseEntity<ApiResponse<String>> deactivateUserProfile() {
+        UserResponse currentUser = authService.getCurrentUser();
+        userService.deactivateUser(currentUser.getId());
+        return ResponseEntity.ok(ApiResponse.success("User account deactivated successfully", null));
     }
     
     // DTO classes

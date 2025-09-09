@@ -51,8 +51,22 @@ public class DriverController {
     @PutMapping("/{id}")
     @Operation(summary = "Update driver", description = "Update an existing driver")
     public ResponseEntity<ApiResponse<Driver>> updateDriver(@PathVariable Long id, @Valid @RequestBody DriverUpdateRequest request) {
-        Driver driver = convertToDriver(request);
-        Driver updatedDriver = driverService.updateDriver(id, driver);
+        Driver existingDriver = driverService.getDriverById(id)
+                .orElseThrow(() -> new RuntimeException("Driver not found with id: " + id));
+        
+        // Update only non-null fields
+        if (request.getName() != null) existingDriver.setName(request.getName());
+        if (request.getSurname() != null) existingDriver.setSurname(request.getSurname());
+        if (request.getEmail() != null) existingDriver.setEmail(request.getEmail());
+        if (request.getImage() != null) existingDriver.setImage(request.getImage());
+        if (request.getExperience() != null) existingDriver.setExperience(request.getExperience());
+        if (request.getFacebook() != null) existingDriver.setFacebook(request.getFacebook());
+        if (request.getTwitter() != null) existingDriver.setTwitter(request.getTwitter());
+        if (request.getInstagram() != null) existingDriver.setInstagram(request.getInstagram());
+        if (request.getLinkedin() != null) existingDriver.setLinkedin(request.getLinkedin());
+        if (request.getIsActive() != null) existingDriver.setIsActive(request.getIsActive());
+        
+        Driver updatedDriver = driverService.updateDriver(id, existingDriver);
         return ResponseEntity.ok(ApiResponse.success("Driver updated successfully", updatedDriver));
     }
     

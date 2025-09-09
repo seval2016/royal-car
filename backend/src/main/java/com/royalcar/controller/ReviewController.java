@@ -87,15 +87,31 @@ public class ReviewController {
         Review review = new Review();
         review.setRating(request.getRating());
         review.setComment(request.getComment());
-        // Title field not available in Review entity
+        review.setReviewDate(java.time.LocalDateTime.now());
+        
+        // Set relationships - let the service layer handle entity fetching
+        if (request.getCarId() != null) {
+            com.royalcar.entity.Car car = new com.royalcar.entity.Car();
+            car.setId(request.getCarId());
+            review.setCar(car);
+        }
+        
+        // For now, we'll use a default user ID (you might want to get this from authentication)
+        com.royalcar.entity.User user = new com.royalcar.entity.User();
+        user.setId(1L); // Default user ID
+        review.setUser(user);
+        
         return review;
     }
     
     private Review convertToReview(ReviewUpdateRequest request) {
         Review review = new Review();
-        review.setRating(request.getRating());
-        review.setComment(request.getComment());
-        // Title field not available in Review entity
+        if (request.getRating() != null) {
+            review.setRating(request.getRating());
+        }
+        if (request.getComment() != null) {
+            review.setComment(request.getComment());
+        }
         return review;
     }
     

@@ -53,6 +53,7 @@ public class Booking extends BaseEntity {
     @Column(name = "driver_required")
     private Boolean driverRequired = false;
     
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "driver_id")
     private Driver driver;
