@@ -8,9 +8,11 @@ import {
   Grid3X3, 
   User,
   Moon,
-  Sun
+  Sun,
+  LogOut
 } from 'lucide-react'
 import { useState } from 'react'
+import { useAuth } from '../contexts/AuthContext'
 
 interface HeaderProps {
   onMenuClick: () => void
@@ -18,6 +20,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   const [darkMode, setDarkMode] = useState(false)
+  const [showUserMenu, setShowUserMenu] = useState(false)
+  const { user, logout } = useAuth()
 
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">
@@ -71,11 +75,34 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
             <Grid3X3 className="w-5 h-5" />
           </button>
           
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-              <User className="w-5 h-5 text-gray-600" />
-            </div>
-            <span className="text-sm font-medium text-gray-700">Admin</span>
+          <div className="relative">
+            <button
+              onClick={() => setShowUserMenu(!showUserMenu)}
+              className="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded-lg"
+            >
+              <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                <User className="w-5 h-5 text-gray-600" />
+              </div>
+              <span className="text-sm font-medium text-gray-700">
+                {user?.firstName || 'Admin'}
+              </span>
+            </button>
+            
+            {showUserMenu && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                <div className="px-4 py-2 text-sm text-gray-700 border-b">
+                  <div className="font-medium">{user?.firstName} {user?.lastName}</div>
+                  <div className="text-gray-500">{user?.email}</div>
+                </div>
+                <button
+                  onClick={logout}
+                  className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Çıkış Yap
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

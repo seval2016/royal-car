@@ -52,8 +52,8 @@
     --radius: 0.5rem;
 
     /* Royal Car Brand Colors - CSS Variables */
-    --brand-yellow: 48 100% 50%;        /* #ffcd00 - Ana marka rengi */
-    --brand-yellow-dark: 48 100% 45%;   /* #e6b800 - Hover durumu için */
+    --brand-yellow: 220 70% 70%;        /* #70A2E8 - Ana marka rengi */
+    --brand-yellow-dark: 220 70% 60%;   /* #5a8bdb - Hover durumu için */
     --brand-dark: 0 0% 20%;             /* #333333 - Koyu metin rengi */
     --brand-cream: 48 100% 95%;         /* #f8f4da - Krem arka plan */
     --brand-light-gray: 0 0% 67%;       /* #aaaaaa - Açık gri */
@@ -90,8 +90,8 @@
     --ring: 212.7 26.8% 83.9%;
 
     /* Royal Car Brand Colors - Dark Theme */
-    --brand-yellow: 48 100% 60%;        /* #ffaa00 - Dark tema için daha parlak */
-    --brand-yellow-dark: 48 100% 55%;   /* #e69900 - Dark tema hover */
+    --brand-yellow: 220 70% 75%;        /* #70A2E8 - Dark tema için daha parlak */
+    --brand-yellow-dark: 220 70% 65%;   /* #5a8bdb - Dark tema hover */
     --brand-dark: 0 0% 90%;             /* #e6e6e6 - Dark tema için açık */
     --brand-cream: 48 100% 10%;         /* #1a1a0a - Dark tema krem */
     --brand-light-gray: 0 0% 80%;       /* #cccccc - Dark tema açık gri */

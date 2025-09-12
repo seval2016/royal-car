@@ -42,11 +42,7 @@ const ContactPage = () => {
         
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-          <ContactForm 
-            title="Send us a Message"
-            subtitle="We'd love to hear from you. Send us a message and we'll respond as soon as possible."
-            variant="default"
-          />
+          <ContactForm />
         </div>
       </section>
     </Layout>

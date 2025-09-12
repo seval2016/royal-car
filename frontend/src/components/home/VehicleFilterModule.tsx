@@ -27,7 +27,7 @@ const VehicleFilterModule = () => {
       : cars.filter((car) => car.manufacturer === selectedManufacturer);
 
   return (
-    <section className="bg-brand-cream py-8 sm:py-12 lg:py-16">
+    <section className="py-8 sm:py-12 lg:py-16 bg-royal-500/15">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Title */}
         <div className="mb-6 sm:mb-8">

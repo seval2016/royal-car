@@ -62,8 +62,8 @@ export default {
         },
         // Proje özel renkleri - CSS Variables ile
         brand: {
-          yellow: "hsl(var(--brand-yellow))",           /* #ffcd00 - Ana marka rengi */
-          yellowDark: "hsl(var(--brand-yellow-dark))",  /* #e6b800 - Hover durumu */
+          yellow: "hsl(var(--brand-yellow))",           /* #70A2E8 - Ana marka rengi */
+          yellowDark: "hsl(var(--brand-yellow-dark))",  /* #5a8bdb - Hover durumu */
           dark: "hsl(var(--brand-dark))",               /* #333333 - Koyu metin rengi */
           cream: "hsl(var(--brand-cream))",             /* #f8f4da - Krem arka plan */
           lightGray: "hsl(var(--brand-light-gray))",    /* #aaaaaa - Açık gri */
@@ -80,6 +80,18 @@ export default {
           borderLight: "#eeeeee",                       /* #eeeeee - Açık kenarlık rengi */
           bgOverlay: "hsl(var(--brand-bg-overlay))",    /* rgba(51, 51, 51, 0.8) - Overlay */
           formBg: "hsl(var(--brand-form-bg))",          /* rgba(51, 51, 51, 0.9) - Form arka plan */
+        },
+        royal: {
+          50: '#f0f4ff',
+          100: '#e0e9ff',
+          200: '#c7d6ff',
+          300: '#a5b8ff',
+          400: '#8191ff',
+          500: '#70a2e8',
+          600: '#5a8bdb',
+          700: '#4a73c7',
+          800: '#3e5fa3',
+          900: '#364d7a',
         }
       },
              fontSize: {

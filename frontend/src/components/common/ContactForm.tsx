@@ -4,6 +4,7 @@ import { Button, Input, Select, Title } from "./index";
 interface ContactFormProps {
   title?: string;
   subtitle?: string;
+  titleHighlight?: string;
   className?: string;
   showTitle?: boolean;
   variant?: 'default' | 'compact' | 'full';
@@ -23,7 +24,8 @@ interface FormData {
 
   const ContactForm: React.FC<ContactFormProps> = ({
     title = "In Touch",
-    subtitle = "Get in touch with our team for any questions or inquiries",
+    subtitle = "Contact Us Now",
+    titleHighlight = "Keep",
     className = "",
     showTitle = true,
     variant = 'default',
@@ -106,9 +108,9 @@ interface FormData {
       {showTitle && (
         <div className="mb-8">
           <Title
-            subtitle="KEEP IN TOUCH"
+            subtitle={subtitle}
             title={title}
-            titleHighlight={subtitle}
+            titleHighlight={titleHighlight}
             subtitleClassName="text-white"
             titleClassName="text-brand-yellow font-bold"
             align="center"
@@ -203,7 +205,7 @@ interface FormData {
             type="submit"
             variant="primary"
             size="lg"
-            className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 tracking-widest text-xs sm:text-sm bg-brand-yellow text-white hover:bg-brand-yellowDark"
+            className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 tracking-widest text-xs sm:text-sm bg-brand-yellow text-white hover:bg-brand-yellowDark mt-8"
           >
             SEND MESSAGE NOW
           </Button>

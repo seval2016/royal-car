@@ -51,11 +51,7 @@ const DriversPage = () => {
         
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-          <ContactForm 
-            title="Contact Us"
-            subtitle="Get in touch with our team for any questions or inquiries"
-            variant="default"
-          />
+          <ContactForm  />
         </div>
       </section>
     </Layout>
